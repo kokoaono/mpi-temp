@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const RecordForm = () => {
+const FridgeTempForm = () => {
+  const message = "The fridge temperature should be at or less than 4°C."
+
   const [temp, setTemp] = useState({
     fridge1: '',
     fridge2: '',
@@ -33,18 +35,17 @@ const RecordForm = () => {
       ...note,
       [e.target.name]: e.target.value
     })
-    console.log(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    alert('submitted')
+    alert(`value: ${temp.fridge1}`)
   };
 
   return (
-    <div className="ui three column grid">
-      <div className="row">
+    <div className="ui grid container">
+      <div className="four wide column">
         <form onSubmit={handleSubmit}>
           Fridge 1:
           <input
@@ -66,7 +67,6 @@ const RecordForm = () => {
             type="number"
             name="fridge2"
             value={temp.fridge2}
-            placeholder="Temp"
             onChange={handleChange}>
           </input>
           <textarea
@@ -80,7 +80,6 @@ const RecordForm = () => {
             type="number"
             name="fridge3"
             value={temp.fridge3}
-            placeholder="Temp"
             onChange={handleChange}>
           </input>
           <textarea
@@ -94,7 +93,6 @@ const RecordForm = () => {
             type="number"
             name="fridge4"
             value={temp.fridge4}
-            placeholder="Temp"
             onChange={handleChange}>
           </input>
           <textarea
@@ -108,7 +106,6 @@ const RecordForm = () => {
             type="number"
             name="freezer"
             value={temp.freezer}
-            placeholder="Temp"
             onChange={handleChange}>
           </input>
           <textarea
@@ -117,11 +114,17 @@ const RecordForm = () => {
             onChange={handleNoteChange}
           >
           </textarea>
+          <button
+            className="ui button"
+            type="submit"
+          >
+            Save
+          </button>
         </form>
-        <button className="ui button">Save</button>
-      </div>
+      </div >
+      <h3>{message}</h3>
     </div >
   )
 };
 
-export default RecordForm;
+export default FridgeTempForm;

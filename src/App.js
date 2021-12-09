@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import RecordForm from './components/Recordform';
+import FridgeTempForm from './components/FridgeTempForm';
 import Home from './components/home/Home';
 import Header from './components/Header';
 
 
 const App = () => {
   return (
-    <div className='app'>
+    <div className='App'>
       <Router>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='records' element={<RecordForm />} />
+          <Route path='temp' element={<FridgeTempForm />} />
         </Routes>
       </Router>
     </div>
