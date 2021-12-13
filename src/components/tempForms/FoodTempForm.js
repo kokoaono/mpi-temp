@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"
 
 const FoodTempForm = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [foodTemp, setFoodTemp] = useState('');
+  const [foodTemp, setFoodTemp] = useState();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -13,7 +14,7 @@ const FoodTempForm = () => {
 
 
   return (
-    <div>
+    <div className='ui grid container'>
       <form>
         <select>
           <option defaultValue="Protein">Select protein</option>
@@ -22,14 +23,13 @@ const FoodTempForm = () => {
           <option value="Lamb">Lamb</option>
           <option value="Pork">Pork</option>
         </select>
+        <lable>test</lable>
         <input
           type="number"
           value={foodTemp}
           onChange={handleChange}
         >
-
         </input>
-
       </form>
       <DatePicker
         dateFormat="dd/MM/yyyy h:mm aa"
