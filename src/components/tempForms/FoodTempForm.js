@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css"
 
 const FoodTempForm = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [foodTemp, setFoodTemp] = useState();
+  const [foodTemp, setFoodTemp] = useState('');
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const FoodTempForm = () => {
           <option value="Lamb">Lamb</option>
           <option value="Pork">Pork</option>
         </select>
-        <lable>test</lable>
+        <label>Food Temp</label>
         <input
           type="number"
           value={foodTemp}
@@ -37,7 +37,7 @@ const FoodTempForm = () => {
         selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
-    </div>
+    </div >
   )
 };
 
