@@ -38,7 +38,7 @@ const FridgeTemp = () => {
 
   //delete individual temp by its temp FOR NOW
   const deleteFridge = (fridgeTemp) => {
-    const filteredFridges = fridges.filter((element, index) => {
+    const filteredFridges = fridges.filter((element) => {
       return element.fridgeTemp !== fridgeTemp
     })
     setFridges(filteredFridges)
@@ -53,14 +53,16 @@ const FridgeTemp = () => {
   return (
     <div>
       <form onSubmit={handleAddFridges}>
-        <label>Fridge1</label>
-        <input
-          placeholder="Temp"
-          type='number'
-          value={fridgeTemp}
-          onChange={e => setFridgeTemp(e.target.value)}
-        >
-        </input>
+        <label>Fridge1
+          <input
+            placeholder="Temp"
+            type='number'
+            name='temp'
+            value={fridgeTemp}
+            onChange={e => setFridgeTemp(e.target.value)}
+          >
+          </input>
+        </label>
         <label>Note</label>
         <input
           type="text"
