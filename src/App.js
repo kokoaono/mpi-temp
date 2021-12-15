@@ -6,7 +6,6 @@ import Header from './components/Header';
 import FoodTempForm from './components/tempForms/FoodTempForm';
 import FridgeTemp from './components/FridgeTemp';
 
-
 const App = () => {
   return (
     <Fragment>

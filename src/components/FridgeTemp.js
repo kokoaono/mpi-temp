@@ -11,13 +11,17 @@ const getData = () => {
   }
 };
 
+const header = 'Record Fridge/Freezer Temperature'
+
 const FridgeTemp = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
 
   //input field states
   const [fridgeTemp, setFridgeTemp] = useState('');
+  const [fridgeName, setFridgeName] = useState('');
   const [date, setDate] = useState(new Date());
+  const [id, setId] = useState(Date.now());
   const [note, setNote] = useState('');
 
   //form submit event
@@ -26,20 +30,24 @@ const FridgeTemp = () => {
 
     // create an object
     let fridge = {
+      id,
+      fridgeName,
       fridgeTemp,
       date,
       note,
     }
     setFridges([...fridges, fridge]);
+    setFridgeName('');
     setFridgeTemp('');
     setNote('');
+    setId(Date.now());
     setDate(new Date());
   }
 
-  //delete individual temp by its temp FOR NOW
-  const deleteFridge = (fridgeTemp) => {
-    const filteredFridges = fridges.filter((element) => {
-      return element.fridgeTemp !== fridgeTemp
+  //delete individual temp by its id
+  const deleteFridge = (id) => {
+    const filteredFridges = fridges.filter((fridge) => {
+      return fridge.id !== id
     })
     setFridges(filteredFridges)
   };
@@ -53,16 +61,22 @@ const FridgeTemp = () => {
   return (
     <div>
       <form onSubmit={handleAddFridges}>
-        <label>Fridge1
-          <input
-            placeholder="Temp"
-            type='number'
-            name='temp'
-            value={fridgeTemp}
-            onChange={e => setFridgeTemp(e.target.value)}
-          >
-          </input>
-        </label>
+        <h3>{header}</h3>
+        <input
+          placeholder="Fridge name/No"
+          type="text"
+          value={fridgeName}
+          onChange={e => setFridgeName(e.target.value)}
+        >
+        </input>
+        <input
+          placeholder="Temp"
+          type='number'
+          name='temp'
+          value={fridgeTemp}
+          onChange={e => setFridgeTemp(e.target.value)}
+        >
+        </input>
         <label>Note</label>
         <input
           type="text"
@@ -78,10 +92,10 @@ const FridgeTemp = () => {
         {fridges.length > 0 &&
           <View fridges={fridges} deleteFridge={deleteFridge} />
         }
-        {fridges.length < 1 && <p>There is nothing show</p>}
+        {fridges.length < 1 && <p>No temperatures recorded</p>}
       </div>
-      <button onClick={() => setFridges([])}>Delete All</button>
-    </div>
+      <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
+    </div >
   )
 };
 
