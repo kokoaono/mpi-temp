@@ -5,10 +5,21 @@ import Home from './components/home/Home';
 import Header from './components/Header';
 import FoodTempForm from './components/tempForms/FoodTempForm';
 import FridgeTemp from './components/FridgeTemp';
+import FridgeList from './components/FridgeList';
 
+// const getData = () => {
+//   const data = localStorage.getItem('fridges');
+//   if (data) {
+//     return JSON.parse(data);
+//   } else {
+//     return []
+//   }
+// };
+// console.log(getData());
 const App = () => {
   return (
     <Fragment>
+      <FridgeList />
       <Router>
         <Header />
         <Routes>

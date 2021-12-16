@@ -80,6 +80,7 @@ const FridgeTemp = () => {
         <label>Note</label>
         <input
           type="text"
+          name="note"
           value={note}
           onChange={e => setNote(e.target.value)}
         >
