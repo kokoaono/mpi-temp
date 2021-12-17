@@ -10,14 +10,12 @@ const getData = () => {
   }
 };
 const fridges = getData();
-console.log('result', fridges);
 
-const FridgeList = () => (
+const FridgeLists = () => (
   <div>
-    {fridges.map(fridge => (
-      <FridgeListItem key={fridge.id} {...fridge} />
-    ))}
+    {fridges.length < 1 && <p>Nothing to show</p>}
+    < FridgeListItem fridges={fridges} />
   </div>
 );
 
-export default FridgeList;
+export default FridgeLists;

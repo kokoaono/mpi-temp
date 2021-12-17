@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View } from './View';
 
-// getting values of LS
+const header = 'Record Fridge/Freezer Temperature'
+const date = new Date();
+
+// GETTING VALUES FROM LS
 const getData = () => {
   const data = localStorage.getItem('fridges');
   if (data) {
@@ -11,38 +13,32 @@ const getData = () => {
   }
 };
 
-const header = 'Record Fridge/Freezer Temperature'
-
-const FridgeTemp = () => {
+const FridgeTempForm = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
 
   //input field states
-  const [fridgeTemp, setFridgeTemp] = useState('');
-  const [fridgeName, setFridgeName] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [id, setId] = useState(Date.now());
-  const [note, setNote] = useState('');
+  const [state, setState] = useState({
+    id: Date.now(),
+    fridgeName: '',
+    fridgeTemp: '',
+    note: '',
+    date: date,
+    error: ''
+  });
+
+  const handleChange = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    })
+  };
 
   //form submit event
-  const handleAddFridges = e => {
-    e.preventDefault();
-
-    // create an object
-    let fridge = {
-      id,
-      fridgeName,
-      fridgeTemp,
-      date,
-      note,
-    }
-    setFridges([...fridges, fridge]);
-    setFridgeName('');
-    setFridgeTemp('');
-    setNote('');
-    setId(Date.now());
-    setDate(new Date());
-  }
+  const handleAddFridges = event => {
+    event.preventDefault();
+    setFridges([...fridges, state]);
+  };
 
   //delete individual temp by its id
   const deleteFridge = (id) => {
@@ -52,7 +48,7 @@ const FridgeTemp = () => {
     setFridges(filteredFridges)
   };
 
-  // saving data to LS
+  // SAVING DATA TO LS
   useEffect(() => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
   }, [fridges])
@@ -63,42 +59,40 @@ const FridgeTemp = () => {
       <form onSubmit={handleAddFridges}>
         <h3>{header}</h3>
         <input
-          placeholder="Fridge name/No"
+          placeholder="Fridge Name/No"
+          name="fridgeName"
           type="text"
-          value={fridgeName}
-          onChange={e => setFridgeName(e.target.value)}
+          value={state.fridgeName}
+          onChange={handleChange}
         >
         </input>
         <input
           placeholder="Temp"
           type='number'
-          name='temp'
-          value={fridgeTemp}
-          onChange={e => setFridgeTemp(e.target.value)}
+          name='fridgeTemp'
+          value={state.fridgeTemp}
+          onChange={handleChange}
         >
         </input>
         <label>Note</label>
         <input
           type="text"
           name="note"
-          value={note}
-          onChange={e => setNote(e.target.value)}
+          value={state.note}
+          onChange={handleChange}
         >
         </input>
-        <button type="submit">
-          Add
-        </button>
+        <button type="submit">Add</button>
       </form>
-      <div>
+      {/* <div>
         {fridges.length > 0 &&
           <View fridges={fridges} deleteFridge={deleteFridge} />
         }
-        {fridges.length < 1 && <p>No temperatures recorded</p>}
-      </div>
+      </div> */}
       <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
     </div >
   )
 };
 
 
-export default FridgeTemp;
+export default FridgeTempForm;

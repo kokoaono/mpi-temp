@@ -3,29 +3,24 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './components/home/Home';
 import Header from './components/Header';
+import Login from './components/Login';
 import FoodTempForm from './components/tempForms/FoodTempForm';
-import FridgeTemp from './components/FridgeTemp';
-import FridgeList from './components/FridgeList';
+import FridgeLists from './components/FridgeLists';
+import EditFridgeTempPage from './components/EditFridgeTempPage';
+import FridgeTempForm from './components/FridgeTempForm';
 
-// const getData = () => {
-//   const data = localStorage.getItem('fridges');
-//   if (data) {
-//     return JSON.parse(data);
-//   } else {
-//     return []
-//   }
-// };
-// console.log(getData());
 const App = () => {
   return (
     <Fragment>
-      <FridgeList />
       <Router>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='login' element={<Login />} />
+          <Route path='fridgelists' element={<FridgeLists />} />
+          <Route path='edit/:id' element={<EditFridgeTempPage />} />
           <Route path='foodtemp' element={<FoodTempForm />} />
-          <Route path='temp' element={<FridgeTemp />} />
+          <Route path='temp' element={<FridgeTempForm />} />
         </Routes>
       </Router>
     </Fragment>
