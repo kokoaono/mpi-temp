@@ -1,22 +1,52 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"
+import React, { useRef, useReducer } from 'react';
+// import DatePicker from 'react-datepicker';
+// import "react-datepicker/dist/react-datepicker.css";
+
+const ACTIONS = {
+  ADD: 'add',
+  DELETE_ALL: 'delete-all'
+}
 
 const FoodTempForm = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [foodTemp, setFoodTemp] = useState('');
+  const inputRef = useRef();
+  const [items, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case ACTIONS.ADD:
+        return [
+          ...state,
+          {
+            id: Date.now(),
+            temp: action.temp
+          }
+        ];
+      case ACTIONS.DELETE_ALL:
+        return [];
+      default:
+        return state
+    }
+  }, [])
+  console.log("result", items);
+  // const [startDate, setStartDate] = useState(new Date());
 
-  const handleChange = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    setFoodTemp(e.target.vale)
-    console.log(e.target.value);
+    dispatch({
+      type: 'add',
+      temp: inputRef.current.value
+    });
+    inputRef.current.value = '';
   };
 
+  const handleDeleteAll = () => {
+    dispatch({
+      type: 'delete-all'
+    })
+  };
 
   return (
     <div className='ui grid container'>
-      <form>
-        <select>
+      <form onSubmit={handleSubmit}>
+        <select ref={inputRef}>
           <option defaultValue="Protein">Select protein</option>
           <option value="Beef">Beef</option>
           <option value="Chicken">Chicken</option>
@@ -26,17 +56,21 @@ const FoodTempForm = () => {
         <label>Food Temp</label>
         <input
           type="number"
-          value={foodTemp}
-          onChange={handleChange}
-        >
-        </input>
+          ref={inputRef}
+        />
       </form>
-      <DatePicker
+      <button onClick={handleDeleteAll}>Clear</button>
+      {/* <DatePicker
         dateFormat="dd/MM/yyyy h:mm aa"
         timeInputLabel='Time:'
         selected={startDate}
         onChange={(date) => setStartDate(date)}
-      />
+      /> */}
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.temp}</li>
+        ))}
+      </ul>
     </div >
   )
 };

@@ -1,14 +1,7 @@
 import React from "react";
 import FridgeListItem from "./FridgeListItem";
+import { getData } from "./Lsfunctions";
 
-const getData = () => {
-  const data = localStorage.getItem('fridges');
-  if (data) {
-    return JSON.parse(data);
-  } else {
-    return []
-  }
-};
 const fridges = getData();
 
 const FridgeLists = () => (

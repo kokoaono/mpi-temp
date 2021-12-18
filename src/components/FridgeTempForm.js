@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { getData } from "./Lsfunctions";
 
 const header = 'Record Fridge/Freezer Temperature'
 const date = new Date();
-
-// GETTING VALUES FROM LS
-const getData = () => {
-  const data = localStorage.getItem('fridges');
-  if (data) {
-    return JSON.parse(data);
-  } else {
-    return []
-  }
-};
 
 const FridgeTempForm = () => {
   //main array of object state
