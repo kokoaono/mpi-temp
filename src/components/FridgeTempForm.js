@@ -23,8 +23,7 @@ const FridgeTempForm = () => {
     fridgeName: '',
     fridgeTemp: '',
     note: '',
-    date: date,
-    error: ''
+    date: date
   });
 
   const handleChange = e => {
@@ -35,7 +34,7 @@ const FridgeTempForm = () => {
   };
 
   //form submit event
-  const handleAddFridges = event => {
+  const handleSubmit = event => {
     event.preventDefault();
     setFridges([...fridges, state]);
   };
@@ -56,7 +55,7 @@ const FridgeTempForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleAddFridges}>
+      <form onSubmit={handleSubmit}>
         <h3>{header}</h3>
         <input
           placeholder="Fridge Name/No"

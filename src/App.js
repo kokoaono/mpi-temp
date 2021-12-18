@@ -8,12 +8,14 @@ import FoodTempForm from './components/tempForms/FoodTempForm';
 import FridgeLists from './components/FridgeLists';
 import EditFridgeTempPage from './components/EditFridgeTempPage';
 import FridgeTempForm from './components/FridgeTempForm';
+import NavigationBar from './components/NavigationBar/NavigationBar';
 
 const App = () => {
   return (
     <Fragment>
       <Router>
         <Header />
+        <NavigationBar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='login' element={<Login />} />

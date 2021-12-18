@@ -1,56 +1,50 @@
-// import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useReducer, useState } from 'react';
+import { useParams } from 'react-router-dom';
 // import { useHistory } from 'react-dom';
 // // // import FridgeTempForm from './FridgeTempForm';
+const { id } = useParams();
 
 // // // all in capital => global non-changing variable.
 // // // object contains different actions.
-// // // const ACTIONS = {
-// // //   DELETE: 'delete'
-// // // };
+const ACTIONS = {
+  EDIT: 'edit'
+};
 
 // // // // //dispatch sets with action variable
 // // // // //current state in the state variable
 // // // // //reducer is going to return new updated state
-// // // function reducer(info, action) {
-// // //   switch (action.type) {
-// // //     case ACTIONS.DELETE:
-// // //       return info.filter(info => info.id !== action.payload.id)
-// // //     default:
-// // //       return info
-// // //   };
+function reducer(fridges, action) {
+  switch (action.type) {
+    case ACTIONS.EDIT:
+      return [...fridges, editFridge(state)]
+  }
+};
+
+function editFridge(state) {
+  if (state.id === id) {
+
+  }
+};
 
 
-// export default function EditFridgeTempPage() {
-//   let { id } = useParams();
-//   const history = useHistory();
+function EditFridgeTempPage() {
+  const [fridges, dispatch] = useReducer(reducer, []);
+  const [state, setState] = useState({
+    fridgeName
+  });
 
-//   //   //     return (
-//   //   //       <div>
-//   //   //         <FridgeTempForm />
-//   //   //         <button onClick={() => dispatch({
-//   //   //           type: ACTIONS.DELETE
-//   //   //         })}>Delete</button>
-//   //   //         ID is {id}
-//   //   //       </div>
-//   //   //     )
-//   //   //     //     const [info, dispatch] = useReducer(reducer, [])
-//   //   //     //     const [inputs, setInputs] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch({ type: ACTIONS.EDIT })
+  };
 
-//   //   //     //     const handleSubmit = e => {
-//   //   //     //       e.preventDefault();
-//   //   //     //       dispatchEvent({ type: ACTIONS.EDIT })
-//   //   //     //       setInputs('')
-//   //   //     //     };
-//   //   //     //     // const [state, dispatch] = useReducer(reducer, { fridges:  });
-//   //   //     //     //call dispatch and pass in type
-//   //   //     //     return (
-//   //   //     //       <div>
-//   //   //     //         <p>86</p>
-//   //   //     // <FridgeTempForm />
-//   //   //     //         <button onClick={() => dispatch({
-//   //   //     //           type: ACTIONS.DELETE, payload: { id: info.id }
-//   //   //     //         })}>Delete</button>
-//   //   //     //       </div>
-//   //   //     //     )
-// };
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+
+      </form>
+    </>
+  )
+};
+
+export default EditFridgeTempPage;
