@@ -4,17 +4,18 @@ import { getData } from "./Lsfunctions";
 const header = 'Record Fridge/Freezer Temperature'
 const date = new Date();
 
-const FridgeTempForm = () => {
+const RecordFridgeTemp = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
 
+
   //input field states
   const [state, setState] = useState({
-    id: Date.now(),
+    id: fridges.length + 1,
     fridgeName: '',
     fridgeTemp: '',
     note: '',
-    date: date
+    createdAt: Date()
   });
 
   const handleChange = e => {
@@ -49,8 +50,9 @@ const FridgeTempForm = () => {
       <form onSubmit={handleSubmit}>
         <h3>{header}</h3>
         <input
-          placeholder="Fridge Name/No"
+          for='fridgename'
           name="fridgeName"
+          placeholder="Fridge Name/No"
           type="text"
           value={state.fridgeName}
           onChange={handleChange}
@@ -85,4 +87,4 @@ const FridgeTempForm = () => {
 };
 
 
-export default FridgeTempForm;
+export default RecordFridgeTemp;
