@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 const FridgeListItem = ({ fridges }) => {
   return fridges.map(fridge => (
     <div key={fridge.id}>
-      <p>FridgeName:
+      <div>FridgeName:
         <Link to={`/edit/${fridge.id}`}>
-          <h3>{fridge.fridgeName}</h3>
+          <p>{fridge.fridgeName}</p>
         </Link>
-      </p>
+      </div>
       <p>Temperature: {fridge.fridgeTemp}&#8451;</p>
     </div >
   ))

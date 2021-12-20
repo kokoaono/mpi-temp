@@ -24,12 +24,12 @@ const fridgeData = getData();
 
 function EditFridgeTempPage() {
   const { id } = useParams();
-  const data = fridgeData[id]
+  const data = fridgeData
   console.log(data);
   return (
     <div>
-      <p>
-        {data.fridgeName}
+      <p key={data.id}>
+
       </p>
     </div>
   )

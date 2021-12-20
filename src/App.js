@@ -8,6 +8,7 @@ import FridgeLists from './components/FridgeLists';
 import EditFridgeTempPage from './components/EditFridgeTempPage';
 import RecordFridgeTemp from './components/RecordFridgeTemp';
 import NavigationBar from './components/NavigationBar/NavigationBar';
+import FoodTempForm from './components/tempForms/FoodTempForm'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='fridgelists' element={<FridgeLists />} />
           <Route path='edit/:id' element={<EditFridgeTempPage />} />
           <Route path='temp' element={<RecordFridgeTemp />} />
+          <Route path='food' element={<FoodTempForm />} />
         </Routes>
       </Router>
     </Fragment>

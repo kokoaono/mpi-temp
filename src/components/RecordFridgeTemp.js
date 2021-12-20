@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getData } from "./Lsfunctions";
 
 const header = 'Record Fridge/Freezer Temperature'
-const date = new Date();
+// const date = new Date();
 
 const RecordFridgeTemp = () => {
   //main array of object state
@@ -76,11 +76,6 @@ const RecordFridgeTemp = () => {
         </input>
         <button type="submit">Add</button>
       </form>
-      {/* <div>
-        {fridges.length > 0 &&
-          <View fridges={fridges} deleteFridge={deleteFridge} />
-        }
-      </div> */}
       <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
     </div >
   )
