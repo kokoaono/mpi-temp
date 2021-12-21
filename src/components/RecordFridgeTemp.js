@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import { getData } from "./Lsfunctions";
 
 const header = 'Record Fridge/Freezer Temperature'
-// const date = new Date();
 
 const RecordFridgeTemp = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
 
-
   //input field states
   const [state, setState] = useState({
-    id: fridges.length + 1,
+    id: Math.floor(Math.random() * 100),
     fridgeName: '',
     fridgeTemp: '',
     note: '',
@@ -32,10 +30,9 @@ const RecordFridgeTemp = () => {
   };
 
   //delete individual temp by its id
-  const deleteFridge = (id) => {
-    const filteredFridges = fridges.filter((fridge) => {
-      return fridge.id !== id
-    })
+  const deleteFridge = id => {
+    const filteredFridges = fridges.filter(fridge => fridge.id !== id
+    )
     setFridges(filteredFridges)
   };
 
@@ -77,6 +74,7 @@ const RecordFridgeTemp = () => {
         <button type="submit">Add</button>
       </form>
       <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
+
     </div >
   )
 };

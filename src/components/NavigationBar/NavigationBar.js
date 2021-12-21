@@ -1,14 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import "./NavigationBar.css"
+// import "./NavigationBar.css"
 
 const NavigationBar = () => (
-  <div className='topnav'>
-    <Link className="ui left floated header" to='/'>Home</Link>
-    <Link className="ui left floated header" to='fridgelists'>Fridge List</Link>
-    <Link className="ui left floated header" to='temp'>Record</Link>
-    <Link className="ui left floated header" to='search'>Search</Link>
-    <Link className="ui right floated header" to='login'>LOG IN</Link>
+  <div className='navbar'>
+    <a href='/' to='/'>Home</a>
+    <a href='fridgelists'>Fridge List</a>
+    <a href='search'>Search</a>
+    <a href='login'>LOG IN</a>
+    <div className='dropdown'>
+      <button className='dropbtn'>Record
+        <i className='fa fa-caret-down'></i>
+      </button>
+      <div className='dropdown-content'>
+        <a href='temp'>Fridge/Freezer</a>
+        <a href='food'>Food</a>
+      </div>
+    </div>
+    {/* <a href='temp'>Record</a> */}
+
   </div>
 );
 

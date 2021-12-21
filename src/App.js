@@ -10,6 +10,7 @@ import RecordFridgeTemp from './components/RecordFridgeTemp';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import FoodTempForm from './components/tempForms/FoodTempForm'
 
+
 const App = () => {
   return (
     <Fragment>

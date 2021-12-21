@@ -1,6 +1,7 @@
 // import React from 'react';
 
-// export const View = ({ fridges, deleteFridge }) => {
+// export const View = ({ fridges, deleteFridge, editFridge }) => {
+//   console.log(editFridge);
 //   return fridges.map(fridge => (
 //     <div className='ui compact menu' key={fridge.id}>
 //       <div className='ui simple dropdown item'>
