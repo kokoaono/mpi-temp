@@ -5,51 +5,35 @@ const header = 'Record Fridge/Freezer Temperature'
 
 const RecordFridgeTemp = () => {
   //main array of object state
+  const [fridges, setFridges] = useState(getData());
+
   //input field states
-  // const [state, setState] = useState({
-  //   id: Math.floor(Math.random() * 100),
-  //   fridgeName: '',
-  //   fridgeTemp: '',
-  //   note: '',
-  //   createdAt: Date()
-  // });
+  const [state, setState] = useState({
+    id: Math.floor(Math.random() * 100),
+    fridgeName: '',
+    fridgeTemp: '',
+    note: '',
+    createdAt: Date()
+  });
 
-  
-  
+  const handleChange = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    })
+  };
 
+  //form submit event
+  const handleSubmit = event => {
+    event.preventDefault();
+    setFridges([...fridges, state]);
+  };
 
-   const [fridges, setFridges] = useState(getData());
-  const [fridgeDataList,setFridgeDataList]=useState([])
-  const [fridgeName,setFridgeName]= useState('')
-  const [fridgeTemp,setFridgeTemp]=useState('')
-  const [note,SetNote]=useState('')
-  
-  const pushData=()=>{
-    console.log(getData())
-    console.log(fridgeName,fridgeTemp,note)
-    if (fridgeName && fridgeTemp && note){
-      console.log('push')
-      let temp=[...fridgeDataList]
-      temp.push({
-        fridgeName:fridgeName,
-        fridgeTemp:fridgeTemp,
-        note:note
-
-      })
-      setFridgeDataList(temp)
-      setFridgeName('')
-      setFridgeTemp('')
-      SetNote('')
-    }
-    else{
-      alert("enter all details before adding");
-    }
-
-  }
-  const deleteFridge = index => {
-    const temp =[...fridgeDataList]
-    temp.splice(index, 1)
-    setFridgeDataList(temp)
+  //delete individual temp by its id
+  const deleteFridge = id => {
+    const filteredFridges = fridges.filter(fridge => fridge.id !== id
+    )
+    setFridges(filteredFridges)
   };
 
   // SAVING DATA TO LS
@@ -58,49 +42,38 @@ const RecordFridgeTemp = () => {
   }, [fridges])
 
 
-
-const fridgelist=()=>{
-  console.log(fridgeDataList)
-  return fridgeDataList.map((each,i)=>(<li key={i}>{each.fridgeName} <button onClick={()=>deleteFridge(i)}>Delete</button></li>))
-}
-
-
   return (
     <div>
-    <ul>
-
-    {fridgelist()}
-    </ul>
-      
+      <form onSubmit={handleSubmit}>
         <h3>{header}</h3>
         <input
           for='fridgename'
           name="fridgeName"
           placeholder="Fridge Name/No"
           type="text"
-          value={fridgeName}
-          onChange={(e)=>setFridgeName(e.target.value)}
+          value={state.fridgeName}
+          onChange={handleChange}
         >
         </input>
         <input
           placeholder="Temp"
           type='number'
           name='fridgeTemp'
-          value={fridgeTemp}
-          onChange={(e)=>setFridgeTemp(e.target.value)}
+          value={state.fridgeTemp}
+          onChange={handleChange}
         >
         </input>
         <label>Note</label>
         <input
           type="text"
           name="note"
-          value={note}
-          onChange={(e)=>SetNote(e.target.value)}
+          value={state.note}
+          onChange={handleChange}
         >
         </input>
-        <button onClick={pushData}>Add</button>
-      
-      <button className="ui button" onClick={() => setFridgeDataList([])}>Delete All</button>
+        <button type="submit">Add</button>
+      </form>
+      <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
 
     </div >
   )
