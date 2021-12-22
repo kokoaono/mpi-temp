@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './components/home/Home';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import Login from './components/Login';
 import FridgeLists from './components/FridgeLists';
 import EditFridgeTempPage from './components/EditFridgeTempPage';
@@ -22,8 +22,8 @@ const App = () => {
           <Route path='login' element={<Login />} />
           <Route path='fridgelists' element={<FridgeLists />} />
           <Route path='edit/:id' element={<EditFridgeTempPage />} />
-          <Route path='temp' element={<RecordFridgeTemp />} />
-          <Route path='food' element={<FoodTempForm />} />
+          <Route path='fridgetemp' element={<RecordFridgeTemp />} />
+          <Route path='foodtemp' element={<FoodTempForm />} />
         </Routes>
       </Router>
     </Fragment>

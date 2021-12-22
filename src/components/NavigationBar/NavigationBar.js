@@ -1,5 +1,5 @@
 import React from 'react';
-// import "./NavigationBar.css"
+import "./NavigationBar.css"
 
 const NavigationBar = () => (
   <div className='navbar'>
@@ -16,8 +16,6 @@ const NavigationBar = () => (
         <a href='food'>Food</a>
       </div>
     </div>
-    {/* <a href='temp'>Record</a> */}
-
   </div>
 );
 
