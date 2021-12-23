@@ -25,7 +25,6 @@ const FoodTempForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setItems([...items, state])
-
   };
 
   // Saving Data to Ls
