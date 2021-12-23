@@ -12,8 +12,8 @@ const NavigationBar = () => (
         <i className='fa fa-caret-down'></i>
       </button>
       <div className='dropdown-content'>
-        <a href='temp'>Fridge/Freezer</a>
-        <a href='food'>Food</a>
+        <a href='fridgetemp'>Fridge/Freezer</a>
+        <a href='foodtemp'>Food</a>
       </div>
     </div>
   </div>
