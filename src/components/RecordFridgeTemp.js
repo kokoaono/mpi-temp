@@ -6,7 +6,6 @@ const RecordFridgeTemp = () => {
   const [fridges, setFridges] = useState(getData());
 
   //input field states
-  const [formError, setFormError] = useState({})
   const [form, setForm] = useState({
     id: Math.floor(Math.random() * 100),
     fridgeName: '',
@@ -27,7 +26,6 @@ const RecordFridgeTemp = () => {
   const handleSubmit = event => {
     event.preventDefault();
     setFridges([...fridges, form]);
-    setFormError(validate(form))
   };
 
   //delete individual temp by its id
@@ -42,21 +40,11 @@ const RecordFridgeTemp = () => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
   }, [fridges]);
 
-  //validation
-  const validate = (values) => {
-    const errors = {};
-    let temp = values.fridgeTemp;
-    if (temp < 0 || temp > 5) {
-      return errors.fridgeTemp = "Temperature is not valid"
-    } else {
-      return errors;
-    }
-  };
+
 
   const { fridgeName, fridgeTemp, note } = form;
   return (
     <div>
-      <p>{formError.fridgeTemp}</p>
       <h3>Record Fridge/Freezer Temperature</h3>
       <form onSubmit={handleSubmit}>
         <input
