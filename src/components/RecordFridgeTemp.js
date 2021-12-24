@@ -6,7 +6,8 @@ const RecordFridgeTemp = () => {
   const [fridges, setFridges] = useState(getData());
 
   //input field states
-  const [state, setState] = useState({
+  const [formError, setFormError] = useState({})
+  const [form, setForm] = useState({
     id: Math.floor(Math.random() * 100),
     fridgeName: '',
     fridgeTemp: '',
@@ -15,16 +16,18 @@ const RecordFridgeTemp = () => {
   });
 
   const handleChange = e => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value
     })
   };
 
   //form submit event
   const handleSubmit = event => {
     event.preventDefault();
-    setFridges([...fridges, state]);
+    setFridges([...fridges, form]);
+    setFormError(validate(form))
   };
 
   //delete individual temp by its id
@@ -37,19 +40,30 @@ const RecordFridgeTemp = () => {
   // SAVING DATA TO LS
   useEffect(() => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
-  }, [fridges])
+  }, [fridges]);
 
+  //validation
+  const validate = (values) => {
+    const errors = {};
+    let temp = values.fridgeTemp;
+    if (temp < 0 || temp > 5) {
+      return errors.fridgeTemp = "Temperature is not valid"
+    } else {
+      return errors;
+    }
+  };
+
+  const { fridgeName, fridgeTemp, note } = form;
   return (
     <div>
+      <p>{formError.fridgeTemp}</p>
       <h3>Record Fridge/Freezer Temperature</h3>
-
       <form onSubmit={handleSubmit}>
         <input
-          for='fridgename'
-          name="fridgeName"
+          name='fridgeName'
           placeholder="Fridge Name/No"
-          type="text"
-          value={state.fridgeName}
+          type='text'
+          value={fridgeName}
           onChange={handleChange}
         >
         </input>
@@ -57,7 +71,7 @@ const RecordFridgeTemp = () => {
           placeholder="Temp"
           type='number'
           name='fridgeTemp'
-          value={state.fridgeTemp}
+          value={fridgeTemp}
           onChange={handleChange}
         >
         </input>
@@ -65,7 +79,7 @@ const RecordFridgeTemp = () => {
         <input
           type="text"
           name="note"
-          value={state.note}
+          value={note}
           onChange={handleChange}
         >
         </input>

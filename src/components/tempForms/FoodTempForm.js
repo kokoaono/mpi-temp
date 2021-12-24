@@ -7,6 +7,7 @@ const FoodTempForm = () => {
   const [items, setItems] = useState(getItemData());
 
   //input values
+  const [formErrors, setFormErrors] = useState({})
   const [form, setForm] = useState({
     id: Math.floor(Math.random() * 100),
     itemTemp: '',
@@ -26,6 +27,21 @@ const FoodTempForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setItems([...items, form])
+    setFormErrors(validate(form))
+  };
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^\d{1,}(\.\d{0,2})?$/;
+    if (!values.itemName) {
+      errors.itemName = "Item name is required.";
+    }
+    if (!values.itemTemp) {
+      errors.itemTemp = "Item temperature is required."
+    } else if (itemTemp) {
+      errors.itemTemp = "check temp again"
+    }
+    return errors;
   };
 
   // Saving Data to Ls
@@ -33,29 +49,35 @@ const FoodTempForm = () => {
     localStorage.setItem('items', JSON.stringify(items))
   }, [items]);
 
-  const { itemTemp, itemName, note } = form
+  const { itemTemp, itemName, note } = form;
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <select
-          onChange={handleChange}
-          name='itemName'
-          value={itemName}
-        >
-          <option defaultValue='select item'>Select Item</option>
-          <option value='beef'>Beef</option>
-          <option value='chicken'>Chicken</option>
-          <option value='lamb'>Lamb</option>
-          <option value='pork'>Pork</option>
-        </select>
-        <NumberFormat
-          type='number'
-          name='itemTemp'
-          placeholder='Temperature'
-          value={itemTemp}
-          onChange={handleChange}
-          decimalScale={true}
-        />
+        <div>
+
+          <select
+            onChange={handleChange}
+            name='itemName'
+            value={itemName}
+          >
+            <option defaultValue='select item'>Select Item</option>
+            <option value='beef'>Beef</option>
+            <option value='chicken'>Chicken</option>
+            <option value='lamb'>Lamb</option>
+            <option value='pork'>Pork</option>
+          </select>
+        </div>
+        <div>
+          <p>{formErrors.itemTemp}</p>
+          <NumberFormat
+            type='number'
+            name='itemTemp'
+            placeholder='Temperature'
+            value={itemTemp}
+            onChange={handleChange}
+          // decimalScale={true}
+          />
+        </div>
         <input
           type='text'
           name='note'
