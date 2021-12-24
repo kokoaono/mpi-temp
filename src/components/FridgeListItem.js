@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FridgeListItem = ({ fridges }) => {
-
+function FridgeListItem({ fridges }) {
+  // const { id, fridgeName, fridgeTemp, note } = fridges
   return fridges.map(fridge => (
     <div key={fridge.id}>
       <div>FridgeName:

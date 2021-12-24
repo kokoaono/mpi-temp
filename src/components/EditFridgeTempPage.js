@@ -21,15 +21,12 @@ const fridgeData = getData();
 
 
 
-function EditFridgeTempPage() {
+function EditFridgeTempPage(props) {
   // const [fridge, dispatch] = useReducer(reducer, [])
   const { id } = useParams();
-  const data = fridgeData
-  console.log(data);
   return (
     <div>
       {id}
-      
     </div>
   )
 

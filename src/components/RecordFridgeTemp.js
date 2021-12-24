@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getData } from "./Lsfunctions";
 
-const header = 'Record Fridge/Freezer Temperature'
-
 const RecordFridgeTemp = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
@@ -41,11 +39,11 @@ const RecordFridgeTemp = () => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
   }, [fridges])
 
-
   return (
     <div>
+      <h3>Record Fridge/Freezer Temperature</h3>
+
       <form onSubmit={handleSubmit}>
-        <h3>{header}</h3>
         <input
           for='fridgename'
           name="fridgeName"
@@ -71,7 +69,9 @@ const RecordFridgeTemp = () => {
           onChange={handleChange}
         >
         </input>
-        <button type="submit">Add</button>
+        <button type="submit">
+          Add
+        </button>
       </form>
       <button className="ui button" onClick={() => setFridges([])}>Delete All</button>
 

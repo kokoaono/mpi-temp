@@ -4,7 +4,7 @@ import "./NavigationBar.css"
 const NavigationBar = () => (
   <div className='navbar'>
     <a href='/' to='/'>Home</a>
-    <a href='fridgelists'>Fridge List</a>
+    <a href='fridgelist'>Fridge List</a>
     <a href='search'>Search</a>
     <a href='login'>LOG IN</a>
     <div className='dropdown'>

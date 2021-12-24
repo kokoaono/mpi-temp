@@ -7,7 +7,7 @@ const FoodTempForm = () => {
   const [items, setItems] = useState(getItemData());
 
   //input values
-  const [state, setState] = useState({
+  const [form, setForm] = useState({
     id: Math.floor(Math.random() * 100),
     itemTemp: '',
     itemName: '',
@@ -16,15 +16,16 @@ const FoodTempForm = () => {
   });
 
   const handleChange = e => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [name]: value
     })
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setItems([...items, state])
+    setItems([...items, form])
   };
 
   // Saving Data to Ls
@@ -32,13 +33,14 @@ const FoodTempForm = () => {
     localStorage.setItem('items', JSON.stringify(items))
   }, [items]);
 
+  const { itemTemp, itemName, note } = form
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <select
           onChange={handleChange}
           name='itemName'
-          value={state.itemName}
+          value={itemName}
         >
           <option defaultValue='select item'>Select Item</option>
           <option value='beef'>Beef</option>
@@ -50,7 +52,7 @@ const FoodTempForm = () => {
           type='number'
           name='itemTemp'
           placeholder='Temperature'
-          value={state.itemTemp}
+          value={itemTemp}
           onChange={handleChange}
           decimalScale={true}
         />
@@ -58,7 +60,7 @@ const FoodTempForm = () => {
           type='text'
           name='note'
           placeholder='Note'
-          value={state.note}
+          value={note}
           onChange={handleChange}
         >
         </input>
