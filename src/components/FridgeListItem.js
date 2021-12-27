@@ -5,7 +5,7 @@ function FridgeListItem({ fridges }) {
   // const { id, fridgeName, fridgeTemp, note } = fridges
   return fridges.map(fridge => (
     <div key={fridge.id}>
-      <div>FridgeName:
+      <div className="text-3xl font-bold underline">FridgeName:
         <Link to={`/edit/${fridge.id}`}>
           <p>{fridge.fridgeName}</p>
         </Link>

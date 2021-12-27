@@ -75,7 +75,7 @@ const FoodTempForm = () => {
             placeholder='Temperature'
             value={itemTemp}
             onChange={handleChange}
-          // decimalScale={true}
+            decimalScale={true}
           />
         </div>
         <input

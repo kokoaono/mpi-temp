@@ -5,7 +5,7 @@ const RecordFridgeTemp = () => {
   //main array of object state
   const [fridges, setFridges] = useState(getData());
 
-  //input field states
+  //input field statest
   const [form, setForm] = useState({
     id: Math.floor(Math.random() * 100),
     fridgeName: '',

@@ -1,12 +1,25 @@
 import React from 'react';
-import "./NavigationBar.css"
+import { HStack, Link, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
 const NavigationBar = () => (
-  <div className='navbar'>
-    <a href='/' to='/'>Home</a>
-    <a href='fridgelist'>Fridge List</a>
-    <a href='search'>Search</a>
-    <a href='login'>LOG IN</a>
+  <HStack spacing='24px'>
+    <Link fontWeight='bold' href='/' to='/'>Home</Link>
+    <Link fontWeight='bold' href='fridgelist'>Fridge List</Link>
+    <Link fontWeight='bold' href='search'>Search</Link>
+    <Link fontWeight='bold' href='login'>LOG IN</Link>
+    <Menu>
+      <MenuButton fontWeight='bold'>
+        Record
+      </MenuButton>
+      <MenuList>
+        <Link>
+          <MenuItem href='fridgeTemp'>Fridge</MenuItem>
+          <MenuItem>Freezer</MenuItem>
+          <MenuItem>Food Item</MenuItem>
+        </Link>
+      </MenuList>
+
+    </Menu>
     <div className='dropdown'>
       <button className='dropbtn'>Record
         <i className='fa fa-caret-down'></i>
@@ -16,7 +29,7 @@ const NavigationBar = () => (
         <a href='foodtemp'>Food</a>
       </div>
     </div>
-  </div>
+  </HStack>
 );
 
-export default NavigationBar;
+export default NavigationBar; 

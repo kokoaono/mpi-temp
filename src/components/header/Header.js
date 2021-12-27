@@ -1,12 +1,14 @@
 import React from 'react';
-import "./Header.css";
-
-const header = "Daily temperature Record"
+import { VStack, Heading, Text } from '@chakra-ui/react';
 
 const Header = () => (
-  <header>
-    <h1>{header}</h1>
-  </header>
+  <VStack p={5}>
+    <Heading as='h2' size='xl'>
+      <Text color='#38B2AC'>
+        Daily Temperature Record
+      </Text>
+    </Heading>
+  </VStack >
 );
 
 export default Header;
