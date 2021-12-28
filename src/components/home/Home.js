@@ -1,10 +1,11 @@
-import React from "react";
+import Sidebar from '../Sidebar'
+import { Flex } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <div>
-      <h1>prepping...</h1>
-    </div>
+    <Flex>
+      <Sidebar />
+    </Flex>
   )
 };
 
