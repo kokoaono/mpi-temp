@@ -1,12 +1,10 @@
-import Sidebar from '../Sidebar'
+import Sidebar from '../NavigationBar/Sidebar'
 import { Flex } from '@chakra-ui/react';
 
-const Home = () => {
-  return (
-    <Flex>
-      <Sidebar />
-    </Flex>
-  )
-};
+const Home = () => (
+  <Flex>
+    <Sidebar />
+  </Flex>
+);
 
 export default Home;
