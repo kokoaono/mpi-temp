@@ -1,14 +1,17 @@
 import React from 'react';
-import { VStack, Heading, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex } from '@chakra-ui/react';
 
 const Header = () => (
-  <VStack p={5}>
-    <Heading as='h2' size='xl'>
-      <Text color='#38B2AC'>
-        Daily Temperature Record
-      </Text>
-    </Heading>
-  </VStack >
+  <Flex as='button' marginTop='2.5vh' bg='teal' rounded='md' px={4} h={8}>
+    <Breadcrumb fontWeight='medium'>
+      <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/'>
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  </Flex>
 );
 
 export default Header;

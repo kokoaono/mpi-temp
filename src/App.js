@@ -9,6 +9,7 @@ import EditFridgeTempPage from './components/EditFridgeTempPage';
 import RecordFridgeTemp from './components/RecordFridgeTemp';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import FoodTempForm from './components/tempForms/FoodTempForm'
+// import AddFridge from './components/AddFridge';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
     <Fragment>
       <Router>
         <Header />
+        {/* <AddFridge /> */}
         <NavigationBar />
         <Routes>
           <Route path='/' element={<Home />} />

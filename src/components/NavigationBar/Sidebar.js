@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiHome, FiMenu } from 'react-icons/fi';
-import { FaSearch } from 'react-icons/fa';
+import { GiChickenOven } from 'react-icons/gi'
+import { FaSearch, FaTemperatureLow } from 'react-icons/fa';
 import { IoIosCreate } from 'react-icons/io';
 import { BiLogIn } from 'react-icons/bi';
 import { Flex, IconButton, Divider, Link, MenuButton, Menu, MenuList, MenuItem } from '@chakra-ui/react';
@@ -44,6 +45,12 @@ const Sidebar = () => {
         </Link>
         <Link href='fridgetemp'>
           <NavigationBar navSize={navSize} icon={IoIosCreate} title='Record' />
+        </Link>
+        <Link href='fridgelist'>
+          <NavigationBar navSize={navSize} icon={FaTemperatureLow} title='Fridge/Freezer' />
+        </Link>
+        <Link href='itemlist'>
+          <NavigationBar navSize={navSize} icon={GiChickenOven} title='Food Item' />
         </Link>
         <Link href='search'>
           <NavigationBar navSize={navSize} icon={FaSearch} title='Search' />
