@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './components/home/Home';
-import Header from './components/header/Header';
+// import Header from './components/header/Header';
 import Login from './components/Login';
 import FridgeList from './components/FridgeList';
 import EditFridgeTempPage from './components/EditFridgeTempPage';
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Fragment>
       <Router>
-        <Header />
+        {/* <Header /> */}
         {/* <AddFridge /> */}
         <NavigationBar />
         <Routes>

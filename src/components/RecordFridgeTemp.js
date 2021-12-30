@@ -78,7 +78,15 @@ const RecordFridgeTemp = () => {
             onChange={handleChange}
           />
         </Stack>
-        <Button role='button' onSubmit={handleSubmit} size='sm' colorScheme='teal' variant='solid'>ADD</Button>
+        <Button
+          onClick={handleSubmit}
+          textTransform={'uppercase'}
+          size='sm'
+          colorScheme='teal'
+          variant='solid'
+        >
+          add
+        </Button>
       </FormControl>
       <button onClick={() => setFridges([])}>Delete All</button>
     </Container >
