@@ -49,7 +49,7 @@ const Sidebar = () => {
         <Link href='fridgelist'>
           <NavigationBar navSize={navSize} icon={FaTemperatureLow} title='Fridge/Freezer' />
         </Link>
-        <Link href='itemlist'>
+        <Link href='foodtemp'>
           <NavigationBar navSize={navSize} icon={GiChickenOven} title='Food Item' />
         </Link>
         <Link href='search'>

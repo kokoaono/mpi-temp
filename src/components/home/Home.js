@@ -6,13 +6,10 @@ import FridgeList from '../FridgeList';
 const Home = () => (
   <Flex>
     <Sidebar />
-    <Box >
-
-      <VStack spacing={4} align={'stretch'}>
-        <Container maxW='container.sm' centerContent>
-          <FridgeList />
-        </Container>
-      </VStack>
+    <Box>
+      <Container maxW='container.sm' centerContent>
+        <FridgeList />
+      </Container>
     </Box>
   </Flex >
 );

@@ -13,7 +13,7 @@ const FoodTempForm = () => {
     itemTemp: '',
     itemName: '',
     note: '',
-    date: Date()
+    createdAt: Date()
   });
 
   const handleChange = e => {

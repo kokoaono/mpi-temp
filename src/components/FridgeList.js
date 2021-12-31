@@ -1,10 +1,10 @@
 import React from "react";
 import FridgeListItem from "./FridgeListItem";
-import { getData } from "./Lsfunctions";
+import { getData, getItemData } from "./Lsfunctions";
 import { Text, Flex, Box, Container } from "@chakra-ui/react";
 
 const fridges = getData();
-
+const items = getItemData();
 const FridgeList = () => (
   <Flex>
     <Container>
@@ -14,7 +14,7 @@ const FridgeList = () => (
             Nothing to show
           </Text>
         }
-        <FridgeListItem fridges={fridges} />
+        <FridgeListItem items={items} fridges={fridges} />
       </Box>
     </Container >
   </Flex>
