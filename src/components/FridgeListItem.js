@@ -5,9 +5,9 @@ import { Flex, Box, Table, Tbody, Thead, Tr, Th, Td, TableCaption } from '@chakr
 function FridgeListItem({ fridges, items }) {
   // const { id, fridgeName, fridgeTemp, note } = fridges
   return (
-    <Flex>
+    <Flex >
       <Box m={8} boxShadow={'lg'} p={'6'} rounded={'md'} bg={'#FED7D7'}>
-        <Table alignSelf={'center'} w={'100%'}>
+        <Table size='lg' alignSelf={'center'} w={'100%'}>
           <TableCaption
             placement='top'
             textAlign={'center'}
@@ -25,16 +25,16 @@ function FridgeListItem({ fridges, items }) {
             <Tbody key={fridge.id}>
               <Tr>
                 <Link to={`/edit/${fridge.id}`}>
-                  <Td color={'blue'} textAlign={'center'}>{fridge.fridgeName}</Td>
+                  <Td fontSize={'md'} p={'35'} color={'blue'} textAlign={'center'}>{fridge.fridgeName}</Td>
                 </Link>
-                <Td textAlign={'center'}>{fridge.createdAt}</Td>
+                <Td paddingBottom={'12px'} paddingTop={'12px'} textAlign={'center'}>{fridge.createdAt}</Td>
               </Tr>
             </Tbody>
           ))}
         </Table>
       </Box>
       <Box m={8} boxShadow={'lg'} p={'6'} rounded={'md'} bg={'#9AE6B4'}>
-        <Table alignSelf={'right'} w={'100%'}>
+        <Table size='lg' w={'100%'}>
           <TableCaption
             placement='top'
             textAlign={'center'}
