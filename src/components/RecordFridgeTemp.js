@@ -20,7 +20,6 @@ const RecordFridgeTemp = () => {
     id: Math.floor(Math.random() * 100),
     fridgeName: '',
     fridgeTemp: '',
-    note: '',
     createdAt: Date()
   });
 
@@ -50,7 +49,7 @@ const RecordFridgeTemp = () => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
   }, [fridges]);
 
-  const { fridgeName, fridgeTemp, note } = form;
+  const { fridgeName, fridgeTemp } = form;
   return (
     <Container>
       <Text fontWeight='bold' textAlign='center'>Record Fridge/Freezer Temperature</Text>
@@ -68,13 +67,6 @@ const RecordFridgeTemp = () => {
             type='number'
             name='fridgeTemp'
             value={fridgeTemp}
-            onChange={handleChange}
-          />
-          <Input
-            placeholder='Note'
-            type="text"
-            name="note"
-            value={note}
             onChange={handleChange}
           />
         </Stack>

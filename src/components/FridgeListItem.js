@@ -19,7 +19,6 @@ function FridgeListItem({ fridges, items }) {
             <Tr>
               <Th textAlign={'center'}>name</Th>
               <Th textAlign={'center'}>recorded at</Th>
-              <Th textAlign={'center'}>note</Th>
             </Tr>
           </Thead>
           {fridges.map(fridge => (
@@ -29,7 +28,6 @@ function FridgeListItem({ fridges, items }) {
                   <Td color={'blue'} textAlign={'center'}>{fridge.fridgeName}</Td>
                 </Link>
                 <Td textAlign={'center'}>{fridge.createdAt}</Td>
-                <Td textAlign={'center'}>{fridge.note}</Td>
               </Tr>
             </Tbody>
           ))}
@@ -48,7 +46,6 @@ function FridgeListItem({ fridges, items }) {
             <Tr>
               <Th textAlign={'center'}>name</Th>
               <Th textAlign={'center'}>recorded at</Th>
-              <Th textAlign={'center'}>note</Th>
             </Tr>
           </Thead>
           {items.map(item => (
@@ -58,7 +55,6 @@ function FridgeListItem({ fridges, items }) {
                   <Td color={'blue'} textAlign={'center'}>{item.itemName}</Td>
                 </Link>
                 <Td textAlign={'center'}>{item.createdAt}</Td>
-                <Td textAlign={'center'}>{item.note}</Td>
               </Tr>
             </Tbody>
           ))}

@@ -12,7 +12,6 @@ const FoodTempForm = () => {
     id: Math.floor(Math.random() * 100),
     itemTemp: '',
     itemName: '',
-    note: '',
     createdAt: Date()
   });
 
@@ -49,7 +48,7 @@ const FoodTempForm = () => {
     localStorage.setItem('items', JSON.stringify(items))
   }, [items]);
 
-  const { itemTemp, itemName, note } = form;
+  const { itemTemp, itemName } = form;
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -78,14 +77,6 @@ const FoodTempForm = () => {
             decimalScale={true}
           />
         </div>
-        <input
-          type='text'
-          name='note'
-          placeholder='Note'
-          value={note}
-          onChange={handleChange}
-        >
-        </input>
         <button type='submit'>Add</button>
       </form>
     </div >
