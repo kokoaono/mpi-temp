@@ -1,17 +1,12 @@
 import Sidebar from '../NavigationBar/Sidebar';
-import { Flex, Container, VStack, Box } from '@chakra-ui/react';
 import FridgeList from '../FridgeList';
+import { Flex } from '@chakra-ui/react';
 
-
-const Home = () => (
-  <Flex>
-    <Sidebar />
-    <Box>
-      <Container maxW='container.sm' centerContent>
-        <FridgeList />
-      </Container>
-    </Box>
-  </Flex >
-);
-
-export default Home;
+export default function Home() {
+  return (
+    <Flex>
+      <Sidebar />
+      <FridgeList />
+    </Flex >
+  )
+};

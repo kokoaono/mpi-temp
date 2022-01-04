@@ -44,7 +44,7 @@ const Sidebar = () => {
           <NavigationBar navSize={navSize} icon={FiHome} title='Dashboard' active />
         </Link>
         <Link href='fridgetemp'>
-          <NavigationBar navSize={navSize} icon={IoIosCreate} title='Record' />
+          <NavigationBar navSize={navSize} icon={IoIosCreate} title='Create' />
         </Link>
         <Link href='fridgelist'>
           <NavigationBar navSize={navSize} icon={FaTemperatureLow} title='Fridge/Freezer' />

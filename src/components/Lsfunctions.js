@@ -1,7 +1,6 @@
 module.exports = {
   getData,
-  getItemData,
-  getName
+  getItemData
 };
 
 //get fridge data from localStorage
@@ -16,15 +15,6 @@ function getData() {
 
 function getItemData() {
   const data = localStorage.getItem('items');
-  if (data) {
-    return JSON.parse(data);
-  } else {
-    return []
-  }
-};
-
-function getName() {
-  const data = localStorage.getItem('fridgeName');
   if (data) {
     return JSON.parse(data);
   } else {

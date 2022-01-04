@@ -56,8 +56,8 @@ const RecordFridgeTemp = () => {
       <FormControl>
         <Stack spacing={4}>
           <Input
+            placeholder='Fridge Name/No'
             name='fridgeName'
-            placeholder="Fridge Name/No"
             type='text'
             value={fridgeName}
             onChange={handleChange}
@@ -72,7 +72,7 @@ const RecordFridgeTemp = () => {
         </Stack>
         <Button
           onClick={handleSubmit}
-          textTransform={'uppercase'}
+          textTransform='uppercase'
           size='sm'
           colorScheme='teal'
           variant='solid'
