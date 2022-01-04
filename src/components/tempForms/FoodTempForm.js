@@ -6,6 +6,9 @@ const FoodTempForm = () => {
   //main array of items
   const [items, setItems] = useState(getItemData());
 
+  // options
+  const PROTEIN = ['Beef', 'Chicken', 'Lamb', 'Pork'];
+
   //input values
   const [formErrors, setFormErrors] = useState({})
   const [form, setForm] = useState({
@@ -60,10 +63,7 @@ const FoodTempForm = () => {
             value={itemName}
           >
             <option defaultValue='select item'>Select Item</option>
-            <option value='beef'>Beef</option>
-            <option value='chicken'>Chicken</option>
-            <option value='lamb'>Lamb</option>
-            <option value='pork'>Pork</option>
+            {PROTEIN.map(p => <option key={p}>{p}</option>)}
           </select>
         </div>
         <div>
