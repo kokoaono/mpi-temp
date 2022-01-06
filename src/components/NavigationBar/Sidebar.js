@@ -43,7 +43,7 @@ const Sidebar = () => {
         <Link href='/'>
           <NavigationBar navSize={navSize} icon={FiHome} title='Dashboard' active />
         </Link>
-        <Link href='fridgetemp'>
+        <Link href='create'>
           <NavigationBar navSize={navSize} icon={IoIosCreate} title='Create' />
         </Link>
         <Link href='fridgelist'>
