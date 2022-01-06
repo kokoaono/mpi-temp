@@ -1,4 +1,5 @@
 import { FoodItem } from "./FoodItem";
+import { Button } from "@chakra-ui/react";
 
 export const FoodItems = ({ items, onDelete, onDeleteAll }) => {
   return (
@@ -10,7 +11,14 @@ export const FoodItems = ({ items, onDelete, onDeleteAll }) => {
           onDelete={onDelete}
         />
       ))}
-      <button onClick={onDeleteAll}>Clear all</button>
+      <Button
+        m={4}
+        size={'sm'}
+        colorScheme='pink'
+        onClick={onDeleteAll}
+      >
+        Clear all
+      </Button>
     </div>
   )
 }

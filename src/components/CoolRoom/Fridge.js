@@ -1,20 +1,18 @@
-import { FaTimes } from 'react-icons/fa';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 export const Fridge = ({ fridge, onDelete }) => {
   return (
-    <div>
+    <Box>
       <Link to={`/edit/${fridge.id}`}>
         <Text>
           {fridge.fridgeName}
         </Text>
       </Link>
-      <Text>Temperature:{fridge.fridgeTemp}</Text>
+      <Text>Temperature:{fridge.fridgeTemp} &#8451;</Text>
       <Text>Created at:{fridge.date}</Text>
-      <FaTimes color='red'
-        onClick={() => onDelete(fridge.id)}
-      />
-    </div>
+      <RiDeleteBin5Line onClick={() => onDelete(fridge.id)} />
+    </Box>
   )
 }
