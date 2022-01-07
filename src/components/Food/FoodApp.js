@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
-import { Header } from '../Header';
+import { FoodHeader } from './FoodHeader';
 import { Flex, Box } from '@chakra-ui/react';
 import { getItemData } from '../Lsfunctions';
 
@@ -16,7 +16,8 @@ export const FoodApp = () => {
     const date = Date()
     const newItem = { id, date, ...item }
     setItems([...items, newItem])
-  }
+  };
+
   //Delete item by its ID
   const deleteItem = id => {
     const filteredItems = items.filter(item => item.id !== id)
@@ -34,21 +35,28 @@ export const FoodApp = () => {
   }, [items]);
 
   return (
-    <Flex>
-      <Box p='2'>
-        <Header
+    <Flex m={10}>
+      <Box
+        p={2}
+        shadow='md'
+        // maxW='lg'
+        borderWidth='1px'
+        borderRadius='lg'
+        overflow='hidden'
+      // bg='#FEFCBF'
+      >
+        <FoodHeader
           onAdd={() => setShowAddItem(!showAddItem)}
           showAdd={showAddItem}
         />
+        {showAddItem && <AddItem onAdd={addItem} />}
+        {items.length > 0 ? (
+          <FoodItems
+            items={items}
+            onDelete={deleteItem}
+            onDeleteAll={deleteAllItems} />) : ('No Items to show')
+        }
       </Box>
-      {showAddItem && <AddItem onAdd={addItem} />}
-      {items.length > 0 ? (
-        <FoodItems
-          items={items}
-          onDelete={deleteItem}
-          onDeleteAll={deleteAllItems} />) : (
-        'No Items to show'
-      )}
     </Flex>
   )
-}
+};

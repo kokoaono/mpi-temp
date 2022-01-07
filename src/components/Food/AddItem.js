@@ -14,18 +14,20 @@ export const AddItem = ({ onAdd }) => {
 
   const [itemTemp, setItemTemp] = useState('');
   const [itemName, setItemName] = useState('');
+  const [time, setTime] = useState('')
 
   const onSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!itemTemp || !itemName) {
       alert('Please select name and add temperature')
       return
     }
-    onAdd({ itemTemp, itemName });
+    onAdd({ itemTemp, itemName, time });
 
     setItemTemp('');
     setItemName('');
+    setTime('');
   }
 
   return (
@@ -53,6 +55,19 @@ export const AddItem = ({ onAdd }) => {
           {!itemTemp && (
             <FormHelperText>
               Temperature is required.
+            </FormHelperText>
+          )}
+        </Box>
+        <Box my={3}>
+          <Input
+            type='text'
+            placeholder='How long at this temp'
+            value={time}
+            onChange={e => setTime(e.target.value)}
+          />
+          {!time && (
+            <FormHelperText>
+              Length of time is required.
             </FormHelperText>
           )}
         </Box>

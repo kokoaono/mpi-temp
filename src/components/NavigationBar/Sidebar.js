@@ -4,7 +4,7 @@ import { GiChickenOven } from 'react-icons/gi'
 import { FaSearch, FaTemperatureLow } from 'react-icons/fa';
 import { IoIosCreate } from 'react-icons/io';
 import { BiLogIn } from 'react-icons/bi';
-import { Flex, IconButton, Divider, Link, MenuButton, Menu, MenuList, MenuItem } from '@chakra-ui/react';
+import { Flex, IconButton, Divider, Link } from '@chakra-ui/react';
 import NavigationBar from './NavigationBar';
 
 const Sidebar = () => {

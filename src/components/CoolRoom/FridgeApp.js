@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Fridges } from './Fridges';
 import { AddFridge } from './AddFridge';
-import { Header } from '../Header'
+import { FridgeHeader } from './FridgeHeader';
 import { getData } from '../Lsfunctions';
 import { Flex, Box } from '@chakra-ui/react';
+
+
 
 export const FridgeApp = () => {
   const [fridges, setFridges] = useState(getData());
@@ -28,26 +30,37 @@ export const FridgeApp = () => {
     setFridges([])
   );
 
-
   // SAVING DATA TO LS
   useEffect(() => {
     localStorage.setItem('fridges', JSON.stringify(fridges))
   }, [fridges]);
 
   return (
-    <Flex>
-      <Box>
-        <Header
+    <Flex
+      m={10}
+    >
+      <Box
+        p={2}
+        shadow='md'
+        // maxW='lg'
+        borderWidth='1px'
+        borderRadius='lg'
+        overflow='hidden'
+      >
+        <FridgeHeader
           onAdd={() => setShowAddFridge(!showAddFridge)}
           showAdd={showAddFridge}
         />
+
+        {showAddFridge && <AddFridge onAdd={addFridge} />}
+        {
+          fridges.length > 0 ? (<Fridges
+            fridges={fridges}
+            onDelete={deleteFridge}
+            onDeleteAll={deleteAll}
+          />) : ('No fridges to show')
+        }
       </Box>
-      {showAddFridge && <AddFridge onAdd={addFridge} />}
-      {fridges.length > 0 ? (<Fridges
-        fridges={fridges}
-        onDelete={deleteFridge}
-        onDeleteAll={deleteAll}
-      />) : ('No fridges to show')}
     </Flex>
   )
-}
+};
