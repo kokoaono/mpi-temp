@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, createContext } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
 import { Flex, Box } from '@chakra-ui/react';
 import { getItemData } from '../Lsfunctions';
 
+export const ItemsContext = createContext();
 
 export const FoodApp = () => {
   const [items, setItems] = useState(getItemData());
   const [showAddItem, setShowAddItem] = useState(false);
-  let nagivate = useNavigate();
 
   //Add new item
   const addItem = item => {
-    const id = Math.floor(Math.random() * 100)
-    const date = Date()
+    const id = Math.floor(Math.random() * 100);
+    const date = Date();
     const newItem = { id, date, ...item }
     setItems([...items, newItem])
   };
@@ -31,9 +30,10 @@ export const FoodApp = () => {
     setItems([])
   );
 
-  //navigate to edit page
-  const editFoodItem = id => {
-    Navigate(`/edit/${id}`)
+  //Edit Item
+  const updateFoodItem = (id, updatedItem) => {
+    console.log(id, updatedItem);
+    setItems(items.map(item => item.id === id ? updatedItem : item))
   };
 
   // SAVING DATA TO LS
@@ -57,13 +57,16 @@ export const FoodApp = () => {
           showAdd={showAddItem}
         />
         {showAddItem && <AddItem onAdd={addItem} />}
-        {items.length > 0 ? (
-          <FoodItems
-            items={items}
-            onEdit={editFoodItem}
-            onDelete={deleteItem}
-            onDeleteAll={deleteAllItems} />) : ('No Items to show')
-        }
+
+        <ItemsContext.Provider value={{ items, updateFoodItem }}>
+          {items.length > 0 ? (
+            <FoodItems
+              items={items}
+              // onEdit={updateFoodItem}
+              onDelete={deleteItem}
+              onDeleteAll={deleteAllItems} />) : ('No Items to show')
+          }
+        </ItemsContext.Provider>
       </Box>
     </Flex>
   )

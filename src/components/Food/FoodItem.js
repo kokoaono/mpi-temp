@@ -1,27 +1,24 @@
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { EditFood } from './EditFood';
 import { Box, Text, Flex, IconButton } from '@chakra-ui/react';
 
 export const FoodItem = ({ item, onDelete, onEdit }) => {
+
   return (
     <Flex>
       <Box>
-        <Link to={`/edit/${item.id}`}>
-          <Text>
-            Item: {item.itemName}
-          </Text>
-        </Link>
+        <Text>Item: {item.itemName}</Text>
         <Text>Cooked Temp: {item.itemTemp} &#8451;</Text>
         <Text>Created at: {item.date}</Text>
       </Box>
+      <EditFood item={item} onEdit={onEdit} />
       <IconButton
         mr={3}
         aria-label='edit foodItem'
         fontSize='20px'
         variant='outline'
         colorScheme='green'
-        onClick={() => onEdit(item.id)}
         icon={<AiOutlineEdit />}
       />
       <IconButton

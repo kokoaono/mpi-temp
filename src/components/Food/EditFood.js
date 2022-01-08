@@ -1,37 +1,27 @@
-import { useState } from 'react';
-import {
-  FormControl,
-  FormHelperText,
-  Flex,
-  Input,
-  Box,
-  Button,
-  Select
-} from '@chakra-ui/react';
+import { useState, useContext } from 'react';
+import { ItemsContext } from './FoodApp';
+import { Flex, FormControl, FormHelperText, Input, Button, Box, Select } from '@chakra-ui/react';
 
-export const AddItem = ({ onAdd }) => {
+export const EditFood = ({ onEdit, item }) => {
+  const id = item.id;
+  const [itemName, setItemName] = useState(item.itemName);
+  const [itemTemp, setItemTemp] = useState(item.itemTemp);
+  const [time, setTime] = useState(item.time);
+
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
+  const updatedAt = Date();
 
-  const [itemTemp, setItemTemp] = useState('');
-  const [itemName, setItemName] = useState('');
-  const [time, setTime] = useState('')
+  const { updateFoodItem } = useContext(ItemsContext);
+
+  const updatedItem = { id, itemName, itemTemp, time, updatedAt }
 
   const onSubmit = e => {
-    e.preventDefault();
-
-    if (!itemTemp || !itemName) {
-      alert('Please select name and add temperature')
-      return
-    }
-    onAdd({ itemTemp, itemName, time });
-
-    setItemTemp('');
-    setItemName('');
-    setTime('');
+    e.preventDefault()
+    updateFoodItem({ id, updatedItem })
   };
 
   return (
-    <Flex m={5}>
+    <Flex m={3}>
       <FormControl>
         <Select
           placeholder='Select Item'
@@ -78,9 +68,9 @@ export const AddItem = ({ onAdd }) => {
           colorScheme={'green'}
           onClick={onSubmit}
         >
-          ADD
+          Edit
         </Button>
-      </FormControl >
-    </Flex >
+      </FormControl>
+    </Flex>
   )
-}
+};
