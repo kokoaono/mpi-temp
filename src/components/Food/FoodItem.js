@@ -3,7 +3,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { Box, Text, Flex, IconButton } from '@chakra-ui/react';
 
-export const FoodItem = ({ item, onDelete }) => {
+export const FoodItem = ({ item, onDelete, onEdit }) => {
   return (
     <Flex>
       <Box>
@@ -21,6 +21,7 @@ export const FoodItem = ({ item, onDelete }) => {
         fontSize='20px'
         variant='outline'
         colorScheme='green'
+        onClick={() => onEdit(item.id)}
         icon={<AiOutlineEdit />}
       />
       <IconButton

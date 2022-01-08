@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Fridges } from './Fridges';
 import { AddFridge } from './AddFridge';
 import { FridgeHeader } from './FridgeHeader';
@@ -10,6 +11,7 @@ import { Flex, Box } from '@chakra-ui/react';
 export const FridgeApp = () => {
   const [fridges, setFridges] = useState(getData());
   const [showAddFridge, setShowAddFridge] = useState(false);
+  let navigate = useNavigate();
 
   //Add fridge
   const addFridge = fridge => {
@@ -29,6 +31,12 @@ export const FridgeApp = () => {
   const deleteAll = () => (
     setFridges([])
   );
+
+  //Navidate to edit page
+  const editFridge = (id) => {
+    console.log(`edit button clicked ${id}`);
+    navigate(`/edit/${id}`)
+  };
 
   // SAVING DATA TO LS
   useEffect(() => {
@@ -56,6 +64,7 @@ export const FridgeApp = () => {
         {
           fridges.length > 0 ? (<Fridges
             fridges={fridges}
+            onEdit={editFridge}
             onDelete={deleteFridge}
             onDeleteAll={deleteAll}
           />) : ('No fridges to show')

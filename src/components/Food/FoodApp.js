@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
@@ -9,6 +10,7 @@ import { getItemData } from '../Lsfunctions';
 export const FoodApp = () => {
   const [items, setItems] = useState(getItemData());
   const [showAddItem, setShowAddItem] = useState(false);
+  let nagivate = useNavigate();
 
   //Add new item
   const addItem = item => {
@@ -28,6 +30,11 @@ export const FoodApp = () => {
   const deleteAllItems = () => (
     setItems([])
   );
+
+  //navigate to edit page
+  const editFoodItem = id => {
+    Navigate(`/edit/${id}`)
+  };
 
   // SAVING DATA TO LS
   useEffect(() => {
@@ -53,6 +60,7 @@ export const FoodApp = () => {
         {items.length > 0 ? (
           <FoodItems
             items={items}
+            onEdit={editFoodItem}
             onDelete={deleteItem}
             onDeleteAll={deleteAllItems} />) : ('No Items to show')
         }
