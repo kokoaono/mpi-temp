@@ -1,25 +1,48 @@
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { Box, Text, Flex, IconButton } from '@chakra-ui/react';
+import { EditFridge } from './EditFridge';
+import {
+  Box,
+  Text,
+  Flex,
+  IconButton,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton
+} from '@chakra-ui/react';
 
 export const Fridge = ({ fridge, onDelete, onEdit }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Flex>
       <Box>
-        <Link to={`/edit/${fridge.id}`}>
-          <Text>Name: {fridge.fridgeName}</Text>
-        </Link>
+        <Text>Name: {fridge.fridgeName}</Text>
         <Text>Temperature:{fridge.fridgeTemp} &#8451;</Text>
         <Text>Created at:{fridge.date}</Text>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader textAlign='center'>
+            Edit Fridge
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <EditFridge fridge={fridge} onEdit={onEdit} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
       <IconButton
         mr={3}
         aria-label='edit fridge'
         fontSize='20px'
         variant='outline'
         colorScheme='green'
-        onClick={() => onEdit(fridge.id)}
+        onClick={onOpen}
         icon={<AiOutlineEdit />}
       />
       <IconButton

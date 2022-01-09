@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Fridges } from './Fridges';
 import { AddFridge } from './AddFridge';
 import { FridgeHeader } from './FridgeHeader';
@@ -11,7 +10,6 @@ import { Flex, Box } from '@chakra-ui/react';
 export const FridgeApp = () => {
   const [fridges, setFridges] = useState(getData());
   const [showAddFridge, setShowAddFridge] = useState(false);
-  let navigate = useNavigate();
 
   //Add fridge
   const addFridge = fridge => {
@@ -27,15 +25,15 @@ export const FridgeApp = () => {
     setFridges(filteredFridges)
   };
 
-  //Delete all
+  //Delete All
   const deleteAll = () => (
     setFridges([])
   );
 
-  //Navidate to edit page
-  const editFridge = (id) => {
-    console.log(`edit button clicked ${id}`);
-    navigate(`/edit/${id}`)
+  //Edit Fridge
+  const updateFridge = (id, updatedFridge) => {
+    console.log(id, updatedFridge);
+    setFridges(fridges.map(fridge => fridge.id === id ? updatedFridge : fridge))
   };
 
   // SAVING DATA TO LS
@@ -61,10 +59,10 @@ export const FridgeApp = () => {
         />
 
         {showAddFridge && <AddFridge onAdd={addFridge} />}
-        {
-          fridges.length > 0 ? (<Fridges
+        {fridges.length > 0 ? (
+          <Fridges
             fridges={fridges}
-            onEdit={editFridge}
+            onEdit={updateFridge}
             onDelete={deleteFridge}
             onDeleteAll={deleteAll}
           />) : ('No fridges to show')
