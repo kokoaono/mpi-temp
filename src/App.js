@@ -7,6 +7,7 @@ import FridgeList from './components/FridgeList';
 // import EditFridgeTempPage from './components/EditFridgeTempPage';
 import { FoodApp } from './components/Food/FoodApp';
 import { EditFood } from './components/Food/EditFood';
+import Basic from './components/Basic'
 
 
 
@@ -15,6 +16,7 @@ import { EditFood } from './components/Food/EditFood';
 const App = () => {
   return (
     <Fragment>
+      <Basic />
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
