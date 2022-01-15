@@ -18,11 +18,18 @@ export const EditFood = ({ onEdit, item }) => {
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
   const updatedAt = Date();
 
-  const updatedItem = { id, itemName, itemTemp, time, updatedAt }
+  const updatedItem = { id, itemName, itemTemp, time, updatedAt };
 
   const onSubmit = e => {
     e.preventDefault()
-    onEdit({ id, updatedItem })
+    onEdit(id, updatedItem)
+  };
+
+  const setTwoDecimalPlace = e => {
+    const temp = e.target.value;
+    if (!temp || temp.match((/^\d{1,}(\.\d{0,2})?$/))) {
+      setItemTemp(temp)
+    }
   };
 
   return (
@@ -45,7 +52,8 @@ export const EditFood = ({ onEdit, item }) => {
             type='number'
             placeholder='Temperature'
             value={itemTemp}
-            onChange={e => setItemTemp(e.target.value)}
+            // onChange={e => setItemTemp(e.target.value)}
+            onChange={setTwoDecimalPlace}
           />
           {!itemTemp && (
             <FormHelperText>

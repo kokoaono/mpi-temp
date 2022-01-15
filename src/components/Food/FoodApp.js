@@ -29,9 +29,8 @@ export const FoodApp = () => {
     setItems([])
   );
 
-  //Edit Item
+  //Update Item
   const updateFoodItem = (id, updatedItem) => {
-    console.log(id, updatedItem);
     setItems(items.map(item => item.id === id ? updatedItem : item))
   };
 
