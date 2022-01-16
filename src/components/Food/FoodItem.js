@@ -33,7 +33,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFood item={item} onEdit={onEdit} />
+            <EditFood item={item} onEdit={onEdit}/>
           </ModalBody>
         </ModalContent>
       </Modal>

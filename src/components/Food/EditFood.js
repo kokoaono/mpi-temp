@@ -9,7 +9,7 @@ import {
   Select
 } from '@chakra-ui/react';
 
-export const EditFood = ({ onEdit, item }) => {
+export const EditFood = ({ onEdit, item, onClose }) => {
   const id = item.id;
   const [itemName, setItemName] = useState(item.itemName);
   const [itemTemp, setItemTemp] = useState(item.itemTemp);

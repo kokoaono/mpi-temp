@@ -1,12 +1,15 @@
-import React from 'react';
-import { Container, Box, Text } from '@chakra-ui/react';
+import Page from './Page.jpg';
+import { Container, Image } from '@chakra-ui/react';
 
 export const NotFound = () => {
   return (
-    <Container>
-      <Box>
-        <Text>Page Not Found</Text>
-      </Box>
-    </Container >
+    <Container maxW={'container.xl'} centerContent>
+      <Image
+        src={Page}
+        alt='404 page image'
+        m={100}
+        rounded='lg'
+      />
+    </Container>
   )
 };
