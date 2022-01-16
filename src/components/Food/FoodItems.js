@@ -1,25 +1,29 @@
 import { FoodItem } from "./FoodItem";
-import { Button } from "@chakra-ui/react";
+import { Button, Box, Flex } from "@chakra-ui/react";
 
 export const FoodItems = ({ items, onDelete, onDeleteAll, onEdit }) => {
   return (
-    <div>
-      {items.map(item => (
-        <FoodItem
-          key={item.id}
-          item={item}
-          onEdit={onEdit}
-          onDelete={onDelete}
-        />
-      ))}
-      <Button
-        m={4}
-        size={'sm'}
-        colorScheme='pink'
-        onClick={onDeleteAll}
-      >
-        Clear all
-      </Button>
-    </div>
+    <Flex>
+      <Box>
+        {items.map(item => (
+          <FoodItem
+            key={item.id}
+            item={item}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        ))}
+      </Box>
+      <Box alignItems='left'>
+        <Button
+          m={4}
+          size={'sm'}
+          colorScheme='red'
+          onClick={onDeleteAll}
+        >
+          Clear all
+        </Button>
+      </Box>
+    </Flex>
   )
-}
+};

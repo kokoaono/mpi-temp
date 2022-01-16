@@ -20,7 +20,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
 
   return (
     <Flex>
-      <Box>
+      <Box p={3}>
         <Text>Item: {item.itemName}</Text>
         <Text>Cooked Temp: {item.itemTemp} &#8451;</Text>
         <Text>Created at: {item.date}</Text>

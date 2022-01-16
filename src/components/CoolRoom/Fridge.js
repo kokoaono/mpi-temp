@@ -17,9 +17,10 @@ import {
 
 export const Fridge = ({ fridge, onDelete, onEdit }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <Flex>
-      <Box>
+      <Box p={3}>
         <Text>Name: {fridge.fridgeName}</Text>
         <Text>Temperature:{fridge.fridgeTemp} &#8451;</Text>
         <Text>Created at:{fridge.date}</Text>

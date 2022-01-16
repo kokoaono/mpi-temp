@@ -8,14 +8,15 @@ export const FoodHeader = ({ onAdd, showAdd }) => {
     <Flex>
       <Container>
         <Heading as='h3' size='lg' >{foodTitle}</Heading>
-      <Button
-        size='sm'
-        colorScheme={showAdd ? 'red' : 'green'}
-        onClick={onAdd}
-      >
-        {showAdd ? 'close' : 'create'}
-      </Button>
-    </Container>
+        <Button
+          m={4}
+          size='sm'
+          colorScheme={showAdd ? 'red' : 'green'}
+          onClick={onAdd}
+        >
+          {showAdd ? 'close' : 'create'}
+        </Button>
+      </Container>
     </Flex >
   )
 };

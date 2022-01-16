@@ -16,20 +16,17 @@ export const EditFood = ({ onEdit, item }) => {
   const [time, setTime] = useState(item.time);
 
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
-  const updatedAt = Date();
+  const date = Date();
 
-  const updatedItem = { id, itemName, itemTemp, time, updatedAt };
+  const updatedItem = { id, itemName, itemTemp, time, date };
 
   const onSubmit = e => {
-    e.preventDefault()
-    onEdit(id, updatedItem)
-  };
-
-  const setTwoDecimalPlace = e => {
+    e.preventDefault();
     const temp = e.target.value;
-    if (!temp || temp.match((/^\d{1,}(\.\d{0,2})?$/))) {
+    if (temp.match(/^\d{0,}(\.\d{0,2})?$/)) {
       setItemTemp(temp)
     }
+    onEdit(id, updatedItem)
   };
 
   return (
@@ -52,8 +49,7 @@ export const EditFood = ({ onEdit, item }) => {
             type='number'
             placeholder='Temperature'
             value={itemTemp}
-            // onChange={e => setItemTemp(e.target.value)}
-            onChange={setTwoDecimalPlace}
+            onChange={onSubmit}
           />
           {!itemTemp && (
             <FormHelperText>

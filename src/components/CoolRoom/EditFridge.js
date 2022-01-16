@@ -5,6 +5,7 @@ import {
   FormHelperText,
   Input,
   Button,
+  useDisclosure,
   Box
 } from '@chakra-ui/react';
 
@@ -13,12 +14,16 @@ export const EditFridge = ({ onEdit, fridge }) => {
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
   const [fridgeTemp, setFridgeTemp] = useState(fridge.fridgeTemp);
 
-  const updatedAt = Date();
-  const updatedFridge = { id, fridgeName, fridgeTemp, updatedAt }
+  const date = Date();
+  const updatedFridge = { id, fridgeName, fridgeTemp, date }
 
   const onSubmit = e => {
     e.preventDefault();
-    onEdit({ id, updatedFridge })
+    const temp = e.target.value;
+    if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
+      setFridgeTemp(temp)
+    }
+    onEdit(id, updatedFridge)
   };
 
   return (
@@ -40,7 +45,7 @@ export const EditFridge = ({ onEdit, fridge }) => {
             type='number'
             placeholder='Temperature'
             value={fridgeTemp}
-            onChange={e => setFridgeTemp(e.target.value)}
+            onChange={onSubmit}
           />
           {!fridgeTemp && (
             <FormHelperText>

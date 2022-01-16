@@ -9,6 +9,7 @@ export const FridgeHeader = ({ onAdd, showAdd }) => {
       <Container>
         <Heading as='h3' size='lg'>{title}</Heading>
         <Button
+          m={4}
           size='sm'
           colorScheme={showAdd ? 'red' : 'green'}
           onClick={onAdd}
