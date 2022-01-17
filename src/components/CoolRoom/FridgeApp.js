@@ -32,7 +32,6 @@ export const FridgeApp = () => {
 
   //Edit Fridge
   const updateFridge = (id, updatedFridge) => {
-    console.log(id, updatedFridge);
     setFridges(fridges.map(fridge => fridge.id === id ? updatedFridge : fridge))
   };
 

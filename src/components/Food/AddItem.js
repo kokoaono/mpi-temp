@@ -14,7 +14,7 @@ export const AddItem = ({ onAdd }) => {
 
   const [itemTemp, setItemTemp] = useState('');
   const [itemName, setItemName] = useState('');
-  const [time, setTime] = useState('')
+  const [time, setTime] = useState('');
 
   const onSubmit = e => {
     e.preventDefault();
