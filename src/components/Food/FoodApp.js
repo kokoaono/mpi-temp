@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-import { Flex, Box } from '@chakra-ui/react';
 import { getItemData } from '../Lsfunctions';
+import { Flex, Box } from '@chakra-ui/react';
 
 
 export const FoodApp = () => {

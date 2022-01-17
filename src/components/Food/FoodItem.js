@@ -25,6 +25,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
         <Text>Cooked Temp: {item.itemTemp} &#8451;</Text>
         <Text>Created at: {item.date}</Text>
       </Box>
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -33,7 +34,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFood item={item} onEdit={onEdit}/>
+            <EditFood item={item} onEdit={onEdit} />
           </ModalBody>
         </ModalContent>
       </Modal>

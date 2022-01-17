@@ -74,8 +74,8 @@ export const EditFood = ({ onEdit, item, onClose }) => {
           <Button
             p={4}
             size='sm'
-            variant={'solid'}
-            colorScheme={'green'}
+            variant='solid'
+            colorScheme='green'
             onClick={onSubmit}
           >
             Edit Item
