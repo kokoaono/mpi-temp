@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ValidateFoodInfo } from './ValidateFoodInfo';
 import {
   Flex,
   FormControl,
@@ -9,11 +10,12 @@ import {
   Select
 } from '@chakra-ui/react';
 
-export const EditFood = ({ onEdit, item, onClose }) => {
+export const EditFood = ({ onEdit, item }) => {
   const id = item.id;
   const [itemName, setItemName] = useState(item.itemName);
   const [itemTemp, setItemTemp] = useState(item.itemTemp);
   const [time, setTime] = useState(item.time);
+  const [errors, setErrors] = useState({});
 
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
   const date = Date();
@@ -22,13 +24,13 @@ export const EditFood = ({ onEdit, item, onClose }) => {
 
   const onSubmit = e => {
     e.preventDefault();
+    setErrors(ValidateFoodInfo(itemName, itemTemp, time))
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,2})?$/)) {
       setItemTemp(temp)
     }
     onEdit(id, updatedItem)
   };
-
   return (
     <Flex m={3}>
       <FormControl>
@@ -39,11 +41,11 @@ export const EditFood = ({ onEdit, item, onClose }) => {
         >
           {items.map(item => <option key={item}>{item}</option>)}
         </Select>
-        {!itemName && (
-          <FormHelperText>
-            Please select the item.
+        {!itemName &&
+          <FormHelperText color='red'>
+            {errors.itemName}
           </FormHelperText>
-        )}
+        }
         <Box my={3}>
           <Input
             type='number'
@@ -51,11 +53,11 @@ export const EditFood = ({ onEdit, item, onClose }) => {
             value={itemTemp}
             onChange={onSubmit}
           />
-          {!itemTemp && (
-            <FormHelperText>
-              Temperature is required.
+          {!itemTemp &&
+            <FormHelperText color='red'>
+              {errors.itemTemp}
             </FormHelperText>
-          )}
+          }
         </Box>
         <Box my={3}>
           <Input
@@ -64,11 +66,11 @@ export const EditFood = ({ onEdit, item, onClose }) => {
             value={time}
             onChange={e => setTime(e.target.value)}
           />
-          {!time && (
-            <FormHelperText>
-              Length of time is required.
+          {!time &&
+            <FormHelperText color='red'>
+              {errors.time}
             </FormHelperText>
-          )}
+          }
         </Box>
         <Box my={3}>
           <Button

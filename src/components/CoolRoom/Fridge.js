@@ -17,7 +17,7 @@ import {
 
 export const Fridge = ({ fridge, onDelete, onEdit }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+
   return (
     <Flex>
       <Box p={3}>

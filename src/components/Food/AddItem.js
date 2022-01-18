@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ValidateFoodInfo } from './ValidateFoodInfo';
 import {
   FormControl,
   FormHelperText,
@@ -15,14 +16,19 @@ export const AddItem = ({ onAdd }) => {
   const [itemTemp, setItemTemp] = useState('');
   const [itemName, setItemName] = useState('');
   const [time, setTime] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const handleChange = e => {
+    const temp = e.target.value;
+    if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
+      setItemTemp(temp)
+    }
+  };
 
   const onSubmit = e => {
     e.preventDefault();
+    setErrors(ValidateFoodInfo(itemName, itemTemp, time))
 
-    if (!itemTemp || !itemName) {
-      alert('Please select name and add temperature')
-      return
-    }
     onAdd({ itemTemp, itemName, time });
 
     setItemTemp('');
@@ -40,23 +46,23 @@ export const AddItem = ({ onAdd }) => {
         >
           {items.map(item => <option key={item}>{item}</option>)}
         </Select>
-        {!itemName && (
-          <FormHelperText>
-            Please select the item.
+        {errors.itemName &&
+          <FormHelperText color='red'>
+            {errors.itemName}
           </FormHelperText>
-        )}
+        }
         <Box my={3}>
           <Input
             type='number'
             placeholder='Temperature'
             value={itemTemp}
-            onChange={e => setItemTemp(e.target.value)}
+            onChange={handleChange}
           />
-          {!itemTemp && (
-            <FormHelperText>
-              Temperature is required.
+          {errors.itemTemp &&
+            <FormHelperText color='red'>
+              {errors.itemTemp}
             </FormHelperText>
-          )}
+          }
         </Box>
         <Box my={3}>
           <Input
@@ -65,17 +71,17 @@ export const AddItem = ({ onAdd }) => {
             value={time}
             onChange={e => setTime(e.target.value)}
           />
-          {!time && (
-            <FormHelperText>
-              Length of time is required.
+          {errors.time &&
+            <FormHelperText color='red'>
+              {errors.time}
             </FormHelperText>
-          )}
+          }
         </Box>
         <Button
           p={4}
           size='sm'
-          variant={'solid'}
-          colorScheme={'green'}
+          variant='solid'
+          colorScheme='green'
           onClick={onSubmit}
         >
           ADD

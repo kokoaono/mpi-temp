@@ -41,9 +41,7 @@ export const FridgeApp = () => {
   }, [fridges]);
 
   return (
-    <Flex
-      m={10}
-    >
+    <Flex m={10}>
       <Box
         p={2}
         shadow='md'
@@ -56,8 +54,9 @@ export const FridgeApp = () => {
           onAdd={() => setShowAddFridge(!showAddFridge)}
           showAdd={showAddFridge}
         />
-
+        
         {showAddFridge && <AddFridge onAdd={addFridge} />}
+
         {fridges.length > 0 ? (
           <Fridges
             fridges={fridges}

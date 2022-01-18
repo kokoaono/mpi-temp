@@ -5,7 +5,6 @@ import {
   FormHelperText,
   Input,
   Button,
-  useDisclosure,
   Box
 } from '@chakra-ui/react';
 
@@ -36,9 +35,11 @@ export const EditFridge = ({ onEdit, fridge }) => {
             value={fridgeName}
             onChange={e => setFridgeName(e.target.value)}
           />
-          {!fridgeName && (
-            <FormHelperText>Name is required.</FormHelperText>
-          )}
+          {!fridgeName &&
+            <FormHelperText color='red'>
+              Name is required
+            </FormHelperText>
+          }
         </Box>
         <Box my={3}>
           <Input
@@ -47,18 +48,18 @@ export const EditFridge = ({ onEdit, fridge }) => {
             value={fridgeTemp}
             onChange={onSubmit}
           />
-          {!fridgeTemp && (
-            <FormHelperText>
-              Temperature is required.
+          {!fridgeTemp &&
+            <FormHelperText color='red'>
+              Temperature is required
             </FormHelperText>
-          )}
+          }
         </Box>
         <Box my={3}>
           <Button
             p={4}
             size='sm'
-            variant={'solid'}
-            colorScheme={'green'}
+            variant='solid'
+            colorScheme='green'
             onClick={onSubmit}
           >
             Edit Fridge

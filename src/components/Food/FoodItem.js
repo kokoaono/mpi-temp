@@ -29,9 +29,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader textAlign='center'>
-            Edit Item
-          </ModalHeader>
+          <ModalHeader textAlign='center'>Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <EditFood item={item} onEdit={onEdit} />
