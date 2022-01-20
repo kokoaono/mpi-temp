@@ -27,7 +27,7 @@ export const useForm = (Validate) => {
     e.preventDefault();
     setErrors(Validate(values))
     setIsSubmitting(true)
-  }
+  };
 
   return { handleChange, values, handleSubmit, errors, isSubmitting }
 };

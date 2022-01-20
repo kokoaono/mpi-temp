@@ -25,12 +25,6 @@ export const FormSignup = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors, isSubmitting } = useForm(Validate, submitForm);
   const [showPassword, setShowPassword] = useState(false);
 
-  // useEffect(() => {
-  //   if (Object.keys(errors).length === 0 && isSubmitting) {
-  //     console.log(values);
-  //   }
-  // }, [errors, isSubmitting, values])
-
   return (
     <Flex
       minH={'100vh'}
