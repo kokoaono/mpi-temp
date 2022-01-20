@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ValidateInfo } from './ValidateInfo';
 import {
   FormControl,
@@ -13,7 +13,7 @@ export const AddFridge = ({ onAdd }) => {
   const [fridgeName, setFridgeName] = useState('');
   const [fridgeTemp, setFridgeTemp] = useState('');
   const [errors, setErrors] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = e => {
     const temp = e.target.value
@@ -25,18 +25,18 @@ export const AddFridge = ({ onAdd }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     setErrors(ValidateInfo(fridgeName, fridgeTemp))
-    // setIsSubmit(true)
+    setIsSubmit(true)
     onAdd({ fridgeName, fridgeTemp });
 
     setFridgeName('');
     setFridgeTemp('');
   };
 
-  // useEffect(() => {
-  //   if (Object.keys(errors).length === 0 && isSubmit) {
-  //     console.log(fridgeName, fridgeTemp);
-  //   }
-  // }, [errors, fridgeName, fridgeTemp, isSubmit])
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      console.log(fridgeName, fridgeTemp);
+    }
+  }, [errors, fridgeName, fridgeTemp, isSubmit])
 
   return (
     <Flex m={5}>

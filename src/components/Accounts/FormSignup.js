@@ -18,11 +18,9 @@ import {
   Link,
   FormHelperText,
 } from '@chakra-ui/react';
-import { FormSuccess } from './FormSuccess';
-// import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 export const FormSignup = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors, isSubmitting } = useForm(Validate, submitForm);
+  const { handleChange, values, handleSubmit, errors } = useForm(Validate, submitForm);
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -36,9 +34,6 @@ export const FormSignup = ({ submitForm }) => {
           <Heading fontSize={'4xl'} textAlign={'center'}>
             Sign up
           </Heading>
-          {/* <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
-          </Text> */}
         </Stack>
         <Box
           rounded={'lg'}
@@ -48,8 +43,8 @@ export const FormSignup = ({ submitForm }) => {
           <Stack spacing={4}>
             <HStack>
               <Box>
-                {Object.keys(errors).length === 0 && isSubmitting ? (<FormSuccess />) : (<>{JSON.stringify(values)}</>)}
-                <FormControl id="firstName" isRequired>
+                {/* {Object.keys(errors).length === 0 && isSubmitting ? (<FormSuccess />) : (<>{JSON.stringify(values)}</>)} */}
+                <FormControl id="name" isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
                     type="text"
@@ -63,12 +58,6 @@ export const FormSignup = ({ submitForm }) => {
                     </FormHelperText>}
                 </FormControl>
               </Box>
-              {/* <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text"/>
-                </FormControl>
-              </Box> */}
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
@@ -96,7 +85,6 @@ export const FormSignup = ({ submitForm }) => {
                     onClick={() =>
                       setShowPassword((showPassword) => !showPassword)
                     }>
-                    {/* {showPassword ? <ViewIcon /> : <ViewOffIcon />} */}
                   </Button>
                 </InputRightElement>
               </InputGroup>
@@ -122,7 +110,7 @@ export const FormSignup = ({ submitForm }) => {
             </Stack>
           </Stack>
         </Box>
-      </Stack>
-    </Flex>
+      </Stack >
+    </Flex >
   );
 }
