@@ -43,7 +43,6 @@ export const FormSignup = ({ submitForm }) => {
           <Stack spacing={4}>
             <HStack>
               <Box>
-                {/* {Object.keys(errors).length === 0 && isSubmitting ? (<FormSuccess />) : (<>{JSON.stringify(values)}</>)} */}
                 <FormControl id="name" isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
@@ -78,7 +77,10 @@ export const FormSignup = ({ submitForm }) => {
                   value={values.password}
                   onChange={handleChange}
                 />
-                {errors.password && <FormHelperText color='red'>{errors.password}</FormHelperText>}
+                {errors.password &&
+                  <FormHelperText color='red'>
+                    {errors.password}
+                  </FormHelperText>}
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}

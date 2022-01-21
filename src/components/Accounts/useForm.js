@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { validateLogin } from './Validate';
 
-export const useForm = (Validate) => {
+//validate Sign up Form
+export const useForm = (Validate, callback) => {
   const [values, setValues] = useState({
     name: '',
     email: '',
     password: ''
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -21,8 +21,9 @@ export const useForm = (Validate) => {
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       console.log(values);
+      callback()
     }
-  }, [errors, isSubmitting, values])
+  }, [errors, isSubmitting, values, callback])
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,15 +34,16 @@ export const useForm = (Validate) => {
   return { handleChange, values, handleSubmit, errors }
 };
 
+
+//validate Login Form
 export const useLoginForm = validateLogin => {
   const [values, setValues] = useState({
     name: '',
     password: ''
   });
 
- 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -64,4 +66,4 @@ export const useLoginForm = validateLogin => {
   };
 
   return { handleChange, values, handleSubmit, errors }
-}
+};

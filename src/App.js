@@ -5,6 +5,7 @@ import { Form } from './components/Accounts/Form';
 import Home from './components/home/Home';
 import { NotFound } from './components/NotFound';
 import Login from './components/Accounts/Login';
+import WithBackgroundImage from './components/home/Example';
 // import FridgeList from './components/FridgeList';
 // import { FoodApp } from './components/Food/FoodApp';
 // import { EditFood } from './components/Food/EditFood';
@@ -14,7 +15,8 @@ const App = () => {
     <Fragment>
       <Router>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<WithBackgroundImage />} />
+          <Route path='/home' element={<Home />} />
           <Route path='signup' element={<Form />} />
           <Route path='login' element={<Login />} />
           <Route path='*' element={<NotFound />} />

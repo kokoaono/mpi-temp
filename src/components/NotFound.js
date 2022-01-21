@@ -6,7 +6,7 @@ export const NotFound = () => {
     <Container maxW={'container.xl'} centerContent>
       <Image
         src={NoPage}
-        alt='404 page image'
+        alt='No page found'
         m={100}
         rounded='lg'
       />
