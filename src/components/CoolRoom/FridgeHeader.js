@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Box, Heading, Flex } from '@chakra-ui/react';
 
 const title = 'Daily Fridge Temperature';

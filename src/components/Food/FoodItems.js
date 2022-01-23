@@ -3,7 +3,7 @@ import { Button, Box, Flex } from "@chakra-ui/react";
 
 export const FoodItems = ({ items, onDelete, onDeleteAll, onEdit }) => {
   return (
-    <Flex>
+    <Flex flexDir='column'>
       <Box>
         {items.map(item => (
           <FoodItem
@@ -14,7 +14,7 @@ export const FoodItems = ({ items, onDelete, onDeleteAll, onEdit }) => {
           />
         ))}
       </Box>
-      <Box alignItems='left'>
+      <Box>
         <Button
           m={4}
           size={'sm'}

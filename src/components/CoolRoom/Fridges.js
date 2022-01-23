@@ -3,7 +3,7 @@ import { Button, Box, Flex } from '@chakra-ui/react';
 
 export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
   return (
-    <Flex>
+    <Flex flexDir={'column'}>
       <Box>
         {fridges.map(fridge => (
           <Fridge
