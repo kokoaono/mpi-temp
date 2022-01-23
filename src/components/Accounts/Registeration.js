@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { useForm } from './useForm';
 import { Validate } from './Validate';
-import { useState } from 'react';
 import {
   Flex,
   Box,
@@ -19,7 +19,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-export const FormSignup = ({ submitForm }) => {
+export const Registeration = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(Validate, submitForm);
   const [showPassword, setShowPassword] = useState(false);
 

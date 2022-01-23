@@ -23,6 +23,7 @@ export const Validate = (values) => {
   return errors;
 };
 
+//validation for login
 export const validateLogin = (values) => {
   let errors = {};
 

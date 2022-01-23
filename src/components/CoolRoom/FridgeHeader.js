@@ -1,13 +1,16 @@
 import React from 'react';
-import { Button, Container, Heading, Flex } from '@chakra-ui/react';
+import { Button, Box, Heading, Flex } from '@chakra-ui/react';
 
 const title = 'Daily Fridge Temperature';
 
 export const FridgeHeader = ({ onAdd, showAdd }) => {
   return (
-    <Flex>
-      <Container>
-        <Heading as='h3' size='lg'>{title}</Heading>
+    <Flex
+      align={'center'}
+      justify={'center'}
+    >
+      <Box>
+        <Heading as='h3' size='lg' p={2}>{title}</Heading>
         <Button
           m={4}
           size='sm'
@@ -16,7 +19,7 @@ export const FridgeHeader = ({ onAdd, showAdd }) => {
         >
           {showAdd ? 'close' : 'create'}
         </Button>
-      </Container>
+      </Box>
     </Flex>
   )
 };

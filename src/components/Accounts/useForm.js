@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
-//validate Sign up Form
+//functions for registeration
 export const useForm = (Validate, callback) => {
   const [values, setValues] = useState({
     name: '',
     email: '',
     password: ''
   });
-  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -18,24 +18,23 @@ export const useForm = (Validate, callback) => {
     });
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log(values);
-      callback()
-    }
-  }, [errors, isSubmitting, values, callback])
-
   const handleSubmit = e => {
     e.preventDefault();
     setErrors(Validate(values))
     setIsSubmitting(true)
   };
 
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback()
+    }
+  }, [errors, isSubmitting, values, callback])
+
   return { handleChange, values, handleSubmit, errors }
 };
 
 
-//validate Login Form
+//functions for login
 export const useLoginForm = validateLogin => {
   const [values, setValues] = useState({
     name: '',

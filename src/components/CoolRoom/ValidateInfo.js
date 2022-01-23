@@ -8,6 +8,6 @@ export const ValidateInfo = (fridgeName, fridgeTemp) => {
   if (!fridgeTemp) {
     errors.fridgeTemp = 'Temperature is required'
   }
-  
+
   return errors;
 };

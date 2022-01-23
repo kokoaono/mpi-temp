@@ -49,14 +49,13 @@ export const FridgeApp = () => {
         borderWidth='1px'
         borderRadius='lg'
         overflow='hidden'
+      // bg='#BEE3F8'
       >
         <FridgeHeader
           onAdd={() => setShowAddFridge(!showAddFridge)}
           showAdd={showAddFridge}
         />
-        
         {showAddFridge && <AddFridge onAdd={addFridge} />}
-
         {fridges.length > 0 ? (
           <Fridges
             fridges={fridges}

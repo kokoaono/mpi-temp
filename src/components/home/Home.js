@@ -1,8 +1,7 @@
 import Sidebar from '../NavigationBar/Sidebar';
-// import FridgeList from '../FridgeList';
-import { Flex } from '@chakra-ui/react';
 import { FoodApp } from '../Food/FoodApp';
 import { FridgeApp } from '../CoolRoom/FridgeApp';
+import { Flex } from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -10,7 +9,6 @@ export default function Home() {
       <Sidebar />
       <FoodApp />
       <FridgeApp />
-      {/* <FridgeList /> */}
     </Flex >
   )
 };

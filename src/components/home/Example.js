@@ -16,7 +16,7 @@ export default function WithBackgroundImage() {
   };
 
   const handleSignup = () => {
-    navigate('/signup')
+    navigate('/register')
   };
 
 

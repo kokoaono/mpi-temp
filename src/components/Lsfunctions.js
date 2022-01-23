@@ -13,6 +13,7 @@ function getData() {
   }
 };
 
+//Get FoodItem date
 function getItemData() {
   const data = localStorage.getItem('items');
   if (data) {

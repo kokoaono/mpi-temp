@@ -55,6 +55,8 @@ export const FoodApp = () => {
           showAdd={showAddItem}
         />
         {showAddItem && <AddItem onAdd={addItem} />}
+        {/* <Box> */}
+
         {items.length > 0 ? (
           <FoodItems
             items={items}
@@ -62,6 +64,7 @@ export const FoodApp = () => {
             onDelete={deleteItem}
             onDeleteAll={deleteAllItems} />) : ('No Items to show')
         }
+        {/* </Box> */}
       </Box>
     </Flex>
   )

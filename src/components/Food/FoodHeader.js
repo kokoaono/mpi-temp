@@ -1,13 +1,15 @@
-import React from 'react';
-import { Button, Container, Flex, Heading } from '@chakra-ui/react';
+import { Button, Box, Flex, Heading } from '@chakra-ui/react';
 
 const foodTitle = 'Poultry and Meat Temperature'
 
 export const FoodHeader = ({ onAdd, showAdd }) => {
   return (
-    <Flex>
-      <Container>
-        <Heading as='h3' size='lg' >{foodTitle}</Heading>
+    <Flex
+      align={'center'}
+      justify={'center'}
+    >
+      <Box>
+        <Heading as='h3' size='lg' p={2} >{foodTitle}</Heading>
         <Button
           m={4}
           size='sm'
@@ -16,7 +18,7 @@ export const FoodHeader = ({ onAdd, showAdd }) => {
         >
           {showAdd ? 'close' : 'create'}
         </Button>
-      </Container>
+      </Box>
     </Flex >
   )
 };

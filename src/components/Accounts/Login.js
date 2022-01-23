@@ -20,7 +20,6 @@ import {
 export default function Login() {
   const { handleChange, values, handleSubmit, errors } = useLoginForm(validateLogin);
   const [checkedItem, setCheckedItem] = useState(false);
-  console.log(checkedItem);
 
   return (
     <Flex
@@ -32,7 +31,7 @@ export default function Login() {
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Log in to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            Don't have an account? <Link href='/signup' color={'blue.400'}>Sign up here</Link>
+            Don't have an account? <Link href='/register' color={'blue.400'}>Sign up here</Link>
           </Text>
         </Stack>
         <Box

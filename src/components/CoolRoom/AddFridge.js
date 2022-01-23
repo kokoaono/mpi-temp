@@ -9,11 +9,10 @@ import {
   Button
 } from '@chakra-ui/react';
 
-export const AddFridge = ({ onAdd }) => {
+export const AddFridge = ({ onAdd }, callback) => {
   const [fridgeName, setFridgeName] = useState('');
   const [fridgeTemp, setFridgeTemp] = useState('');
   const [errors, setErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = e => {
     const temp = e.target.value
@@ -25,18 +24,11 @@ export const AddFridge = ({ onAdd }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     setErrors(ValidateInfo(fridgeName, fridgeTemp))
-    setIsSubmit(true)
     onAdd({ fridgeName, fridgeTemp });
 
     setFridgeName('');
     setFridgeTemp('');
   };
-
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmit) {
-      console.log(fridgeName, fridgeTemp);
-    }
-  }, [errors, fridgeName, fridgeTemp, isSubmit])
 
   return (
     <Flex m={5}>
@@ -46,7 +38,6 @@ export const AddFridge = ({ onAdd }) => {
             type='text'
             placeholder='FridgeName/ No'
             value={fridgeName}
-            // onChange={handleChange}
             onChange={e => setFridgeName(e.target.value)}
 
           />
@@ -62,7 +53,6 @@ export const AddFridge = ({ onAdd }) => {
             placeholder='Temperature'
             value={fridgeTemp}
             onChange={handleChange}
-          // onChange={e => setFridgeTemp(e.target.value)}
           />
           {errors.fridgeTemp && (
             <FormHelperText color='red'>
