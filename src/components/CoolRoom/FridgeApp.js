@@ -41,30 +41,31 @@ export const FridgeApp = () => {
   }, [fridges]);
 
   return (
-    <Flex m={10}>
-      <Box
-        p={2}
-        shadow='md'
-        // maxW='lg'
-        borderWidth='1px'
-        borderRadius='lg'
-        overflow='hidden'
-      // bg='#BEE3F8'
-      >
-        <FridgeHeader
-          onAdd={() => setShowAddFridge(!showAddFridge)}
-          showAdd={showAddFridge}
-        />
-        {showAddFridge && <AddFridge onAdd={addFridge} />}
-        {fridges.length > 0 ? (
-          <Fridges
-            fridges={fridges}
-            onEdit={updateFridge}
-            onDelete={deleteFridge}
-            onDeleteAll={deleteAll}
-          />) : ('No fridges to show')
-        }
-      </Box>
-    </Flex>
+    <Box>
+      <Flex m={10}>
+        <Box
+          p={2}
+          shadow='md'
+          maxW='lg'
+          borderWidth='1px'
+          borderRadius='lg'
+          overflow='hidden'
+        >
+          <FridgeHeader
+            onAdd={() => setShowAddFridge(!showAddFridge)}
+            showAdd={showAddFridge}
+          />
+          {showAddFridge && <AddFridge onAdd={addFridge} />}
+          {fridges.length > 0 ? (
+            <Fridges
+              fridges={fridges}
+              onEdit={updateFridge}
+              onDelete={deleteFridge}
+              onDeleteAll={deleteAll}
+            />) : ('No fridges to show')
+          }
+        </Box>
+      </Flex>
+    </Box>
   )
 };

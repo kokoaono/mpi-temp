@@ -1,14 +1,19 @@
-import Sidebar from '../NavigationBar/Sidebar';
+import { Nav } from '../NavigationBar/Nav';
 import { FoodApp } from '../Food/FoodApp';
 import { FridgeApp } from '../CoolRoom/FridgeApp';
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+
 
 export default function Home() {
   return (
-    <Flex>
-      <Sidebar />
-      <FoodApp />
-      <FridgeApp />
-    </Flex >
+    <>
+      <Nav />
+      <Box>
+        <Flex width={'100%'} position={'relative'}>
+          <FoodApp />
+          <FridgeApp />
+        </Flex>
+      </Box>
+    </>
   )
 };

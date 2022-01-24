@@ -12,16 +12,14 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalCloseButton,
-  Stack,
-  HStack
+  ModalCloseButton
 } from '@chakra-ui/react';
 
 export const FoodItem = ({ item, onDelete, onEdit }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex align={'center'}>
+    <Flex>
       <Box p={3}>
         <Text>Item: {item.itemName}</Text>
         <Text>Cooked Temp: {item.itemTemp} &#8451;</Text>
@@ -50,7 +48,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
       <IconButton
         aria-label='delete foodItem'
         fontSize='20px'
-        variant='outline'
+        variant='solid'
         colorScheme='red'
         onClick={() => onDelete(item.id)}
         icon={<RiDeleteBin5Line />}

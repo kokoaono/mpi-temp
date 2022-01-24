@@ -5,16 +5,6 @@ export const FoodItems = ({ items, onDelete, onDeleteAll, onEdit }) => {
   return (
     <Flex flexDir='column'>
       <Box>
-        {items.map(item => (
-          <FoodItem
-            key={item.id}
-            item={item}
-            onEdit={onEdit}
-            onDelete={onDelete}
-          />
-        ))}
-      </Box>
-      <Box>
         <Button
           m={4}
           size={'sm'}
@@ -23,6 +13,16 @@ export const FoodItems = ({ items, onDelete, onDeleteAll, onEdit }) => {
         >
           Clear all
         </Button>
+      </Box>
+      <Box>
+        {items.map(item => (
+          <FoodItem
+            key={item.id}
+            item={item}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        ))}
       </Box>
     </Flex>
   )

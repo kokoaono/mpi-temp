@@ -40,32 +40,31 @@ export const FoodApp = () => {
   }, [items]);
 
   return (
-    <Flex m={10}>
-      <Box
-        p={2}
-        shadow='md'
-        // maxW='lg'
-        borderWidth='1px'
-        borderRadius='lg'
-        overflow='hidden'
-      // bg='#FEFCBF'
-      >
-        <FoodHeader
-          onAdd={() => setShowAddItem(!showAddItem)}
-          showAdd={showAddItem}
-        />
-        {showAddItem && <AddItem onAdd={addItem} />}
-        {/* <Box> */}
+    <Box>
+      <Flex m={10}>
+        <Box
+          p={2}
+          shadow='md'
+          maxW='lg'
+          borderWidth='1px'
+          borderRadius='lg'
+          overflow='hidden'
+        >
+          <FoodHeader
+            onAdd={() => setShowAddItem(!showAddItem)}
+            showAdd={showAddItem}
+          />
+          {showAddItem && <AddItem onAdd={addItem} />}
 
-        {items.length > 0 ? (
-          <FoodItems
-            items={items}
-            onEdit={updateFoodItem}
-            onDelete={deleteItem}
-            onDeleteAll={deleteAllItems} />) : ('No Items to show')
-        }
-        {/* </Box> */}
-      </Box>
-    </Flex>
+          {items.length > 0 ? (
+            <FoodItems
+              items={items}
+              onEdit={updateFoodItem}
+              onDelete={deleteItem}
+              onDeleteAll={deleteAllItems} />) : ('No Items to show')
+          }
+        </Box>
+      </Flex>
+    </Box>
   )
 };

@@ -5,6 +5,16 @@ export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
   return (
     <Flex flexDir={'column'}>
       <Box>
+        <Box>
+          <Button
+            m={4}
+            size='sm'
+            colorScheme='red'
+            onClick={onDeleteAll}
+          >
+            Clear all
+          </Button>
+        </Box>
         {fridges.map(fridge => (
           <Fridge
             key={fridge.id}
@@ -13,16 +23,6 @@ export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
             onEdit={onEdit}
           />
         ))}
-      </Box>
-      <Box>
-        <Button
-          m={4}
-          size='sm'
-          colorScheme='red'
-          onClick={onDeleteAll}
-        >
-          Clear all
-        </Button>
       </Box>
     </Flex>
   )

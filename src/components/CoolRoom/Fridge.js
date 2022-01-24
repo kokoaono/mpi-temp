@@ -22,8 +22,8 @@ export const Fridge = ({ fridge, onDelete, onEdit }) => {
     <Flex>
       <Box p={3}>
         <Text>Name: {fridge.fridgeName}</Text>
-        <Text>Temperature:{fridge.fridgeTemp} &#8451;</Text>
-        <Text>Created at:{fridge.date}</Text>
+        <Text>Temperature: {fridge.fridgeTemp} &#8451;</Text>
+        <Text>Created at: {fridge.date}</Text>
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -49,7 +49,7 @@ export const Fridge = ({ fridge, onDelete, onEdit }) => {
       <IconButton
         aria-label='delete fridge'
         fontSize='20px'
-        variant='outline'
+        variant='solid'
         colorScheme='red'
         onClick={() => onDelete(fridge.id)}
         icon={<RiDeleteBin5Line />}

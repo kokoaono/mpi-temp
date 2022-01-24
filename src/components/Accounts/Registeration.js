@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiEyeOff, FiEye } from 'react-icons/fi'
 import { useForm } from './useForm';
 import { Validate } from './Validate';
 import {
@@ -8,7 +9,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   Button,
@@ -21,7 +21,8 @@ import {
 
 export const Registeration = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(Validate, submitForm);
-  const [showPassword, setShowPassword] = useState(false);
+  const [show, setShow] = useState(false);
+  const handlePassword = () => setShow(!show);
 
   return (
     <Flex
@@ -39,25 +40,19 @@ export const Registeration = ({ submitForm }) => {
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
-          p={8}>
+          p={8}
+        >
           <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl id="name" isRequired>
-                  <FormLabel>Name</FormLabel>
-                  <Input
-                    type="text"
-                    name='name'
-                    value={values.name}
-                    onChange={handleChange}
-                  />
-                  {errors.name &&
-                    <FormHelperText color='red'>
-                      {errors.name}
-                    </FormHelperText>}
-                </FormControl>
-              </Box>
-            </HStack>
+            <FormControl id="name" isRequired>
+              <FormLabel>Name</FormLabel>
+              <Input
+                type="text"
+                name='name'
+                value={values.name}
+                onChange={handleChange}
+              />
+              {errors.name && <FormHelperText color='red'>{errors.name}</FormHelperText>}
+            </FormControl>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input
@@ -68,28 +63,27 @@ export const Registeration = ({ submitForm }) => {
               />
               {errors.email && <FormHelperText color='red'>{errors.email}</FormHelperText>}
             </FormControl>
+
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
-                  type={showPassword ? 'text' : 'password'}
+                  type={show ? 'text' : 'password'}
                   name='password'
                   value={values.password}
                   onChange={handleChange}
                 />
-                {errors.password &&
-                  <FormHelperText color='red'>
-                    {errors.password}
-                  </FormHelperText>}
+
                 <InputRightElement h={'full'}>
                   <Button
-                    variant={'ghost'}
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }>
+                    variant={'solid'}
+                    onClick={handlePassword}
+                  >
+                    {show ? <FiEyeOff /> : <FiEye />}
                   </Button>
                 </InputRightElement>
               </InputGroup>
+              {errors.password && <FormHelperText color='red'>{errors.password}</FormHelperText>}
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
