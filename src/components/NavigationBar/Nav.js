@@ -1,5 +1,4 @@
 import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -20,7 +19,6 @@ import {
 } from '@chakra-ui/react';
 
 export const Nav = () => {
-  const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   // const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -65,7 +63,7 @@ export const Nav = () => {
                   <br />
                   <MenuDivider />
                   <MenuItem>Settings</MenuItem>
-                  <MenuItem onClick={() => navigate('/')}>Logout</MenuItem>
+                  <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>

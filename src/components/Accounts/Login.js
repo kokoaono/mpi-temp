@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useLoginForm } from './useForm';
 import { validateLogin } from './Validate';
 import {
@@ -17,9 +16,8 @@ import {
   FormHelperText
 } from '@chakra-ui/react';
 
-export default function Login() {
-  const { handleChange, values, handleSubmit, errors } = useLoginForm(validateLogin);
-  const [checkedItem, setCheckedItem] = useState(false);
+export default function Login({ submitLoginForm }) {
+  const { handleChange, values, handleSubmit, errors, handleCheckedItem, checkedItem } = useLoginForm(validateLogin, submitLoginForm);
 
   return (
     <Flex
@@ -73,7 +71,7 @@ export default function Login() {
                 justify={'space-between'}>
                 <Checkbox
                   isChecked={checkedItem}
-                  onChange={e => setCheckedItem(e.target.checked)}
+                  onChange={handleCheckedItem}
                 >
                   Remember me
                 </Checkbox>

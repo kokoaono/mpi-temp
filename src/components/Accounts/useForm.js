@@ -9,6 +9,7 @@ export const useForm = (Validate, callback) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [show, setShow] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -24,25 +25,29 @@ export const useForm = (Validate, callback) => {
     setIsSubmitting(true)
   };
 
+  const handlePassword = () => {
+    setShow(!show)
+  };
+
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback()
     }
   }, [errors, isSubmitting, values, callback])
 
-  return { handleChange, values, handleSubmit, errors }
+  return { handleChange, values, handleSubmit, handlePassword, show, errors }
 };
 
 
 //functions for login
-export const useLoginForm = validateLogin => {
+export const useLoginForm = (validateLogin) => {
   const [values, setValues] = useState({
     name: '',
     password: ''
   });
-
-  const [errors, setErrors] = useState({});
+  const [checkedItem, setCheckedItem] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -52,11 +57,10 @@ export const useLoginForm = validateLogin => {
     });
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log(values);
-    }
-  }, [errors, isSubmitting, values])
+  const handleCheckedItem = e => {
+    const { checked } = e.target
+    setCheckedItem(checked)
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -64,5 +68,13 @@ export const useLoginForm = validateLogin => {
     setIsSubmitting(true)
   };
 
-  return { handleChange, values, handleSubmit, errors }
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      console.log(values);
+    }
+  }, [errors, isSubmitting, values])
+
+
+
+  return { handleChange, values, handleSubmit, errors, checkedItem, handleCheckedItem }
 };

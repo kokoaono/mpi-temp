@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FiEyeOff, FiEye } from 'react-icons/fi'
 import { useForm } from './useForm';
 import { Validate } from './Validate';
@@ -20,9 +19,7 @@ import {
 } from '@chakra-ui/react';
 
 export const Registeration = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(Validate, submitForm);
-  const [show, setShow] = useState(false);
-  const handlePassword = () => setShow(!show);
+  const { handleChange, values, handleSubmit, handlePassword, show, errors } = useForm(Validate, submitForm);
 
   return (
     <Flex
