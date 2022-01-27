@@ -6,6 +6,7 @@ import { getItemData } from '../Lsfunctions';
 import { Flex, Box } from '@chakra-ui/react';
 
 
+
 export const FoodApp = () => {
   const [items, setItems] = useState(getItemData());
   const [showAddItem, setShowAddItem] = useState(false);

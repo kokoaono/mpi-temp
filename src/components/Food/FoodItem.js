@@ -1,3 +1,4 @@
+import React from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { EditFood } from './EditFood';

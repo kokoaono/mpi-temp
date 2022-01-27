@@ -1,3 +1,4 @@
+import React from 'react';
 import { FoodItem } from "./FoodItem";
 import { Button, Box, Flex } from "@chakra-ui/react";
 

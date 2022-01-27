@@ -1,6 +1,6 @@
 module.exports = {
   getData,
-  getItemData
+  getItemData,
 };
 
 //get fridge data from localStorage
@@ -13,7 +13,7 @@ function getData() {
   }
 };
 
-//Get FoodItem date
+//Get FoodItem data
 function getItemData() {
   const data = localStorage.getItem('items');
   if (data) {

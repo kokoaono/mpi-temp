@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-//functions for registeration
+//For registeration
 export const useForm = (Validate, callback) => {
   const [values, setValues] = useState({
     name: '',

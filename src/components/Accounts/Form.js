@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Registeration } from './Registeration';
+import { Registration } from './Registration';
 import { FormSuccess } from './FormSuccess';
 
 
@@ -12,7 +12,7 @@ export const Form = () => {
 
   return (
     <div>
-      {!isSubmitted ? <Registeration submitForm={submitForm} /> : <FormSuccess />}
+      {!isSubmitted ? <Registration submitForm={submitForm} /> : <FormSuccess />}
     </div>
   )
 };

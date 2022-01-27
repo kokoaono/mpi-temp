@@ -5,8 +5,7 @@ import Home from './components/home/Home';
 import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import WithBackgroundImage from './components/home/Example';
-// import { FoodApp } from './components/Food/FoodApp';
-// import { EditFood } from './components/Food/EditFood';
+
 
 const App = () => {
   return (
@@ -18,7 +17,6 @@ const App = () => {
           <Route path='register' element={<Form />} />
           <Route path='login' element={<Login />} />
           <Route path='*' element={<NotFound />} />
-          {/* <Route path='foodtemp' element={<FoodApp />} />  */}
         </Routes>
       </Router>
     </Fragment>

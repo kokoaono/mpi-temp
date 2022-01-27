@@ -1,3 +1,4 @@
+import React from 'react';
 import { Nav } from '../NavigationBar/Nav';
 import { FoodApp } from '../Food/FoodApp';
 import { FridgeApp } from '../CoolRoom/FridgeApp';
