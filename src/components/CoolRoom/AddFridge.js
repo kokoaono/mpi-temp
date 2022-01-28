@@ -9,7 +9,7 @@ import {
   Button
 } from '@chakra-ui/react';
 
-export const AddFridge = ({ onAdd }, callback) => {
+export const AddFridge = ({ onAdd }) => {
   const [fridgeName, setFridgeName] = useState('');
   const [fridgeTemp, setFridgeTemp] = useState('');
   const [errors, setErrors] = useState({});

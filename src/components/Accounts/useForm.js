@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
+import { UseLocalStoage } from './UseLocalStoage';
 
-//For registeration
+//For registration
 export const useForm = (Validate, callback) => {
-  const [values, setValues] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
+  const [values, setValues] = UseLocalStoage('user', { name: '', email: '', password: '' })
+  // const [values, setValues] = useState({
+  //   name: '',
+  //   email: '',
+  //   password: ''
+  // });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [show, setShow] = useState(false);

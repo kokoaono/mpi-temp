@@ -20,6 +20,7 @@ import {
 } from '@chakra-ui/react';
 
 export const Registration = ({ submitForm }) => {
+  
   const { handleChange, values, handleSubmit, handlePassword, show, errors } = useForm(Validate, submitForm);
 
   return (

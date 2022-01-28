@@ -56,6 +56,7 @@ export const FridgeApp = () => {
             showAdd={showAddFridge}
           />
           {showAddFridge && <AddFridge onAdd={addFridge} />}
+          
           {fridges.length > 0 ? (
             <Fridges
               fridges={fridges}
