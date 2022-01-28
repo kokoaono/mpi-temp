@@ -39,7 +39,7 @@ export default function WithBackgroundImage() {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            something nice to say goes here...
+            dunno lol 
           </Text>
           <Stack direction={'row'}>
             <Button
