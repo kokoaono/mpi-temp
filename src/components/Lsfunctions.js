@@ -3,7 +3,7 @@ module.exports = {
   getItemData,
 };
 
-//get fridge data from localStorage
+//get fridge data
 function getData() {
   const data = localStorage.getItem('fridges');
   if (data) {

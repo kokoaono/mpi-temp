@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
 import { getItemData } from '../Lsfunctions';
 import { Flex, Box } from '@chakra-ui/react';
+import { ItemsContext, ItemsProvider } from './ItemContext';
 
-
+// export const ItemsProvider = createContext();
 
 export const FoodApp = () => {
   const [items, setItems] = useState(getItemData());
   const [showAddItem, setShowAddItem] = useState(false);
+  // const { items, setItems } = useContext(ItemsContext)
+
 
   //Add new item
   const addItem = item => {
-    const id = Math.floor(Math.random() * 100);
+    const id = Math.floor(Math.random() * 100)
     const date = Date();
     const newItem = { id, date, ...item }
     setItems([...items, newItem])
@@ -57,13 +60,16 @@ export const FoodApp = () => {
           />
           {showAddItem && <AddItem onAdd={addItem} />}
 
-          {items.length > 0 ? (
-            <FoodItems
-              items={items}
-              onEdit={updateFoodItem}
-              onDelete={deleteItem}
-              onDeleteAll={deleteAllItems} />) : ('No Items to show')
-          }
+          <ItemsProvider value={items}>
+
+            {items.length > 0 ? (
+              <FoodItems
+                // items={items}
+                onEdit={updateFoodItem}
+                onDelete={deleteItem}
+                onDeleteAll={deleteAllItems} />) : ('No Items to show')
+            }
+          </ItemsProvider>
         </Box>
       </Flex>
     </Box>

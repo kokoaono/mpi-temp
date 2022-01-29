@@ -15,7 +15,7 @@ export const AddFridge = ({ onAdd }) => {
   const [errors, setErrors] = useState({});
 
   const handleChange = e => {
-    const temp = e.target.value
+    const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setFridgeTemp(temp)
     }
@@ -23,7 +23,8 @@ export const AddFridge = ({ onAdd }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrors(ValidateInfo(fridgeName, fridgeTemp))
+    setErrors(ValidateInfo(fridgeName, fridgeTemp));
+
     onAdd({ fridgeName, fridgeTemp });
 
     setFridgeName('');

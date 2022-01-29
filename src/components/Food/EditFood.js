@@ -53,10 +53,9 @@ export const EditFood = ({ onEdit, item }) => {
             value={itemTemp}
             onChange={onSubmit}
           />
-          {!itemTemp &&
-            <FormHelperText color='red'>
-              {errors.itemTemp}
-            </FormHelperText>
+          {!itemTemp && <FormHelperText color='red'>
+            {errors.itemTemp}
+          </FormHelperText>
           }
         </Box>
         <Box my={3}>
@@ -66,10 +65,9 @@ export const EditFood = ({ onEdit, item }) => {
             value={time}
             onChange={e => setTime(e.target.value)}
           />
-          {!time &&
-            <FormHelperText color='red'>
-              {errors.time}
-            </FormHelperText>
+          {!time && <FormHelperText color='red'>
+            {errors.time}
+          </FormHelperText>
           }
         </Box>
         <Box my={3}>

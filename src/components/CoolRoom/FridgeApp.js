@@ -56,14 +56,13 @@ export const FridgeApp = () => {
             showAdd={showAddFridge}
           />
           {showAddFridge && <AddFridge onAdd={addFridge} />}
-          
+
           {fridges.length > 0 ? (
             <Fridges
               fridges={fridges}
               onEdit={updateFridge}
               onDelete={deleteFridge}
-              onDeleteAll={deleteAll}
-            />) : ('No fridges to show')
+              onDeleteAll={deleteAll} />) : ('No fridges to show')
           }
         </Box>
       </Flex>

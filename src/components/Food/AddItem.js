@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ValidateFoodInfo } from './ValidateFoodInfo';
 import {
   FormControl,
@@ -12,6 +12,7 @@ import {
 
 export const AddItem = ({ onAdd }) => {
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
+
   const [itemTemp, setItemTemp] = useState('');
   const [itemName, setItemName] = useState('');
   const [time, setTime] = useState('');

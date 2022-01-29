@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { ValidateInfo } from './ValidateInfo';
 import {
   Flex,
   FormControl,
@@ -12,12 +13,14 @@ export const EditFridge = ({ onEdit, fridge }) => {
   const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
   const [fridgeTemp, setFridgeTemp] = useState(fridge.fridgeTemp);
+  const [errors, setErrors] = useState({});
 
   const date = Date();
   const updatedFridge = { id, fridgeName, fridgeTemp, date }
 
   const onSubmit = e => {
     e.preventDefault();
+    setErrors(ValidateInfo(fridgeName, fridgeTemp))
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setFridgeTemp(temp)
@@ -37,7 +40,7 @@ export const EditFridge = ({ onEdit, fridge }) => {
           />
           {!fridgeName &&
             <FormHelperText color='red'>
-              Name is required
+              {errors.fridgeName}
             </FormHelperText>
           }
         </Box>
@@ -50,7 +53,7 @@ export const EditFridge = ({ onEdit, fridge }) => {
           />
           {!fridgeTemp &&
             <FormHelperText color='red'>
-              Temperature is required
+              {errors.fridgeTemp}
             </FormHelperText>
           }
         </Box>
