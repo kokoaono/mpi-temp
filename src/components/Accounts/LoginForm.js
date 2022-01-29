@@ -3,15 +3,15 @@ import Login from './Login';
 import Home from '../home/Home'
 
 export const LoginForm = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function submitLoginForm() {
-    setIsSubmitted(true);
+    setIsLoggedIn(true);
   };
 
   return (
     <>
-      {!isSubmitted ? <Login submitLoginForm={submitLoginForm} /> : <Home />}
+      {!isLoggedIn ? <Login submitLoginForm={submitLoginForm} /> : <Home />}
     </>
 
   )

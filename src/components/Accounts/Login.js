@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLoginForm } from './useForm';
 import { validateLogin } from './Validate';
 import {
@@ -38,17 +39,17 @@ export default function Login({ submitLoginForm }) {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id='name'>
+            <FormControl id='username'>
               <FormLabel>User Name</FormLabel>
               <Input
-                type='name'
-                name='name'
-                value={values.name}
+                type='username'
+                name='username'
+                value={values.username}
                 onChange={handleChange}
               />
-              {errors.name &&
+              {errors.username &&
                 <FormHelperText color='red'>
-                  {errors.name}
+                  {errors.username}
                 </FormHelperText>}
             </FormControl>
             <FormControl id="password">

@@ -3,7 +3,7 @@ import { UseLocalStoage } from './UseLocalStoage';
 
 //For registration
 export const useForm = (Validate, callback) => {
-  const [values, setValues] = UseLocalStoage('user', { name: '', email: '', password: '' })
+  const [values, setValues] = UseLocalStoage('user', [{ name: '', email: '', password: '' }])
   // const [values, setValues] = useState({
   //   name: '',
   //   email: '',
@@ -44,7 +44,7 @@ export const useForm = (Validate, callback) => {
 //functions for login
 export const useLoginForm = (validateLogin) => {
   const [values, setValues] = useState({
-    name: '',
+    username: '',
     password: ''
   });
   const [checkedItem, setCheckedItem] = useState(false);

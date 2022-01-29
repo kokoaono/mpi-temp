@@ -22,6 +22,7 @@ export const AddItem = ({ onAdd }) => {
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setItemTemp(temp)
+      return;
     }
   };
 

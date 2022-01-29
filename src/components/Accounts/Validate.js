@@ -28,8 +28,8 @@ export const validateLogin = (values) => {
   let errors = {};
 
   //Name
-  if (!values.name.trim()) {
-    errors.name = 'Name required'
+  if (!values.username.trim()) {
+    errors.username = 'Username is required'
   };
 
   //Password
