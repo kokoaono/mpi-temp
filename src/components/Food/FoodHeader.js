@@ -1,8 +1,7 @@
+import React from 'react';
 import { Button, Box, Flex, Heading } from '@chakra-ui/react';
 
-const foodTitle = 'Poultry and Meat Temperature'
-
-export const FoodHeader = ({ onAdd, showAdd }) => {
+export const FoodHeader = ({ foodTitle, onAdd, showAdd }) => {
   return (
     <Flex
       align={'center'}
@@ -21,4 +20,8 @@ export const FoodHeader = ({ onAdd, showAdd }) => {
       </Box>
     </Flex >
   )
+};
+
+FoodHeader.defaultProps = {
+  foodTitle: 'Poultry and Meat Temperature'
 };

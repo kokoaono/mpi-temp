@@ -61,15 +61,16 @@ export const AddFridge = ({ onAdd }) => {
             </FormHelperText>
           )}
         </Box>
-        <Button
-          p={4}
-          size='sm'
-          variant={'solid'}
-          colorScheme='green'
-          onClick={onSubmit}
-        >
-          ADD
-        </Button>
+          <Button
+            w={'100%'}
+            p={4}
+            size='sm'
+            variant={'solid'}
+            colorScheme='green'
+            onClick={onSubmit}
+          >
+            ADD
+          </Button>
       </FormControl>
     </Flex >
   )

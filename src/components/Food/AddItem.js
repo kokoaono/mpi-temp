@@ -79,6 +79,7 @@ export const AddItem = ({ onAdd }) => {
           }
         </Box>
         <Button
+          w={'100%'}
           p={4}
           size='sm'
           variant='solid'

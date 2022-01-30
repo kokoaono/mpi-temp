@@ -1,8 +1,6 @@
 import { Button, Box, Heading, Flex } from '@chakra-ui/react';
 
-const title = 'Daily Fridge Temperature';
-
-export const FridgeHeader = ({ onAdd, showAdd }) => {
+export const FridgeHeader = ({ title, onAdd, showAdd }) => {
   return (
     <Flex
       align={'center'}
@@ -21,4 +19,8 @@ export const FridgeHeader = ({ onAdd, showAdd }) => {
       </Box>
     </Flex>
   )
+};
+
+FridgeHeader.defaultProps = {
+  title: 'Daily Fridge Temperature'
 };
