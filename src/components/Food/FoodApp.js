@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-import { getItemData } from '../Lsfunctions';
+import { ItemProvider, useItems } from './ItemContext';
 import { Flex, Box } from '@chakra-ui/react';
-import { ItemsContext, ItemsProvider } from './ItemContext';
 
-// export const ItemsProvider = createContext();
 
 export const FoodApp = () => {
-  const [items, setItems] = useState(getItemData());
+  const { items, setItems } = useItems()
+  // const [items, setItems] = useState([])
   const [showAddItem, setShowAddItem] = useState(false);
-  // const { items, setItems } = useContext(ItemsContext)
 
 
   //Add new item
@@ -60,8 +58,7 @@ export const FoodApp = () => {
           />
           {showAddItem && <AddItem onAdd={addItem} />}
 
-          <ItemsProvider value={items}>
-
+          <ItemProvider>
             {items.length > 0 ? (
               <FoodItems
                 // items={items}
@@ -69,9 +66,11 @@ export const FoodApp = () => {
                 onDelete={deleteItem}
                 onDeleteAll={deleteAllItems} />) : ('No Items to show')
             }
-          </ItemsProvider>
+          </ItemProvider>
         </Box>
-      </Flex>
-    </Box>
+      </Flex >
+    </Box >
   )
 };
+
+//FoodApp.js

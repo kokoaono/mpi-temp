@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Registration } from './Registration';
+import { Register } from './Register';
 import { FormSuccess } from './FormSuccess';
-
 
 export const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -12,7 +11,7 @@ export const Form = () => {
 
   return (
     <div>
-      {!isSubmitted ? <Registration submitForm={submitForm} /> : <FormSuccess />}
+      {!isSubmitted ? <Register submitForm={submitForm} /> : <FormSuccess />}
     </div>
   )
 };

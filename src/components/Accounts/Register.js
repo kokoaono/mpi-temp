@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { FiEyeOff, FiEye } from 'react-icons/fi'
 import { useForm } from './useForm';
 import { Validate } from './Validate';
@@ -19,8 +19,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-export const Registration = ({ submitForm }) => {
-  
+export const Register = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, handlePassword, show, errors } = useForm(Validate, submitForm);
 
   return (

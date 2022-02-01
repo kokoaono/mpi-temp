@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ValidateFoodInfo } from './ValidateFoodInfo';
 import {
   Flex,
@@ -31,6 +31,7 @@ export const EditFood = ({ onEdit, item }) => {
     }
     onEdit(id, updatedItem)
   };
+  
   return (
     <Flex m={3}>
       <FormControl>

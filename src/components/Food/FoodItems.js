@@ -1,10 +1,13 @@
 import React from 'react';
 import { FoodItem } from "./FoodItem";
-import { useItems } from './ItemContext';
+// import { ItemsContext } from './FoodApp';
 import { Button, Box, Flex } from "@chakra-ui/react";
+import { useItems } from './ItemContext';
 
 export const FoodItems = ({ onDelete, onDeleteAll, onEdit }) => {
-  const { items } = useItems();
+  const { items } = useItems()
+
+  console.log(items);
   return (
     <Flex flexDir='column'>
       <Box>
@@ -17,6 +20,7 @@ export const FoodItems = ({ onDelete, onDeleteAll, onEdit }) => {
           Clear all
         </Button>
       </Box>
+
       <Box>
         {items.map(item => (
           <FoodItem

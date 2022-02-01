@@ -3,7 +3,7 @@ import { UseLocalStoage } from './UseLocalStoage';
 
 //For registration
 export const useForm = (Validate, callback) => {
-  const [values, setValues] = UseLocalStoage('user', [{ name: '', email: '', password: '' }])
+  const [values, setValues] = UseLocalStoage('users', [{ name: '', email: '', password: '' }])
   // const [values, setValues] = useState({
   //   name: '',
   //   email: '',
@@ -12,6 +12,7 @@ export const useForm = (Validate, callback) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [show, setShow] = useState(false);
+
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -26,6 +27,7 @@ export const useForm = (Validate, callback) => {
     setErrors(Validate(values))
     setIsSubmitting(true)
   };
+
 
   const handlePassword = () => {
     setShow(!show)

@@ -6,8 +6,8 @@ import { getData } from '../Lsfunctions';
 import { Flex, Box } from '@chakra-ui/react';
 
 
-
 export const FridgeApp = () => {
+
   const [fridges, setFridges] = useState(getData());
   const [showAddFridge, setShowAddFridge] = useState(false);
 
@@ -56,6 +56,7 @@ export const FridgeApp = () => {
             showAdd={showAddFridge}
           />
           {showAddFridge && <AddFridge onAdd={addFridge} />}
+
 
           {fridges.length > 0 ? (
             <Fridges

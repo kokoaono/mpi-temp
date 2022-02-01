@@ -1,6 +1,6 @@
 module.exports = {
   getData,
-  getItemData,
+  getItemData
 };
 
 //get fridge data
