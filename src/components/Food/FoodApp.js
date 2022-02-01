@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-import { ItemProvider, useItems } from './ItemContext';
+import { useItems } from './ItemContext';
 import { Flex, Box } from '@chakra-ui/react';
 
 
@@ -58,15 +58,13 @@ export const FoodApp = () => {
           />
           {showAddItem && <AddItem onAdd={addItem} />}
 
-          <ItemProvider>
-            {items.length > 0 ? (
-              <FoodItems
-                // items={items}
-                onEdit={updateFoodItem}
-                onDelete={deleteItem}
-                onDeleteAll={deleteAllItems} />) : ('No Items to show')
-            }
-          </ItemProvider>
+          {items.length > 0 ? (
+            <FoodItems
+              // items={items}
+              onEdit={updateFoodItem}
+              onDelete={deleteItem}
+              onDeleteAll={deleteAllItems} />) : ('No Items to show')
+          }
         </Box>
       </Flex >
     </Box >

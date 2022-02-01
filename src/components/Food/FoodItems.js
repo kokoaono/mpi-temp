@@ -6,8 +6,6 @@ import { useItems } from './ItemContext';
 
 export const FoodItems = ({ onDelete, onDeleteAll, onEdit }) => {
   const { items } = useItems()
-
-  console.log(items);
   return (
     <Flex flexDir='column'>
       <Box>
