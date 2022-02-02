@@ -1,6 +1,7 @@
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { EditFridge } from './EditFridge';
+import { useFridgeDelete } from './FridgeContext';
 import {
   Box,
   Text,
@@ -15,8 +16,10 @@ import {
   ModalCloseButton
 } from '@chakra-ui/react';
 
-export const Fridge = ({ fridge, onDelete, onEdit }) => {
+export const Fridge = ({ fridge }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const deleteFridge = useFridgeDelete();
 
   return (
     <Flex>
@@ -33,7 +36,7 @@ export const Fridge = ({ fridge, onDelete, onEdit }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFridge fridge={fridge} onEdit={onEdit} />
+            <EditFridge fridge={fridge} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -51,7 +54,7 @@ export const Fridge = ({ fridge, onDelete, onEdit }) => {
         fontSize='20px'
         variant='solid'
         colorScheme='red'
-        onClick={() => onDelete(fridge.id)}
+        onClick={() => deleteFridge(fridge.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex >

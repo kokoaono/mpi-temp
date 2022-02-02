@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ValidateInfo } from './ValidateInfo';
+import { useAddFridge } from './FridgeContext';
 import {
   FormControl,
   FormHelperText,
@@ -9,7 +10,8 @@ import {
   Button
 } from '@chakra-ui/react';
 
-export const AddFridge = ({ onAdd }) => {
+export const AddFridge = () => {
+  const addFridge = useAddFridge();
   const [fridgeName, setFridgeName] = useState('');
   const [fridgeTemp, setFridgeTemp] = useState('');
   const [errors, setErrors] = useState({});
@@ -25,7 +27,7 @@ export const AddFridge = ({ onAdd }) => {
     e.preventDefault();
     setErrors(ValidateInfo(fridgeName, fridgeTemp));
 
-    onAdd({ fridgeName, fridgeTemp });
+    addFridge({ fridgeName, fridgeTemp });
 
     setFridgeName('');
     setFridgeTemp('');
@@ -61,16 +63,16 @@ export const AddFridge = ({ onAdd }) => {
             </FormHelperText>
           )}
         </Box>
-          <Button
-            w={'100%'}
-            p={4}
-            size='sm'
-            variant={'solid'}
-            colorScheme='green'
-            onClick={onSubmit}
-          >
-            ADD
-          </Button>
+        <Button
+          w={'100%'}
+          p={4}
+          size='sm'
+          variant={'solid'}
+          colorScheme='green'
+          onClick={onSubmit}
+        >
+          ADD
+        </Button>
       </FormControl>
     </Flex >
   )

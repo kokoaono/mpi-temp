@@ -1,31 +1,29 @@
 import React from 'react';
 import { FoodItem } from "./FoodItem";
-// import { ItemsContext } from './FoodApp';
+import { useDeleteAll, useItems } from './ItemContext';
 import { Button, Box, Flex } from "@chakra-ui/react";
-import { useItems } from './ItemContext';
 
-export const FoodItems = ({ onDelete, onDeleteAll, onEdit }) => {
-  const { items } = useItems()
+export const FoodItems = () => {
+  const { items } = useItems();
+  const deleteAllItems = useDeleteAll();
+
   return (
     <Flex flexDir='column'>
       <Box>
         <Button
           m={4}
           size={'sm'}
-          colorScheme='red'
-          onClick={onDeleteAll}
+          colorScheme={'red'}
+          onClick={deleteAllItems}
         >
           Clear all
         </Button>
       </Box>
-
       <Box>
         {items.map(item => (
           <FoodItem
             key={item.id}
             item={item}
-            onEdit={onEdit}
-            onDelete={onDelete}
           />
         ))}
       </Box>

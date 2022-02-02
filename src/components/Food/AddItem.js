@@ -9,8 +9,11 @@ import {
   Button,
   Select
 } from '@chakra-ui/react';
+import { useAddItem } from './ItemContext';
 
-export const AddItem = ({ onAdd }) => {
+export const AddItem = () => {
+  const addItem = useAddItem();
+
   const items = ['Beef', 'Chicken', 'Lamb', 'Pork'];
 
   const [itemTemp, setItemTemp] = useState('');
@@ -30,7 +33,7 @@ export const AddItem = ({ onAdd }) => {
     e.preventDefault();
     setErrors(ValidateFoodInfo(itemName, itemTemp, time))
 
-    onAdd({ itemTemp, itemName, time });
+    addItem({ itemTemp, itemName, time });
 
     setItemTemp('');
     setItemName('');
@@ -91,4 +94,4 @@ export const AddItem = ({ onAdd }) => {
       </FormControl >
     </Flex >
   )
-}
+};

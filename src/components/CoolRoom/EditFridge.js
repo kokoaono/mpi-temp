@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ValidateInfo } from './ValidateInfo';
+import { useFridgeUpdate } from './FridgeContext';
 import {
   Flex,
   FormControl,
@@ -9,7 +10,9 @@ import {
   Box
 } from '@chakra-ui/react';
 
-export const EditFridge = ({ onEdit, fridge }) => {
+export const EditFridge = ({ fridge }) => {
+  const update = useFridgeUpdate()
+
   const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
   const [fridgeTemp, setFridgeTemp] = useState(fridge.fridgeTemp);
@@ -25,7 +28,7 @@ export const EditFridge = ({ onEdit, fridge }) => {
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setFridgeTemp(temp)
     }
-    onEdit(id, updatedFridge)
+    update(id, updatedFridge)
   };
 
   return (

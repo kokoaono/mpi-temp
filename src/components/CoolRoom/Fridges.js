@@ -1,8 +1,12 @@
 import React from 'react';
 import { Fridge } from './Fridge';
+import { useDeleteAllFridges, useFridges } from './FridgeContext';
 import { Button, Box, Flex } from '@chakra-ui/react';
 
-export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
+export const Fridges = () => {
+  const { fridges } = useFridges();
+  const deleteAll = useDeleteAllFridges();
+
   return (
     <Flex flexDir={'column'}>
       <Box>
@@ -11,7 +15,7 @@ export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
             m={4}
             size='sm'
             colorScheme='red'
-            onClick={onDeleteAll}
+            onClick={deleteAll}
           >
             Clear all
           </Button>
@@ -20,8 +24,6 @@ export const Fridges = ({ fridges, onDelete, onDeleteAll, onEdit }) => {
           <Fridge
             key={fridge.id}
             fridge={fridge}
-            onDelete={onDelete}
-            onEdit={onEdit}
           />
         ))}
       </Box>

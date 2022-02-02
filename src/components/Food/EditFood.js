@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ValidateFoodInfo } from './ValidateFoodInfo';
+import { useItemUpdate } from './ItemContext';
 import {
   Flex,
   FormControl,
@@ -10,7 +11,8 @@ import {
   Select
 } from '@chakra-ui/react';
 
-export const EditFood = ({ onEdit, item }) => {
+export const EditFood = ({ item }) => {
+  const update = useItemUpdate();
   const id = item.id;
   const [itemName, setItemName] = useState(item.itemName);
   const [itemTemp, setItemTemp] = useState(item.itemTemp);
@@ -24,14 +26,15 @@ export const EditFood = ({ onEdit, item }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    setErrors(ValidateFoodInfo(itemName, itemTemp, time))
+    setErrors(ValidateFoodInfo(itemName, itemTemp, time));
+
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,2})?$/)) {
       setItemTemp(temp)
     }
-    onEdit(id, updatedItem)
+    update(id, updatedItem)
   };
-  
+
   return (
     <Flex m={3}>
       <FormControl>
@@ -42,10 +45,9 @@ export const EditFood = ({ onEdit, item }) => {
         >
           {items.map(item => <option key={item}>{item}</option>)}
         </Select>
-        {!itemName &&
-          <FormHelperText color='red'>
-            {errors.itemName}
-          </FormHelperText>
+        {!itemName && <FormHelperText color='red'>
+          {errors.itemName}
+        </FormHelperText>
         }
         <Box my={3}>
           <Input

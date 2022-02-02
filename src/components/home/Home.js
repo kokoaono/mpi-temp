@@ -3,6 +3,7 @@ import { Nav } from '../NavigationBar/Nav';
 import { FoodApp } from '../Food/FoodApp';
 import { FridgeApp } from '../CoolRoom/FridgeApp';
 import { ItemProvider } from '../Food/ItemContext';
+import { FridgeProvider } from '../CoolRoom/FridgeContext';
 import { Box, Flex } from '@chakra-ui/react';
 
 
@@ -15,7 +16,10 @@ export default function Home() {
           <ItemProvider>
             <FoodApp />
           </ItemProvider>
-          <FridgeApp />
+          
+          <FridgeProvider>
+            <FridgeApp />
+          </FridgeProvider>
         </Flex>
       </Box>
     </>

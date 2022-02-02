@@ -7,34 +7,8 @@ import { Flex, Box } from '@chakra-ui/react';
 
 
 export const FoodApp = () => {
-  const { items, setItems } = useItems()
-  // const [items, setItems] = useState([])
+  const { items } = useItems();
   const [showAddItem, setShowAddItem] = useState(false);
-
-
-  //Add new item
-  const addItem = item => {
-    const id = Math.floor(Math.random() * 100)
-    const date = Date();
-    const newItem = { id, date, ...item }
-    setItems([...items, newItem])
-  };
-
-  //Delete item by its ID
-  const deleteItem = id => {
-    const filteredItems = items.filter(item => item.id !== id)
-    setItems(filteredItems)
-  };
-
-  //Delete all
-  const deleteAllItems = () => (
-    setItems([])
-  );
-
-  //Update Item
-  const updateFoodItem = (id, updatedItem) => {
-    setItems(items.map(item => item.id === id ? updatedItem : item))
-  };
 
   // SAVING DATA TO LS
   useEffect(() => {
@@ -56,19 +30,11 @@ export const FoodApp = () => {
             onAdd={() => setShowAddItem(!showAddItem)}
             showAdd={showAddItem}
           />
-          {showAddItem && <AddItem onAdd={addItem} />}
-
-          {items.length > 0 ? (
-            <FoodItems
-              // items={items}
-              onEdit={updateFoodItem}
-              onDelete={deleteItem}
-              onDeleteAll={deleteAllItems} />) : ('No Items to show')
-          }
+          {showAddItem && <AddItem />}
+          
+          {items.length > 0 ? (<FoodItems />) : ('No Items to show')}
         </Box>
       </Flex >
     </Box >
   )
 };
-
-//FoodApp.js

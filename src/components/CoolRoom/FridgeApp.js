@@ -2,38 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Fridges } from './Fridges';
 import { AddFridge } from './AddFridge';
 import { FridgeHeader } from './FridgeHeader';
-import { getData } from '../Lsfunctions';
+import { useFridges } from './FridgeContext';
 import { Flex, Box } from '@chakra-ui/react';
 
 
 export const FridgeApp = () => {
-
-  const [fridges, setFridges] = useState(getData());
+  const { fridges } = useFridges();
   const [showAddFridge, setShowAddFridge] = useState(false);
-
-  //Add fridge
-  const addFridge = fridge => {
-    const id = Math.floor(Math.random() * 100)
-    const date = Date()
-    const newFridge = { id, date, ...fridge }
-    setFridges([...fridges, newFridge])
-  };
-
-  //Delete Fridge by its ID
-  const deleteFridge = id => {
-    const filteredFridges = fridges.filter(fridge => fridge.id !== id)
-    setFridges(filteredFridges)
-  };
-
-  //Delete All
-  const deleteAll = () => (
-    setFridges([])
-  );
-
-  //Edit Fridge
-  const updateFridge = (id, updatedFridge) => {
-    setFridges(fridges.map(fridge => fridge.id === id ? updatedFridge : fridge))
-  };
 
   // SAVING DATA TO LS
   useEffect(() => {
@@ -55,16 +30,9 @@ export const FridgeApp = () => {
             onAdd={() => setShowAddFridge(!showAddFridge)}
             showAdd={showAddFridge}
           />
-          {showAddFridge && <AddFridge onAdd={addFridge} />}
+          {showAddFridge && <AddFridge />}
 
-
-          {fridges.length > 0 ? (
-            <Fridges
-              fridges={fridges}
-              onEdit={updateFridge}
-              onDelete={deleteFridge}
-              onDeleteAll={deleteAll} />) : ('No fridges to show')
-          }
+          {fridges.length > 0 ? (<Fridges />) : ('No fridges to show')}
         </Box>
       </Flex>
     </Box>

@@ -2,6 +2,7 @@ import React from 'react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { EditFood } from './EditFood';
+import { useItemDelete } from './ItemContext';
 import {
   Box,
   Text,
@@ -16,8 +17,9 @@ import {
   ModalCloseButton
 } from '@chakra-ui/react';
 
-export const FoodItem = ({ item, onDelete, onEdit }) => {
+export const FoodItem = ({ item }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const deleteItem = useItemDelete();
 
   return (
     <Flex>
@@ -33,7 +35,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
           <ModalHeader textAlign='center'>Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFood item={item} onEdit={onEdit} />
+            <EditFood item={item} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -51,7 +53,7 @@ export const FoodItem = ({ item, onDelete, onEdit }) => {
         fontSize='20px'
         variant='solid'
         colorScheme='red'
-        onClick={() => onDelete(item.id)}
+        onClick={() => deleteItem(item.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex >
