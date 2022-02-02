@@ -53,6 +53,7 @@ export const FridgeProvider = ({ children }) => {
   const deleteAll = () => (
     setFridges([])
   );
+
   return (
     <FridgeContext.Provider value={{ fridges, setFridges }}>
       <FridgeAddContext.Provider value={addFridge}>
