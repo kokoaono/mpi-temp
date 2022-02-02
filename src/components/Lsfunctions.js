@@ -25,10 +25,10 @@ function getItemData() {
 };
 
 function getUserData() {
-  const savedUser = localStorage.getItem('user');
+  const savedUser = localStorage.getItem('users');
   if (savedUser) {
     return JSON.parse(savedUser)
   } else {
     return []
   }
-}
+};

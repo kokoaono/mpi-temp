@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 // import { UseLocalStoage } from './UseLocalStoage';
+import { getUserData } from '../Lsfunctions'
+import { useAuth } from './AuthContext';
 
 //For registration
 export const useForm = (Validate, callback) => {
   // const [values, setValues] = UseLocalStoage('users', [{ name: '', email: '', password: '' }])
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(getUserData());
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -48,15 +50,17 @@ export const useForm = (Validate, callback) => {
   }, [errors, isSubmitting, values, callback])
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(users))
+    localStorage.setItem('users', JSON.stringify(users))
   }, [users])
+
 
   return { handleChange, values, handleSubmit, handlePassword, show, errors }
 };
 
 
-//functions for login
+//For login
 export const useLoginForm = (validateLogin) => {
+  const setAuthData = useAuth();
   const [values, setValues] = useState({
     username: '',
     password: ''
