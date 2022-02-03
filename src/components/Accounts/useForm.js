@@ -60,7 +60,8 @@ export const useForm = (Validate, callback) => {
 
 //For login
 export const useLoginForm = (validateLogin) => {
-  const setAuthData = useAuth();
+  const { setAuthData } = useAuth();
+  console.log(setAuthData);
   const [values, setValues] = useState({
     username: '',
     password: ''
@@ -86,6 +87,7 @@ export const useLoginForm = (validateLogin) => {
     e.preventDefault();
     setErrors(validateLogin(values))
     setIsSubmitting(true)
+    setAuthData(values.username)
   };
 
   useEffect(() => {
