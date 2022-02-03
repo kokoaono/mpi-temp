@@ -6,7 +6,6 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import WithBackgroundImage from './components/home/Example';
 
-
 const App = () => {
   return (
     <Fragment>

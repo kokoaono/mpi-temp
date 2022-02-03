@@ -1,5 +1,4 @@
 import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
-import { useAuth } from '../Accounts/AuthContext';
 
 import {
   Box,
@@ -23,11 +22,10 @@ import {
 export const Nav = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   // const { isOpen, onOpen, onClose } = useDisclosure();
-  const { auth, setAuthData } = useAuth();
+
 
   const onLogout = () => {
-    console.log('logout clicked');
-    setAuthData(null)
+    console.log('logout clicked')
   };
 
   return (
@@ -66,8 +64,7 @@ export const Nav = () => {
                   </Center>
                   <br />
                   <Center>
-                    {/* <p>Username</p> */}
-                    <p>{auth.data}</p>
+                    <p>Username</p>
                   </Center>
                   <br />
                   <MenuDivider />

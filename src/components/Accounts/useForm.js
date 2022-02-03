@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 // import { UseLocalStoage } from './UseLocalStoage';
 import { getUserData } from '../Lsfunctions'
-import { useAuth } from './AuthContext';
 
 //For registration
 export const useForm = (Validate, callback) => {
@@ -60,8 +59,6 @@ export const useForm = (Validate, callback) => {
 
 //For login
 export const useLoginForm = (validateLogin) => {
-  const { setAuthData } = useAuth();
-  console.log(setAuthData);
   const [values, setValues] = useState({
     username: '',
     password: ''
@@ -87,7 +84,6 @@ export const useLoginForm = (validateLogin) => {
     e.preventDefault();
     setErrors(validateLogin(values))
     setIsSubmitting(true)
-    setAuthData(values.username)
   };
 
   useEffect(() => {
