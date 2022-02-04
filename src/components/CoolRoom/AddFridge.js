@@ -22,16 +22,20 @@ export const AddFridge = () => {
       setFridgeTemp(temp)
     }
   };
-
-  const onSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setErrors(ValidateInfo(fridgeName, fridgeTemp));
-
-    addFridge({ fridgeName, fridgeTemp });
-
+    if (!fridgeName || !fridgeTemp) {
+      return setErrors(ValidateInfo(fridgeName, fridgeTemp))
+    }
+    try {
+      await addFridge({ fridgeName, fridgeTemp });
+    } catch {
+      setErrors('failed')
+    }
     setFridgeName('');
     setFridgeTemp('');
   };
+
 
   return (
     <Flex m={5}>
@@ -69,7 +73,7 @@ export const AddFridge = () => {
           size='sm'
           variant={'solid'}
           colorScheme='green'
-          onClick={onSubmit}
+          onClick={handleSubmit}
         >
           ADD
         </Button>

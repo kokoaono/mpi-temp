@@ -15,7 +15,7 @@ export const Validate = (values) => {
 
   //Password
   if (!values.password) {
-    errors.password = 'Password is required'
+    errors.password = 'Password required'
   } else if (values.password.length < 4) {
     errors.password = 'Password needs to be 4 characteres or more'
   };
@@ -29,12 +29,12 @@ export const validateLogin = (values) => {
 
   //Name
   if (!values.username.trim()) {
-    errors.username = 'Username is required'
+    errors.username = 'Username required'
   };
 
   //Password
   if (!values.password) {
-    errors.password = 'Password is required'
+    errors.password = 'Password required'
   };
 
   return errors;

@@ -25,16 +25,19 @@ export const AddItem = () => {
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setItemTemp(temp)
-      return;
     }
   };
 
-  const onSubmit = e => {
+  const handleSutmit = async e => {
     e.preventDefault();
-    setErrors(ValidateFoodInfo(itemName, itemTemp, time))
-
-    addItem({ itemTemp, itemName, time });
-
+    if (!itemName || !itemTemp || !time) {
+      return setErrors(ValidateFoodInfo(itemName, itemTemp, time))
+    }
+    try {
+      await addItem({ itemTemp, itemName, time })
+    } catch {
+      setErrors('')
+    }
     setItemTemp('');
     setItemName('');
     setTime('');
@@ -87,7 +90,7 @@ export const AddItem = () => {
           size='sm'
           variant='solid'
           colorScheme='green'
-          onClick={onSubmit}
+          onClick={handleSutmit}
         >
           ADD
         </Button>
