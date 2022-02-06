@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-// import { UseLocalStoage } from './UseLocalStoage';
-import { getUserData } from '../Lsfunctions'
+import { getUserData } from '../Lsfunctions';
 
 //For registration
 export const useForm = (Validate, callback) => {
-  // const [values, setValues] = UseLocalStoage('users', [{ name: '', email: '', password: '' }])
   const [users, setUsers] = useState(getUserData());
   const [values, setValues] = useState({
     name: '',
@@ -24,17 +22,24 @@ export const useForm = (Validate, callback) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const newUser = {
       id: Math.floor(Math.random() * 100),
       name: values.name,
       email: values.email,
       password: values.password
-    };
-    setUsers([...users, newUser])
-    setErrors(Validate(values))
-    setIsSubmitting(true)
+    }
+
+    if (!values.name || !values.email || !values.password) {
+      return setErrors(Validate(values))
+    }
+    try {
+      await setUsers([...users, newUser])
+      setIsSubmitting(true)
+    } catch {
+      setErrors('')
+    }
   };
 
 
@@ -51,7 +56,6 @@ export const useForm = (Validate, callback) => {
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(users))
   }, [users])
-
 
   return { handleChange, values, handleSubmit, handlePassword, show, errors }
 };
