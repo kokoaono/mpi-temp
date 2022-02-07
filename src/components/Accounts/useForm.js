@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../Lsfunctions';
 
 //For registration
@@ -63,6 +64,7 @@ export const useForm = (Validate, callback) => {
 
 //For login
 export const useLoginForm = (validateLogin) => {
+  // const navigate = useNavigate();
   const [values, setValues] = useState({
     username: '',
     password: ''
@@ -88,13 +90,14 @@ export const useLoginForm = (validateLogin) => {
     e.preventDefault();
     setErrors(validateLogin(values))
     setIsSubmitting(true)
+    // navigate('/home')
   };
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log(values);
+      console.log(values, checkedItem);
     }
-  }, [errors, isSubmitting, values])
+  }, [errors, isSubmitting, values, checkedItem])
 
 
 
