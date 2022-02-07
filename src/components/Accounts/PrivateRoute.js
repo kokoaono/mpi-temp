@@ -1,32 +1,33 @@
 import React from 'react';
-import { Route, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { auth } = useAuth();
-  const { loading } = auth
-  const navigate = useNavigate()
+export const PrivateRoute = ({ children }) => {
+  const auth = useAuth();
+  return auth ? children : <Navigate to={"/home"} />
 
-  if (loading) {
-    return (
-      <Route
-        {...rest}
-        render={() => {
-          return <p>Loading...</p>
-        }}
-      />
-    )
-  }
-  return (
-    <Route
-      {...rest}
-      render={routeProps => {
-        return auth.data ? (
-          <Component {...routeProps} />
-        ) : (
-          navigate('/login')
-        )
-      }}
-    />
-  )
+  // const { loading } = auth
+
+  // if (loading) {
+  //   return (
+  //     <Route
+  //       {...rest}
+  //       render={() => {
+  //         return <p>Loading...</p>
+  //       }}
+  //     />
+  //   )
+  // }
+  // return (
+  //   <Route
+  //     {...rest}
+  //     render={routeProps => {
+  //       return auth.data ? (
+  //         <Component {...routeProps} />
+  //       ) : (
+  //         navigate('/login')
+  //       )
+  //     }}
+  //   />
+  // )
 };
