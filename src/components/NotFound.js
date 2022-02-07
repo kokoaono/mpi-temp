@@ -27,7 +27,7 @@ export const NotFound = () => {
         bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
         color="white"
         variant="solid"
-        onClick={e => navigate('/home')}>
+        onClick={() => navigate('/home')}>
         Go to Home
       </Button>
     </Box>

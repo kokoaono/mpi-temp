@@ -10184,11 +10184,6 @@
     "use-callback-ref" "^1.2.5"
     "use-sidecar" "^1.0.5"
 
-"react-hook-form@^7.21.0":
-  "integrity" "sha512-aekCf+dedYFIg+7nCK2acMvZ+s6Ohw2I7UNQ+zNIadBl1SoXow2Tl6c3F49xF8GFCdn5jeK43JHH26rmtdRyLQ=="
-  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.21.0.tgz"
-  "version" "7.21.0"
-
 "react-icons@^4.3.1":
   "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
   "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
