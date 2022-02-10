@@ -10,7 +10,7 @@ import {
   Box
 } from '@chakra-ui/react';
 
-export const EditFridge = ({ fridge }) => {
+export const EditFridge = ({ fridge, onClose }) => {
   const update = useFridgeUpdate()
 
   const id = fridge.id;
@@ -21,15 +21,20 @@ export const EditFridge = ({ fridge }) => {
   const date = Date();
   const updatedFridge = { id, fridgeName, fridgeTemp, date }
 
-  const onSubmit = e => {
-    e.preventDefault();
-    setErrors(ValidateInfo(fridgeName, fridgeTemp))
+  const handleChange = e => {
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
       setFridgeTemp(temp)
     }
-    update(id, updatedFridge)
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setErrors(ValidateInfo(fridgeName, fridgeTemp))
+    update(id, updatedFridge)
+    onClose()
+  };
+
 
   return (
     <Flex m={3}>
@@ -52,7 +57,7 @@ export const EditFridge = ({ fridge }) => {
             type='number'
             placeholder='Temperature'
             value={fridgeTemp}
-            onChange={onSubmit}
+            onChange={handleChange}
           />
           {!fridgeTemp &&
             <FormHelperText color='red'>
@@ -62,11 +67,12 @@ export const EditFridge = ({ fridge }) => {
         </Box>
         <Box my={3}>
           <Button
+            w={'100%'}
             p={4}
             size='sm'
             variant='solid'
             colorScheme='green'
-            onClick={onSubmit}
+            onClick={handleSubmit}
           >
             Edit Fridge
           </Button>

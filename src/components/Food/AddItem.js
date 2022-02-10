@@ -35,8 +35,9 @@ export const AddItem = () => {
     }
     try {
       await addItem({ itemTemp, itemName, time })
-    } catch {
-      setErrors('')
+    } catch (error) {
+      console.error(error)
+      // setErrors('')
     }
     setItemTemp('');
     setItemName('');

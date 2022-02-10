@@ -36,7 +36,7 @@ export const Fridge = ({ fridge }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFridge fridge={fridge} />
+            <EditFridge fridge={fridge} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

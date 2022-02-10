@@ -35,7 +35,7 @@ export const FoodItem = ({ item }) => {
           <ModalHeader textAlign='center'>Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFood item={item} />
+            <EditFood item={item} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

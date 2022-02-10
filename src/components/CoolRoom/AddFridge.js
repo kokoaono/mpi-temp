@@ -22,6 +22,7 @@ export const AddFridge = () => {
       setFridgeTemp(temp)
     }
   };
+  
   const handleSubmit = async e => {
     e.preventDefault();
     if (!fridgeName || !fridgeTemp) {

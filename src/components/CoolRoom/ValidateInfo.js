@@ -2,11 +2,11 @@ export const ValidateInfo = (fridgeName, fridgeTemp) => {
   let errors = {};
 
   if (!fridgeName.trim()) {
-    errors.fridgeName = 'Fridge name or number is required'
+    errors.fridgeName = 'Name or number required'
   }
 
   if (!fridgeTemp) {
-    errors.fridgeTemp = 'Temperature is required'
+    errors.fridgeTemp = 'Temperature required'
   }
 
   return errors;
