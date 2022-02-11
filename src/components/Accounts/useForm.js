@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getUserData } from '../Lsfunctions';
 
 //For registration
@@ -64,7 +63,6 @@ export const useForm = (Validate, callback) => {
 
 //For login
 export const useLoginForm = (validateLogin) => {
-  // const navigate = useNavigate();
   const [values, setValues] = useState({
     username: '',
     password: ''
@@ -90,7 +88,6 @@ export const useLoginForm = (validateLogin) => {
     e.preventDefault();
     setErrors(validateLogin(values))
     setIsSubmitting(true)
-    // navigate('/home')
   };
 
   useEffect(() => {
@@ -98,7 +95,6 @@ export const useLoginForm = (validateLogin) => {
       console.log(values, checkedItem);
     }
   }, [errors, isSubmitting, values, checkedItem])
-
 
 
   return { handleChange, values, handleSubmit, errors, checkedItem, handleCheckedItem }

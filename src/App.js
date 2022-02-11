@@ -1,21 +1,22 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Form } from './components/Accounts/Form';
 import Home from './components/home/Home';
 import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
-import WithBackgroundImage from './components/home/Example';
+import LandingPage from './components/home/LandingPage';
+import ForgotPwd from './components/ForgotPwd';
 
 const App = () => {
-  const [user, setUser] = useState(null);
   return (
     <Fragment>
       <Router>
         <Routes>
-          <Route path='/' element={<WithBackgroundImage />} />
+          <Route path='/' element={<LandingPage />} />
           <Route path='/home' element={<Home />} />
-          <Route path='register' element={<Form />} />
+          <Route path='requestpassword' element={<ForgotPwd />} />
           <Route path='login' element={<Login />} />
+          <Route path='register' element={<Form />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

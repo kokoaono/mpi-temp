@@ -76,7 +76,7 @@ export default function Login({ submitLoginForm }) {
                 >
                   Remember me
                 </Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
+                <Link href='requestpassword' color={'blue.400'}>Forgot password?</Link>
               </Stack>
               <Button
                 bg={'blue.400'}

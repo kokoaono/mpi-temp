@@ -15,11 +15,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setAuth({ loading: false, data: JSON.parse(localStorage.getItem('authData')) })
+    setAuth({ loading: false, data: JSON.parse(localStorage.getItem('users')) })
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('authData', JSON.stringify(auth.data))
+    localStorage.setItem('users', JSON.stringify(auth.data))
   }, [auth.data])
 
   return (

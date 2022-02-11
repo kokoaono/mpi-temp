@@ -1,4 +1,5 @@
-import bgImage from '../../images/bgImage.jpg'
+import React from 'react';
+import bgImage from '../../images/bgImage.jpg';
 import { useNavigate } from 'react-router-dom';
 import {
   Stack,
@@ -9,7 +10,7 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 
-export default function WithBackgroundImage() {
+export default function LandingPage() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
