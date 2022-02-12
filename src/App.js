@@ -6,17 +6,25 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
+import { RequireAuth } from './components/Accounts/RequireAuth';
 
 const App = () => {
   return (
     <Fragment>
       <Router>
         <Routes>
+          {/* public routes */}
           <Route path='/' element={<LandingPage />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='requestpassword' element={<ForgotPwd />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Form />} />
+          <Route path='requestpassword' element={<ForgotPwd />} />
+
+          {/* protected routes */}
+          <Route element={<RequireAuth />}>
+            <Route path='/home' element={<Home />} />
+          </Route>
+
+          {/*   catch all */}
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

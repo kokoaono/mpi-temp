@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext';
 import { getUserData } from '../Lsfunctions';
 
 //For registration
@@ -63,6 +65,11 @@ export const useForm = (Validate, callback) => {
 
 //For login
 export const useLoginForm = (validateLogin) => {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
   const [values, setValues] = useState({
     username: '',
     password: ''
@@ -87,6 +94,7 @@ export const useLoginForm = (validateLogin) => {
   const handleSubmit = e => {
     e.preventDefault();
     setErrors(validateLogin(values))
+    navigate(from, { replace: true })
     setIsSubmitting(true)
   };
 
