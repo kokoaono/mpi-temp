@@ -1,3 +1,5 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 import {
@@ -18,14 +20,19 @@ import {
   Center,
   HStack,
 } from '@chakra-ui/react';
+import { useAuth } from '../Context/AuthContext';
 
 export const Nav = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
   // const { isOpen, onOpen, onClose } = useDisclosure();
 
 
   const onLogout = () => {
     console.log('logout clicked')
+    setAuth();
+    navigate('/', { state: { from: { pathname: '/home' } } })
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
 import { getUserData } from '../Lsfunctions';
 
@@ -44,7 +44,6 @@ export const useForm = (Validate, callback) => {
     }
   };
 
-
   const handlePassword = () => {
     setShow(!show)
   };
@@ -67,15 +66,14 @@ export const useForm = (Validate, callback) => {
 export const useLoginForm = (validateLogin) => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || '/';
 
   const [values, setValues] = useState({
     username: '',
     password: ''
   });
   const [checkedItem, setCheckedItem] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleChange = e => {
@@ -93,16 +91,19 @@ export const useLoginForm = (validateLogin) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setAuth({ values })
     setErrors(validateLogin(values))
-    navigate(from, { replace: true })
-    setIsSubmitting(true)
+    navigate('/home', { state: { from: { pathname: 'login' } } }
+    )
+    // setIsSubmitting(true)
   };
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log(values, checkedItem);
-    }
-  }, [errors, isSubmitting, values, checkedItem])
+  // useEffect(() => {
+  //   if (Object.keys(errors).length === 0 && isSubmitting) {
+  //     console.log(values, checkedItem);
+
+  //   }
+  // }, [errors, isSubmitting, values, checkedItem, navigate, from])
 
 
   return { handleChange, values, handleSubmit, errors, checkedItem, handleCheckedItem }
