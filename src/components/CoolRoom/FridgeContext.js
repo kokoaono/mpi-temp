@@ -33,7 +33,7 @@ export const FridgeProvider = ({ children }) => {
   //Add fridge
   const addFridge = fridge => {
     const id = Math.floor(Math.random() * 100)
-    const date = Date()
+    const date = new Date().toDateString()
     const newFridge = { id, date, ...fridge }
     setFridges([...fridges, newFridge])
   };

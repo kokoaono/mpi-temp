@@ -34,7 +34,7 @@ export const ItemProvider = ({ children }) => {
   //Add new item
   const addItem = item => {
     const id = Math.floor(Math.random() * 100)
-    const date = Date();
+    const date = new Date().toDateString();
     const newItem = { id, date, ...item }
     setItems([...items, newItem])
   };

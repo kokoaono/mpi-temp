@@ -89,12 +89,16 @@ export const useLoginForm = (validateLogin) => {
     setCheckedItem(checked)
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setAuth({ values })
-    setErrors(validateLogin(values))
-    navigate('/home', { state: { from: { pathname: 'login' } } }
-    )
+    try {
+      setErrors(validateLogin(values))
+      setAuth({ values })
+      navigate('/home', { state: { from: { pathname: 'login' } } })
+    } catch (error) {
+      console.log(error)
+    }
+
     // setIsSubmitting(true)
   };
 
