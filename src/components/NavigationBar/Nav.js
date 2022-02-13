@@ -30,8 +30,7 @@ export const Nav = () => {
 
 
   const onLogout = () => {
-    console.log('logout clicked')
-    setAuth();
+    setAuth({});
     navigate('/', { state: { from: { pathname: '/home' } } })
   };
 
