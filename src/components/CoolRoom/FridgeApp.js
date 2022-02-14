@@ -16,25 +16,28 @@ export const FridgeApp = () => {
   }, [fridges]);
 
   return (
-    <Flex m={10}
-    >
-      <Box
-        p={8}
-        px={10}
-        shadow='md'
-        maxW='lg'
-        borderWidth='1px'
-        borderRadius='lg'
-        overflow='hidden'
-      >
-        <FridgeHeader
-          onAdd={() => setShowAddFridge(!showAddFridge)}
-          showAdd={showAddFridge}
-        />
-        {showAddFridge && <AddFridge />}
+    <Box mx={5}>
+      <Flex m={10}>
+        <Box
+          p={2}
+          shadow='md'
+          maxW='lg'
+          borderWidth='1px'
+          borderRadius='lg'
+          overflow='hidden'
+        >
 
-        {fridges.length > 0 ? (<Fridges />) : 'No fridges to show'}
-      </Box>
-    </Flex>
+          <Box alignItems={'center'} p={5}>
+            <FridgeHeader
+              onAdd={() => setShowAddFridge(!showAddFridge)}
+              showAdd={showAddFridge}
+            />
+          </Box>
+          {showAddFridge && <AddFridge />}
+
+          {fridges.length > 0 ? <Fridges /> : 'No fridges to show'}
+        </Box>
+      </Flex>
+    </Box>
   )
 };

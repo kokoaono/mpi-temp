@@ -89,6 +89,7 @@ export const AddItem = () => {
           w={'100%'}
           p={4}
           size='sm'
+          shadow={'lg'}
           variant='solid'
           colorScheme='green'
           onClick={handleSutmit}

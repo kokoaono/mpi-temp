@@ -5,7 +5,7 @@ import { getUserData } from '../Lsfunctions';
 
 //For registration
 export const useForm = (Validate, callback) => {
-  const [users, setUsers] = useState(getUserData());
+  const [user, setUser] = useState(getUserData());
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -37,7 +37,7 @@ export const useForm = (Validate, callback) => {
       return setErrors(Validate(values))
     }
     try {
-      await setUsers([...users, newUser])
+      await setUser([...user, newUser])
       setIsSubmitting(true)
     } catch {
       setErrors('')
@@ -55,8 +55,8 @@ export const useForm = (Validate, callback) => {
   }, [errors, isSubmitting, values, callback])
 
   useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users))
-  }, [users])
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [user])
 
   return { handleChange, values, handleSubmit, handlePassword, show, errors }
 };

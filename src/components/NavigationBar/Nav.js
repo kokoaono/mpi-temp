@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
-
+import { useAuth } from '../Context/AuthContext';
 import {
   Box,
   Flex,
@@ -18,9 +18,8 @@ import {
   Stack,
   useColorMode,
   Center,
-  HStack,
+  HStack
 } from '@chakra-ui/react';
-import { useAuth } from '../Context/AuthContext';
 
 export const Nav = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -70,7 +69,7 @@ export const Nav = () => {
                   </Center>
                   <br />
                   <Center>
-                    <p>Username</p>
+                    <p>username</p>
                   </Center>
                   <br />
                   <MenuDivider />

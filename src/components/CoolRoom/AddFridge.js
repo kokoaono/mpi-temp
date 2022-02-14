@@ -22,7 +22,7 @@ export const AddFridge = () => {
       setFridgeTemp(temp)
     }
   };
-  
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (!fridgeName || !fridgeTemp) {
@@ -37,17 +37,15 @@ export const AddFridge = () => {
     setFridgeTemp('');
   };
 
-
   return (
     <Flex m={5}>
-      <FormControl >
-        <Box my={3}>
+      <FormControl>
+        <Box>
           <Input
             type='text'
             placeholder='FridgeName/ No'
             value={fridgeName}
             onChange={e => setFridgeName(e.target.value)}
-
           />
           {errors.fridgeName && (
             <FormHelperText color='red'>
@@ -72,6 +70,7 @@ export const AddFridge = () => {
           w={'100%'}
           p={4}
           size='sm'
+          shadow={'lg'}
           variant={'solid'}
           colorScheme='green'
           onClick={handleSubmit}

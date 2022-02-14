@@ -25,7 +25,7 @@ function getItemData() {
 };
 
 function getUserData() {
-  const savedUser = localStorage.getItem('users');
+  const savedUser = localStorage.getItem('user');
   if (savedUser) {
     return JSON.parse(savedUser)
   } else {

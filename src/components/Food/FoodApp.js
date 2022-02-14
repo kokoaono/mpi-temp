@@ -16,7 +16,7 @@ export const FoodApp = () => {
   }, [items]);
 
   return (
-    <Box>
+    <Box mx={5}>
       <Flex m={10}>
         <Box
           p={2}
@@ -26,13 +26,15 @@ export const FoodApp = () => {
           borderRadius='lg'
           overflow='hidden'
         >
-          <FoodHeader
-            onAdd={() => setShowAddItem(!showAddItem)}
-            showAdd={showAddItem}
-          />
+          <Box alignItems={'center'} p={5}>
+            <FoodHeader
+              onAdd={() => setShowAddItem(!showAddItem)}
+              showAdd={showAddItem}
+            />
+          </Box>
           {showAddItem && <AddItem />}
-          
-          {items.length > 0 ? (<FoodItems />) : ('No Items to show')}
+
+          {items.length > 0 ? <FoodItems /> : 'No Items to show'}
         </Box>
       </Flex >
     </Box >

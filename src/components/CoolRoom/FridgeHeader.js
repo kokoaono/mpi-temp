@@ -2,12 +2,9 @@ import { Button, Box, Heading, Flex } from '@chakra-ui/react';
 
 export const FridgeHeader = ({ title, onAdd, showAdd }) => {
   return (
-    <Flex
-      align={'center'}
-      justify={'center'}
-    >
+    <Flex align={'center'} justify={'center'}>
       <Box>
-        <Heading as='h3' size='lg' p={2}>{title}</Heading>
+        <Heading as='h3' size='lg'>{title}</Heading>
         <Button
           m={4}
           size='sm'
@@ -16,8 +13,9 @@ export const FridgeHeader = ({ title, onAdd, showAdd }) => {
         >
           {showAdd ? 'close' : 'create'}
         </Button>
+
       </Box>
-    </Flex>
+    </Flex >
   )
 };
 

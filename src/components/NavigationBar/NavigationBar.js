@@ -1,5 +1,4 @@
 import React from 'react';
-import NavHoverBox from './NavHoverBox';
 import {
   Flex,
   Link,
@@ -40,7 +39,6 @@ const NavigationBar = ({ navSize, title, icon, active, description }) => (
         h={200}
         ml={5}
       >
-        {/* <NavHoverBox title={title} icon={icon} decription={description} /> */}
       </MenuList>
     </Menu>
   </Flex>
