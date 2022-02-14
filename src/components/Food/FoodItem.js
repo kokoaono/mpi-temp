@@ -41,6 +41,7 @@ export const FoodItem = ({ item }) => {
       </Modal>
       <IconButton
         mr={3}
+        boxShadow={'xl'}
         aria-label='edit foodItem'
         fontSize='20px'
         variant='outline'
@@ -49,6 +50,8 @@ export const FoodItem = ({ item }) => {
         icon={<AiOutlineEdit />}
       />
       <IconButton
+        ml={5}
+        boxShadow={'xl'}
         aria-label='delete foodItem'
         fontSize='20px'
         variant='solid'

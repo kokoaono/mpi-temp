@@ -26,7 +26,7 @@ export const Fridge = ({ fridge }) => {
       <Box p={3}>
         <Text>Name: {fridge.fridgeName}</Text>
         <Text>Temperature: {fridge.fridgeTemp} &#8451;</Text>
-        <Text>Created at: {fridge.date}</Text>
+        <Text>Created on: {fridge.date}</Text>
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -40,16 +40,22 @@ export const Fridge = ({ fridge }) => {
           </ModalBody>
         </ModalContent>
       </Modal>
+      <Box >
+
+        <IconButton
+          mr={3}
+          boxShadow={'xl'}
+          aria-label='edit fridge'
+          fontSize='20px'
+          variant='outline'
+          colorScheme='green'
+          onClick={onOpen}
+          icon={<AiOutlineEdit />}
+        />
+      </Box>
       <IconButton
-        mr={3}
-        aria-label='edit fridge'
-        fontSize='20px'
-        variant='outline'
-        colorScheme='green'
-        onClick={onOpen}
-        icon={<AiOutlineEdit />}
-      />
-      <IconButton
+        ml={5}
+        boxShadow={'xl'}
         aria-label='delete fridge'
         fontSize='20px'
         variant='solid'
