@@ -66,8 +66,6 @@ export const useForm = (Validate, callback) => {
 export const useLoginForm = (validateLogin) => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || '/';
 
   const [values, setValues] = useState({
     username: '',
@@ -91,19 +89,12 @@ export const useLoginForm = (validateLogin) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setErrors(validateLogin(values))
+    if (!values.username || !values.password) {
+      return setErrors(validateLogin(values))
+    }
     setAuth({ values })
     navigate('/home', { state: { from: { pathname: 'login' } } })
-    // setIsSubmitting(true)
   };
-
-  // useEffect(() => {
-  //   if (Object.keys(errors).length === 0 && isSubmitting) {
-  //     console.log(values, checkedItem);
-
-  //   }
-  // }, [errors, isSubmitting, values, checkedItem, navigate, from])
-
 
   return { handleChange, values, handleSubmit, errors, checkedItem, handleCheckedItem }
 };

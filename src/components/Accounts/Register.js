@@ -71,7 +71,6 @@ export const Register = ({ submitForm }) => {
                   value={values.password}
                   onChange={handleChange}
                 />
-
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'solid'}
