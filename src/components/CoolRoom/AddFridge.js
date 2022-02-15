@@ -26,7 +26,8 @@ export const AddFridge = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!fridgeName || !fridgeTemp) {
-      return setErrors(ValidateInfo(fridgeName, fridgeTemp))
+      setErrors(ValidateInfo(fridgeName, fridgeTemp))
+      return;
     }
     try {
       await addFridge({ fridgeName, fridgeTemp });

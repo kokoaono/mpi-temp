@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
 import { getUserData } from '../Lsfunctions';
 
@@ -66,6 +66,8 @@ export const useForm = (Validate, callback) => {
 export const useLoginForm = (validateLogin) => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.pathname || '/home'
 
   const [values, setValues] = useState({
     username: '',
@@ -90,10 +92,12 @@ export const useLoginForm = (validateLogin) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!values.username || !values.password) {
-      return setErrors(validateLogin(values))
+      setErrors(validateLogin(values))
+      return;
     }
     setAuth({ values })
-    navigate('/home', { state: { from: { pathname: 'login' } } })
+    // navigate('/home', { state: { from: { pathname: 'login' } } })
+    navigate(from, { replace: true })
   };
 
   return { handleChange, values, handleSubmit, errors, checkedItem, handleCheckedItem }

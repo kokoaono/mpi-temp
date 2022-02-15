@@ -31,13 +31,13 @@ export const AddItem = () => {
   const handleSutmit = async e => {
     e.preventDefault();
     if (!itemName || !itemTemp || !time) {
-      return setErrors(ValidateFoodInfo(itemName, itemTemp, time))
+      setErrors(ValidateFoodInfo(itemName, itemTemp, time))
+      return;
     }
     try {
       await addItem({ itemTemp, itemName, time })
     } catch (error) {
       console.error(error)
-      // setErrors('')
     }
     setItemTemp('');
     setItemName('');
