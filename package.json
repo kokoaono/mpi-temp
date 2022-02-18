@@ -11,6 +11,8 @@
     "@testing-library/user-event": "^12.1.10",
     "express": "^4.17.2",
     "framer-motion": "^4.1.17",
+    "knex": "^1.0.3",
+    "pg": "^8.7.3",
     "react": "^17.0.2",
     "react-datepicker": "^4.5.0",
     "react-dom": "^17.0.2",
@@ -20,11 +22,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "devStart": "nodemon server.js",
+    "devStart": "nodemon index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "eslintConfig": {
     "extends": [
