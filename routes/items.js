@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
   }
 });
 
+router.post('/', (req, res) => {
+  console.log('new item posted');
+
+});
+
+
+router.delete('/:id', (req, res) => {
+  res.send(`Delete item with ID ${req.params.id}`)
+});
+
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   try {
@@ -26,14 +36,6 @@ router.get('/:id', (req, res) => {
       message: 'something went wrong!'
     })
   }
-});
-
-router.post('/', (req, res) => {
-  console.log('new item posted');
-});
-
-router.delete('/:id', (req, res) => {
-  res.send(`Delete item with ID ${req.params.id}`)
 });
 
 module.exports = router;
