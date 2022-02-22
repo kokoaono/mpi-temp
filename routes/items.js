@@ -15,13 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('new item posted');
-
-});
-
-
-router.delete('/:id', (req, res) => {
-  res.send(`Delete item with ID ${req.params.id}`)
+  console.log('new item posted')
 });
 
 router.get('/:id', (req, res) => {
@@ -36,6 +30,10 @@ router.get('/:id', (req, res) => {
       message: 'something went wrong!'
     })
   }
+});
+
+router.delete('/:id', (req, res) => {
+  res.send(`Delete item with ID ${req.params.id}`)
 });
 
 module.exports = router;
