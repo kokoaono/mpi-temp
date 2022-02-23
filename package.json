@@ -1,7 +1,6 @@
 {
   "name": "mpi-temp",
   "version": "0.1.0",
-  "main": "server.js",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
@@ -23,7 +22,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "devStart": "nodemon --watch server.js",
+    "devStart": "nodemon server",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

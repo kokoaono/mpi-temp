@@ -14,10 +14,23 @@ router.get('/', (req, res) => {
   }
 });
 
+// Create item
 router.post('/', (req, res) => {
-  console.log('new item posted')
+  const newItem = {
+    id: Math.floor(Math.random() * 100),
+    itemName: req.body.name,
+    itemTemp: req.body.temperature
+  }
+
+  if (!newItem.name || !newItem.temperature) {
+    return res.status(400).json({ message: "Please include name and temperature" })
+  }
+
+  items.push(newItem)
+  res.json(items)
 });
 
+//Individual item
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   try {
@@ -25,6 +38,21 @@ router.get('/:id', (req, res) => {
     res.status(200).json({
       data: item
     });
+  } catch (err) {
+    res.status(400).json({
+      message: 'something went wrong!'
+    })
+  }
+});
+
+//Update item
+router.put('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const found = items.find(item => item.id === id);
+    if(found){
+      const updateItem  = req.body;
+    }
   } catch (err) {
     res.status(400).json({
       message: 'something went wrong!'
