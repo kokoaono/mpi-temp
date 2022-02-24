@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const db = require('../db/items');
 const items = require('../dummyData');
 
 router.get('/', (req, res) => {
@@ -50,8 +51,8 @@ router.put('/:id', (req, res) => {
   const id = Number(req.params.id)
   try {
     const found = items.find(item => item.id === id);
-    if(found){
-      const updateItem  = req.body;
+    if (found) {
+      const updateItem = req.body;
     }
   } catch (err) {
     res.status(400).json({

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fridges = require('../dummyFridgeData');
+const fridges = require('../../dummyFridgeData');
 
 router.get('/', (req, res) => {
   try {
