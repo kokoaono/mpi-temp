@@ -1,25 +1,34 @@
-const config = require('../../knexfile').development
-const database = require('knex')(config)
+// const config = require('../../knexfile').development
+// const database = require('knex')(config)
+
+const database = require('./connection')
 
 //DB functions
 module.exports = {
   getItems,
-  close,
+  // close,
   addItem
 }
 
-function close(db = database) {
-  db.destroy()
-}
+// function close(db = database) {
+//   db.destroy()
+// }
 
 //get all items
 function getItems(db = database) {
-  return db('items').select()
+  return db('test_items').select()
 };
 
 //Add an item
 function addItem(newItem, db = database) {
   const { name } = newItem
-  return db('items')
+  return db('test_items')
     .insert({ name })
+    .then(([id]) => {
+      return { id, name }
+    })
+    .catch(err => {
+      console.error(err)
+      throw err
+    })
 };
