@@ -6,7 +6,7 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
-import { RequireAuth } from './components/Accounts/RequireAuth';
+// import { RequireAuth } from './components/Accounts/RequireAuth';
 
 const App = () => {
   return (
@@ -20,9 +20,9 @@ const App = () => {
           <Route path='requestpassword' element={<ForgotPwd />} />
 
           {/* protected routes */}
-          <Route element={<RequireAuth />}>
-            <Route path='/home' element={<Home />} />
-          </Route>
+          {/* <Route element={<RequireAuth />}> */}
+          <Route path='/home' element={<Home />} />
+          {/* </Route> */}
 
           {/*   catch all */}
           <Route path='*' element={<NotFound />} />

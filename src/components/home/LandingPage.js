@@ -40,7 +40,7 @@ export default function LandingPage() {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            MSG goes here...
+            Let's get started !!
           </Text>
           <Stack direction={'row'}>
             <Button
