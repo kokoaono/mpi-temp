@@ -21,11 +21,11 @@ router.get('/', (req, res) => {
 
 //Add Item
 router.post('/', (req, res) => {
-  const { name } = req.body
-  const newItem = { name }
+  const { itemName } = req.body
+  const newItem = { itemName }
   db.addItem(newItem)
-    .then(name => {
-      res.status(201).json({ name })
+    .then(item => {
+      res.status(201).json({ item })
       return null
     })
     .catch(() => {
@@ -34,6 +34,19 @@ router.post('/', (req, res) => {
           title: 'failed to add item'
         }
       })
+    })
+});
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteItem(id)
+    .then(() => {
+      res.status(202).json('Item successfully deleted!')
+      return null
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Unable to delete item' })
     })
 });
 // const newItem = {
@@ -69,8 +82,6 @@ router.post('/', (req, res) => {
 //   res.send(`update item with ID ${req.params.id}`)
 // });
 
-// router.delete('/:id', (req, res) => {
-//   res.send(`Delete item with ID ${req.params.id}`)
-// });
+
 
 module.exports = router;
