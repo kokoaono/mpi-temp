@@ -3,7 +3,7 @@ const db = require('../db/items')
 
 const router = express.Router();
 
-
+// Get all items
 router.get('/', (req, res) => {
   db.getItems()
     .then(result => {
@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
     })
 });
 
+//Delete an item 
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.deleteItem(id)
@@ -44,25 +45,35 @@ router.delete('/:id', (req, res) => {
       res.status(202).json('Item successfully deleted!')
       return null
     })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({ message: 'Unable to delete item' })
+    .catch(() => {
+      res.status(500).json({
+        error: {
+          title: 'something went wrong!'
+        }
+      })
     })
 });
-// const newItem = {
-//   itemName: req.body.name,
-//   itemTemp: req.body.temperature
-// }
 
-//   if (!newItem.name || !newItem.temperature) {
-//     return res.status(400).json({ message: "Please include name and temperature" })
-//   }
-
-//   items.push(newItem)
-//   res.json(items)
-// });
-
-// //Individual item
+//Individual item
+router.get('/:id', (req, res, next) => {
+  const id = Number(req.params.id)
+  db.getItemById(id)
+    .then(itemData => {
+      res.status(200).json({ itemData })
+      if (!id) {
+        res.status(401).json('unable to find the item')
+      } else {
+        return null
+      }
+    })
+  //   .catch(() => {
+  });
+  //     res.status(500).json({
+  //       error: {
+  //         title: 'Unable to get the ID item'
+  //       }
+  //     })
+  //   })
 // router.get('/:id', (req, res) => {
 //   const id = Number(req.params.id)
 //   try {

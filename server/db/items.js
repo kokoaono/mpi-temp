@@ -5,7 +5,8 @@ module.exports = {
   getItems,
   close,
   addItem,
-  deleteItem
+  deleteItem,
+  getItemById
 }
 
 function close(db = connection) {
@@ -30,3 +31,10 @@ function deleteItem(id, db = connection) {
     .where('id', id)
     .del()
 };
+
+//GET item by itemID
+function getItemById(id, db = connection) {
+  return db('items')
+    .where('id', id)
+    .select()
+}
