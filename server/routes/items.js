@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-//Individual item
+//Individual itemv
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
   db.getItemById(id)
