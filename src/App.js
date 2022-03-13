@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Form } from './components/Accounts/Form';
 import Home from './components/home/Home';
@@ -6,9 +6,33 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
+import api from './api/items'
 // import { RequireAuth } from './components/Accounts/RequireAuth';
 
+
+
 const App = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await api.get('/items');
+        setItems(response.data)
+      } catch (err) {
+        if (err.response) {
+          //Not in the 200 response range
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+    }
+    fetchItems()
+  }, [])
+
   return (
     <Fragment>
       <Router>
