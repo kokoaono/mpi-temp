@@ -10,7 +10,29 @@ server.use(express.json());
 // server.use(express.urlencoded({ extended: false }))
 server.get('/items', (req, res) => {
   res.header("Access-control-Allow-Origin", "*")
-  res.send('hello world')
+  res.send(
+    [{
+      "id": 1,
+      "itemName": "Chicken"
+    },
+    {
+      "id": 2,
+      "itemName": "Lamb"
+    },
+    {
+      "id": 3,
+      "itemName": "Pork"
+    },
+    {
+      "id": 4,
+      "itemName": "Beef"
+    },
+    {
+      "id": 98,
+      "itemName": "Crab"
+
+    }]
+  )
 })
 
 const itemsRouter = require('./routes/items');

@@ -14,24 +14,29 @@ import api from './api/items'
 const App = () => {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await api.get('/items');
-        setItems(response.data)
-      } catch (err) {
-        if (err.response) {
-          //Not in the 200 response range
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    }
-    fetchItems()
+  api.get('/items').then(res => {
+    console.log(res.data);
+    setItems(res.data)
   }, [])
+
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await api.get('/items');
+  //       setItems(response.data)
+  //     } catch (err) {
+  //       if (err.response) {
+  //         //Not in the 200 response range
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   }
+  //   fetchItems()
+  // }, [])
 
   return (
     <Fragment>
@@ -42,7 +47,6 @@ const App = () => {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Form />} />
           <Route path='requestpassword' element={<ForgotPwd />} />
-
           {/* protected routes */}
           {/* <Route element={<RequireAuth />}> */}
           <Route path='/home' element={<Home />} />
@@ -52,7 +56,7 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
-    </Fragment>
+    </Fragment >
   )
 };
 

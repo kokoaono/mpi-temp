@@ -10,7 +10,7 @@ export const FoodItems = () => {
   return (
     <Flex flexDir='column'>
       <Box>
-        <Button        
+        <Button
           m={4}
           size={'sm'}
           colorScheme={'red'}
@@ -19,7 +19,7 @@ export const FoodItems = () => {
           Clear all
         </Button>
       </Box>
-      
+
       <Box>
         {items.map(item => (
           <FoodItem
