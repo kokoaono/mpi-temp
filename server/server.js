@@ -8,12 +8,13 @@ const server = express()
 server.use(express.static(path.join(__dirname, './../public')));
 server.use(express.json());
 // server.use(express.urlencoded({ extended: false }))
-server.get('/items', (req, res) => {
+server.get('/home', (req, res) => {
   res.header("Access-control-Allow-Origin", "*")
   res.send(
     [{
       "id": 1,
-      "itemName": "Chicken"
+      "itemName": "Chicken",
+      "itemTemp": 59
     },
     {
       "id": 2,
@@ -29,7 +30,7 @@ server.get('/items', (req, res) => {
     },
     {
       "id": 98,
-      "itemName": "Crab"
+      "itemName": "Fish"
 
     }]
   )
@@ -38,7 +39,7 @@ server.get('/items', (req, res) => {
 const itemsRouter = require('./routes/items');
 const fridgeRouter = require('./routes/fridges');
 
-server.use('/items', itemsRouter);
+server.use('/home', itemsRouter);
 server.use('/fridges', fridgeRouter);
 
 module.exports = server

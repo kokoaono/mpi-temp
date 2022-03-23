@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { getItemData } from '../Lsfunctions';
+import React, { useState, useContext, useEffect } from 'react';
+import api from '../../api/items';
+
 
 const ItemsContext = React.createContext();
 const ItemAddContext = React.createContext();
 const ItemUpdateContext = React.createContext();
 const ItemDeleteContext = React.createContext();
 const DeleteAllContext = React.createContext();
-
 
 export const useItems = () => {
   return useContext(ItemsContext)
@@ -29,7 +29,20 @@ export const useDeleteAll = () => {
 };
 
 export const ItemProvider = ({ children }) => {
-  const [items, setItems] = useState(getItemData());
+
+  const [items, setItems] = useState([]);
+
+  const getItems = async () => {
+    const response = await api.get('/home').catch(err => console.log('Error:', err));
+    if (response && response.data) {
+      setItems(response.data)
+    }
+  };
+
+  useEffect(() => {
+    getItems()
+  }, [])
+
 
   //Add new item
   const addItem = item => {

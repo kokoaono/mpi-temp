@@ -6,19 +6,11 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
-import api from './api/items'
 // import { RequireAuth } from './components/Accounts/RequireAuth';
 
 
 
 const App = () => {
-  const [items, setItems] = useState([]);
-
-  api.get('/items').then(res => {
-    console.log(res.data);
-    setItems(res.data)
-  }, [])
-
   // useEffect(() => {
   //   const fetchItems = async () => {
   //     try {

@@ -6,7 +6,6 @@ import { Button, Box, Flex } from "@chakra-ui/react";
 export const FoodItems = () => {
   const { items } = useItems();
   const deleteAllItems = useDeleteAll();
-
   return (
     <Flex flexDir='column'>
       <Box>
