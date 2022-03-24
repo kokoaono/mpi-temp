@@ -30,17 +30,30 @@ export const useDeleteAll = () => {
 
 export const ItemProvider = ({ children }) => {
 
+  //Create state variable
   const [items, setItems] = useState([]);
 
+  //fetch data
   const getItems = async () => {
-    const response = await api.get('/home').catch(err => console.log('Error:', err));
+    const response = await api.get('/home')
+      .catch(err => console.log('Error:', err));
+
     if (response && response.data) {
       setItems(response.data)
     }
   };
 
+  //create data
+  const createItem = async () => {
+    const data = await api.post('/home', { id: 67, itemName: 'Ham' })
+      .catch(err => console.log('Error', err))
+    console.log(data);
+
+  }
+
   useEffect(() => {
     getItems()
+
   }, [])
 
 
@@ -58,7 +71,7 @@ export const ItemProvider = ({ children }) => {
   };
 
   //Delete item by its ID
-  const deleteItem = id => {
+  const deleteItem = async id => {
     const filteredItems = items.filter(item => item.id !== id)
     setItems(filteredItems)
   };
