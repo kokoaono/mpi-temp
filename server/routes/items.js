@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       return null
     })
     .catch(() => {
-      res.status(500).json({
+      res.status(404).json({
         error: {
           title: 'failed to add item'
         }
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 
 //Delete an item 
 router.delete('/:id', (req, res) => {
-  const id = Number(req.params.id)
+  const id = parseInt(req.params.id)
   db.deleteItem(id)
     .then(() => {
       res.status(202).json('Item successfully deleted!')
@@ -54,39 +54,17 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-//Individual itemv
-router.get('/:id', (req, res, next) => {
-  const id = Number(req.params.id)
+//Individual item
+router.get('/:id', (req, res) => {
+  const id = parseInt(req.params.id)
   db.getItemById(id)
     .then(itemData => {
       res.status(200).json({ itemData })
-      if (!id) {
-        res.status(401).json('unable to find the item')
-      } else {
-        return null
-      }
+
+      if (!id) res.status(404).send(`unable to find item with ID of ${id}`)
+
     })
-  //   .catch(() => {
-  });
-  //     res.status(500).json({
-  //       error: {
-  //         title: 'Unable to get the ID item'
-  //       }
-  //     })
-  //   })
-// router.get('/:id', (req, res) => {
-//   const id = Number(req.params.id)
-//   try {
-//     const item = items.find(item => item.id === id)
-//     res.status(200).json({
-//       data: item
-//     });
-//   } catch (err) {
-//     res.status(400).json({
-//       message: 'something went wrong!'
-//     })
-//   }
-// });
+});
 
 // //Update item
 // router.put('/:id', (req, res) => {
