@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Form } from './components/Accounts/Form';
 import Home from './components/home/Home';
@@ -11,25 +11,6 @@ import ForgotPwd from './components/ForgotPwd';
 
 
 const App = () => {
-  // useEffect(() => {
-  //   const fetchItems = async () => {
-  //     try {
-  //       const response = await api.get('/items');
-  //       setItems(response.data)
-  //     } catch (err) {
-  //       if (err.response) {
-  //         //Not in the 200 response range
-  //         console.log(err.response.data);
-  //         console.log(err.response.status);
-  //         console.log(err.response.headers);
-  //       } else {
-  //         console.log(`Error: ${err.message}`);
-  //       }
-  //     }
-  //   }
-  //   fetchItems()
-  // }, [])
-
   return (
     <Fragment>
       <Router>

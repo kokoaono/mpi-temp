@@ -3,15 +3,11 @@ const connection = require('./connection')
 //DB functions
 module.exports = {
   getItems,
-  close,
   addItem,
   deleteItem,
   getItemById
 }
 
-function close(db = connection) {
-  db.destroy()
-}
 
 //get all items
 function getItems(db = connection) {

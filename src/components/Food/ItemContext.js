@@ -53,7 +53,6 @@ export const ItemProvider = ({ children }) => {
 
   useEffect(() => {
     getItems()
-
   }, [])
 
 
