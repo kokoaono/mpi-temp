@@ -17,12 +17,11 @@ function getItems(db = connection) {
 
 //Add an item
 function addItem(newItem, db = connection) {
-  const { itemName, itemTemp } = newItem
+  const itemName = newItem
   return db('items')
     .insert(
       {
-        itemName,
-        itemTemp
+        itemName
       }
     )
 };
