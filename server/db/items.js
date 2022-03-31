@@ -11,14 +11,20 @@ module.exports = {
 
 //get all items
 function getItems(db = connection) {
-  return db('items').select()
+  return db('items')
+    .select()
 };
 
 //Add an item
 function addItem(newItem, db = connection) {
-  const { itemName } = newItem
+  const { itemName, itemTemp } = newItem
   return db('items')
-    .insert({ itemName })
+    .insert(
+      {
+        itemName,
+        itemTemp
+      }
+    )
 };
 
 //delete by itemID
