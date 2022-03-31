@@ -19,25 +19,25 @@ router.get('/', (req, res) => {
     })
 });
 
-//Add Item
-// router.post('/items', (req, res) => {
-//   const { itemName } = req.body.itemName
-//   const newItem = { itemName }
-//   console.log("newItem", newItem);
+// Add Item
+router.post('/', (req, res) => {
+  const { itemName } = req.body
+  const newItem = itemName;
+  console.log("newItem", newItem);
 
-//   db.addItem(newItem)
-//     .then(item => {
-//       res.status(201).json({ item })
-//       return null
-//     })
-//     .catch(() => {
-//       res.status(404).json({
-//         error: {
-//           title: 'failed to add item'
-//         }
-//       })
-//     })
-// });
+  db.addItem(newItem)
+    .then(item => {
+      res.status(201).json({ item })
+      return null
+    })
+    .catch(() => {
+      res.status(404).json({
+        error: {
+          title: 'failed to add item'
+        }
+      })
+    })
+});
 
 //Delete an item 
 router.delete('/:id', (req, res) => {
