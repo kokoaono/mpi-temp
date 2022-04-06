@@ -57,15 +57,21 @@ router.delete('/:id', (req, res) => {
 //Individual item
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
-
   db.getItemById(id)
     .then(itemData => {
-      res.status(200).json({ itemData })
+      if (!id) {
+        res.send(`unable to get the item with ID of ${id}`)
+      } else {
+        res.status(200).json({ itemData })
+      }
       return null;
     })
     .catch(() => {
-
-      if (!id) res.status(404).send(`unable to find item with ID of ${id}`)
+      res.status(500).json({
+        error: {
+          msg: 'something went wrong'
+        }
+      })
     })
 });
 
@@ -75,11 +81,11 @@ router.patch('/:id', (req, res) => {
   const id = parseInt(req.params.id)
   const updatedItem = { itemName, id }
   db.updateItem(updatedItem)
-    .then(editedItem => {
-      res.status(200).json({ editedItem })
-      return null
+    .then(data => {
+      res.status(200).json({ data })
+      return null;
     })
-    .catch(err => {
+    .catch(() => {
       res.status(500).json({
         error: {
           msg: 'Unable to update the item'

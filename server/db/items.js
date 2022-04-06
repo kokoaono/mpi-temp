@@ -20,11 +20,7 @@ function getItems(db = connection) {
 function addItem(newItem, db = connection) {
   const itemName = newItem
   return db('items')
-    .insert(
-      {
-        itemName
-      }
-    )
+    .insert({ itemName })
 };
 
 //delete by itemID
@@ -46,7 +42,5 @@ function updateItem(updatedItem, db = connection) {
   const { id, itemName } = updatedItem
   return db('items')
     .where('id', id)
-    .update({
-      itemName
-    })
+    .update({ itemName })
 };
