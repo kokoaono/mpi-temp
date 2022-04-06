@@ -5,7 +5,8 @@ module.exports = {
   getItems,
   addItem,
   deleteItem,
-  getItemById
+  getItemById,
+  updateItem
 }
 
 
@@ -38,4 +39,14 @@ function getItemById(id, db = connection) {
   return db('items')
     .where('id', id)
     .select()
-}
+};
+
+//Edit item
+function updateItem(updatedItem, db = connection) {
+  const { id, itemName } = updatedItem
+  return db('items')
+    .where('id', id)
+    .update({
+      itemName
+    })
+};
