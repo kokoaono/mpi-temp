@@ -37,4 +37,20 @@ router.post('/', (req, res) => {
     })
 });
 
+//delete by ID
+router.delete('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  db.deleteFridge(id)
+    .then(() => {
+      res.status(200).json('Successfully deleted the fridge')
+    })
+    .catch(() => {
+      res.status(500).json({
+        error: {
+          msg: 'something went wrong!.'
+        }
+      })
+    })
+});
+
 module.exports = router;
