@@ -59,11 +59,7 @@ router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   db.getItemById(id)
     .then(itemData => {
-      if (!id) {
-        res.send(`unable to get the item with ID of ${id}`)
-      } else {
-        res.status(200).json({ itemData })
-      }
+      res.status(200).json({ itemData })
       return null;
     })
     .catch(() => {
@@ -88,7 +84,7 @@ router.patch('/:id', (req, res) => {
     .catch(() => {
       res.status(500).json({
         error: {
-          msg: 'Unable to update the item'
+          msg: 'something is not right'
         }
       })
     })

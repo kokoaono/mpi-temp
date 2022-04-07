@@ -7,9 +7,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
 const itemsRouter = require('./routes/items');
-// const fridgeRouter = require('./routes/fridges');
+const fridgeRouter = require('./routes/fridges');
 
 app.use('/items', itemsRouter);
-// app.use('/fridges', fridgeRouter);
+app.use('/fridges', fridgeRouter);
 
 module.exports = app

@@ -1,4 +1,4 @@
-const connection = require('./connection')
+const connection = require('./connection');
 
 //DB functions
 module.exports = {
@@ -7,8 +7,7 @@ module.exports = {
   deleteItem,
   getItemById,
   updateItem
-}
-
+};
 
 //get all items
 function getItems(db = connection) {

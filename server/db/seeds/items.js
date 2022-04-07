@@ -8,4 +8,3 @@ exports.seed = function (knex) {
       return knex('items').insert(items);
     });
 };
-// run seed then migrate:latest
