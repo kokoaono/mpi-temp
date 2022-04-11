@@ -6,10 +6,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
-const itemsRouter = require('./routes/items');
+const itemRouter = require('./routes/items');
 const fridgeRouter = require('./routes/fridges');
 
-app.use('/items', itemsRouter);
+app.use('/items', itemRouter);
 app.use('/fridges', fridgeRouter);
 
 module.exports = app

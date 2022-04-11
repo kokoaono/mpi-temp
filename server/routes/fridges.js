@@ -37,6 +37,23 @@ router.post('/', (req, res) => {
     })
 });
 
+//Individual fridge
+router.get('/:id', (req, res) => {
+  const id = parseInt(req.params.id)
+  db.getFridgeById(id)
+    .then(fridge => {
+      res.status(200).json({ fridge })
+      return null;
+    })
+    .catch(() => {
+      res.status(500).json({
+        error: {
+          msg: 'something went wrong'
+        }
+      })
+    })
+})
+
 //delete by ID
 router.delete('/:id', (req, res) => {
   const id = parseInt(req.params.id);
@@ -47,10 +64,24 @@ router.delete('/:id', (req, res) => {
     .catch(() => {
       res.status(500).json({
         error: {
-          msg: 'something went wrong!.'
+          msg: 'something went wrong!'
         }
       })
     })
 });
+
+
+//update fridge
+router.patch('/:id', (req, res) => {
+  const { fridgeName, fridgeTemp } = req.body
+  const id = parseInt(req.params.id)
+  const editFridge = { fridgeName, fridgeTemp, id }
+  db.editFridge(editFridge)
+    .then(data => {
+      res.status(200).json({ data })
+      return null;
+    })
+});
+
 
 module.exports = router;
