@@ -1,8 +1,8 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('items', tbl => {
+  return knex.schema.alterTable('items', tbl => {
     tbl.increments();
-    tbl.string('itemName');
-    tbl.integer('itemTemp');
+    tbl.string('item_name');
+    tbl.integer('item_temp');
   })
 
 };
