@@ -17,9 +17,9 @@ function getItems(db = connection) {
 
 //Add an item
 function addItem(newItem, db = connection) {
-  const itemName = newItem
+  const { itemName, itemTemp } = newItem
   return db('items')
-    .insert({ itemName })
+    .insert({ itemName, itemTemp })
 };
 
 //delete by itemID
@@ -38,8 +38,8 @@ function getItemById(id, db = connection) {
 
 //Edit item
 function updateItem(updatedItem, db = connection) {
-  const { id, itemName } = updatedItem
+  const { id, itemName, itemTemp } = updatedItem
   return db('items')
     .where('id', id)
-    .update({ itemName })
+    .update({ itemName, itemTemp })
 };

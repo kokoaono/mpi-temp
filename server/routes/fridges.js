@@ -11,11 +11,7 @@ router.get('/', (req, res) => {
       return null;
     })
     .catch(() => {
-      res.status(500).json({
-        error: {
-          msg: 'Oops something went wrong'
-        }
-      })
+      res.status(500).json({ Error: "server error" })
     })
 });
 
@@ -45,12 +41,8 @@ router.get('/:id', (req, res) => {
       res.status(200).json({ fridge })
       return null;
     })
-    .catch(() => {
-      res.status(500).json({
-        error: {
-          msg: 'something went wrong'
-        }
-      })
+    .catch(err => {
+      console.error(new Error(err.message));
     })
 })
 
@@ -61,12 +53,8 @@ router.delete('/:id', (req, res) => {
     .then(() => {
       res.status(200).json('Successfully deleted the fridge')
     })
-    .catch(() => {
-      res.status(500).json({
-        error: {
-          msg: 'something went wrong!'
-        }
-      })
+    .catch(err => {
+      console.error(new Error(err.message))
     })
 });
 
