@@ -17,9 +17,9 @@ function getItems(db = connection) {
 
 //Add an item
 function addItem(newItem, db = connection) {
-  const { itemName, itemTemp } = newItem
+  const { item_name, item_temp } = newItem
   return db('items')
-    .insert({ itemName, itemTemp })
+    .insert({ item_name, item_temp })
 };
 
 //delete by itemID

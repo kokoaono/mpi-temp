@@ -3,6 +3,11 @@ exports.seed = function (knex) {
   return knex('items').del()
     .then(function () {
       // Inserts seed entries
-      return knex('items').insert([]);
+      return knex('items').insert([
+        {
+          item_name: 'Salmon',
+          item_temp: 65
+        }
+      ]);
     });
 };

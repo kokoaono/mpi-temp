@@ -21,11 +21,11 @@ router.get('/', (req, res) => {
 
 //Add Item
 router.post('/', (req, res) => {
-  const { itemName } = req.body;
-  const newItem = itemName;
+  const { item_name, item_temp } = req.body;
+  const newItem = { item_temp, item_name };
   db.addItem(newItem)
-    .then(item => {
-      res.status(201).json({ item })
+    .then(data => {
+      res.status(201).json({ data })
       return null;
     })
     .catch(() => {

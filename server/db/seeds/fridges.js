@@ -3,6 +3,12 @@ exports.seed = function (knex) {
   return knex('fridges').del()
     .then(function () {
       // Inserts seed entries
-      return knex('fridges').insert([]);
+      return knex('fridges').insert([
+        {
+          id: 1,
+          fridgeName: 'test2',
+          fridgeTemp: 3.2
+        }
+      ]);
     });
 };
