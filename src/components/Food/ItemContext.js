@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import api from '../../api/items';
+import React, { useState, useContext } from 'react';
+// import api from '../../api/items';
 
 
 const ItemsContext = React.createContext();
@@ -34,26 +34,26 @@ export const ItemProvider = ({ children }) => {
   const [items, setItems] = useState([]);
 
   //fetch data
-  const getItems = async () => {
-    const response = await api.get('/home')
-      .catch(err => console.log('Error:', err));
+  // const getItems = async () => {
+  //   const response = await api.get('/home')
+  //     .catch(err => console.log('Error:', err));
 
-    if (response && response.data) {
-      setItems(response.data)
-    }
-  };
+  //   if (response && response.data) {
+  //     setItems(response.data)
+  //   }
+  // };
 
-  //create data
-  const createItem = async () => {
-    const data = await api.post('/home', { id: 67, itemName: 'Ham' })
-      .catch(err => console.log('Error', err))
-    console.log(data);
+  // //create data
+  // const createItem = async () => {
+  //   const data = await api.post('/home', { id: 67, itemName: 'Ham' })
+  //     .catch(err => console.log('Error', err))
+  //   console.log(data);
 
-  }
+  // }
 
-  useEffect(() => {
-    getItems()
-  }, [])
+  // useEffect(() => {
+  //   getItems()
+  // }, [])
 
 
   //Add new item

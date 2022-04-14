@@ -6,6 +6,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
+
 const itemRouter = require('./routes/items');
 const fridgeRouter = require('./routes/fridges');
 

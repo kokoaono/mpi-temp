@@ -2,18 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-import { useItems } from './ItemContext';
+// import { useItems } from './ItemContext';
 import { Flex, Box } from '@chakra-ui/react';
 
 
 export const FoodApp = () => {
-  const { items } = useItems();
+  const API_URL = 'http://localhost:3500';
+  const [items, setItems] = useState([]);
+  // const { items } = useItems();
   const [showAddItem, setShowAddItem] = useState(false);
 
   // SAVING DATA TO LS
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items))
-  }, [items]);
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL)
+        const listItems = await response.json()
+        setItems(listItems)
+        console.log(response);
+      } catch (err) {
+        console.log(err.message)
+      }
+    }
+    (async () => await fetchItems())()
+  }, []);
 
   return (
     <Box mx={5}>

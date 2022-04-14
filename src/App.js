@@ -6,6 +6,7 @@ import Login from './components/Accounts/Login';
 import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
+import { FoodApp } from './components/Food/FoodApp';
 // import { RequireAuth } from './components/Accounts/RequireAuth';
 
 
@@ -23,6 +24,7 @@ const App = () => {
           {/* protected routes */}
           {/* <Route element={<RequireAuth />}> */}
           <Route path='/home' element={<Home />} />
+          <Route path='/items' element={<FoodApp />} />
           {/* </Route> */}
 
           {/*   catch all */}
