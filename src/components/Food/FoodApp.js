@@ -4,28 +4,41 @@ import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
 // import { useItems } from './ItemContext';
 import { Flex, Box } from '@chakra-ui/react';
+import api from '../../api/items'
 
 
 export const FoodApp = () => {
-  const API_URL = 'http://localhost:3500';
   const [items, setItems] = useState([]);
   // const { items } = useItems();
   const [showAddItem, setShowAddItem] = useState(false);
 
-  // SAVING DATA TO LS
+  const getItems = async () => {
+    const response = await api.get('/items');
+    return response.data
+  };
+  
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(API_URL)
-        const listItems = await response.json()
-        setItems(listItems)
-        console.log(response);
-      } catch (err) {
-        console.log(err.message)
-      }
-    }
-    (async () => await fetchItems())()
-  }, []);
+    const getAllItems = async () => {
+      const itemData = await getItems();
+      if (itemData) setItems(itemData);
+    };
+    getAllItems()
+  }, [])
+
+  // SAVING DATA TO LS
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await fetch(API_URL)
+  //       const listItems = await response.json()
+  //       console.log(response);
+  //       setItems(listItems)
+  //     } catch (err) {
+  //       console.log("errMSG", err.message)
+  //     }
+  //   }
+  //   fetchItems()
+  // }, []);
 
   return (
     <Box mx={5}>
