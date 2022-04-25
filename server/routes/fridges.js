@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   db.getFridgeData()
     .then(result => {
-      res.json({ Fridges: result })
+      res.json({ fridges: result })
       return null;
     })
     .catch(() => {
@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 
 //ADD fridge
 router.post('/', (req, res) => {
-  const { fridgeName, fridgeTemp, created_at, updated_at } = req.body;
-  const newFridge = { fridgeName, fridgeTemp, created_at, updated_at };
+  const { fridgeName, fridgeTemp } = req.body;
+  const newFridge = { fridgeName, fridgeTemp };
   db.addFridge(newFridge)
     .then(data => {
       res.status(200).json({ data })
@@ -64,7 +64,7 @@ router.patch('/:id', (req, res) => {
   const { fridgeName, fridgeTemp } = req.body
   const id = parseInt(req.params.id)
   const editFridge = { fridgeName, fridgeTemp, id }
-  db.editFridge(editFridge)
+  db.updateFridge(editFridge)
     .then(data => {
       res.status(200).json({ data })
       return null;

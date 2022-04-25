@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
   const newItem = { item_temp, item_name };
   db.addItem(newItem)
     .then(data => {
-      res.status(201).json({ data })
+      res.status(200).json({ data })
       return null;
     })
     .catch(() => {
@@ -73,9 +73,9 @@ router.get('/:id', (req, res) => {
 
 //Update item
 router.patch('/:id', (req, res) => {
-  const { itemName } = req.body
   const id = parseInt(req.params.id)
-  const updatedItem = { itemName, id }
+  const { item_name, item_temp } = req.body
+  const updatedItem = { item_name, item_temp, id }
   db.updateItem(updatedItem)
     .then(data => {
       res.status(200).json({ data })

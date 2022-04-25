@@ -38,8 +38,8 @@ function getItemById(id, db = connection) {
 
 //Edit item
 function updateItem(updatedItem, db = connection) {
-  const { id, itemName, itemTemp } = updatedItem
+  const { id, item_name, item_temp } = updatedItem
   return db('items')
     .where('id', id)
-    .update({ itemName, itemTemp })
+    .update({ item_name, item_temp })
 };

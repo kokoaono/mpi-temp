@@ -6,7 +6,7 @@ module.exports = {
   addFridge,
   deleteFridge,
   getFridgeById,
-  editFridge
+  updateFridge
 };
 
 //get All frige data
@@ -37,7 +37,7 @@ function getFridgeById(id, db = connection) {
 };
 
 //edit fridge
-function editFridge(updatedFridge, db = connection) {
+function updateFridge(updatedFridge, db = connection) {
   const { id, fridgeName, fridgeTemp } = updatedFridge
   return db('fridges')
     .where('id', id)
