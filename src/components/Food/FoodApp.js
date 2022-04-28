@@ -8,38 +8,29 @@ import api from '../../api/items'
 
 
 export const FoodApp = () => {
+
   const [items, setItems] = useState([]);
   // const { items } = useItems();
   const [showAddItem, setShowAddItem] = useState(false);
 
   const getItems = async () => {
-    const response = await api.get('/items');
+    const response = await api.get('/');
     return response.data
   };
-  
+
   useEffect(() => {
     const getAllItems = async () => {
-      const itemData = await getItems();
-      if (itemData) setItems(itemData);
-    };
+      try {
+        const itemData = await getItems();
+        console.log('itemdata is', itemData);
+        if (itemData) setItems(itemData);
+      } catch (err) {
+        console.log("Error", err.message);
+      }
+    }
     getAllItems()
   }, [])
-
-  // SAVING DATA TO LS
-  // useEffect(() => {
-  //   const fetchItems = async () => {
-  //     try {
-  //       const response = await fetch(API_URL)
-  //       const listItems = await response.json()
-  //       console.log(response);
-  //       setItems(listItems)
-  //     } catch (err) {
-  //       console.log("errMSG", err.message)
-  //     }
-  //   }
-  //   fetchItems()
-  // }, []);
-
+  
   return (
     <Box mx={5}>
       <Flex m={10}>
@@ -59,7 +50,7 @@ export const FoodApp = () => {
           </Box>
           {showAddItem && <AddItem />}
 
-          {items.length > 0 ? <FoodItems /> : 'No Items to show'}
+          {items.length > 0 ? <FoodItems /> : 'No items to show'}
         </Box>
       </Flex >
     </Box >
