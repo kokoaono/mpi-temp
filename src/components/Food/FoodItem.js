@@ -18,15 +18,16 @@ import {
 } from '@chakra-ui/react';
 
 export const FoodItem = ({ item }) => {
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteItem = useItemDelete();
 
   return (
     <Flex>
       <Box p={3}>
-        <Text>Item: {item.itemName}</Text>
-        <Text>Cooked Temp: {item.itemTemp} &#8451;</Text>
-        <Text>Created at: {item.date}</Text>
+        <Text>Item: {item.item_name}</Text>
+        <Text>Cooked Temp: {item.item_temp} &#8451;</Text>
+        <Text>Created on: {item.date}</Text>
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>

@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FoodItem } from "./FoodItem";
-// import { useDeleteAll, useItems } from './ItemContext';
-import api from '../../api/items'
+import { useDeleteAll, useItems } from './ItemContext';
 import { Button, Box, Flex } from "@chakra-ui/react";
 
 export const FoodItems = () => {
-  const [items, setItems] = useState([]);
-  // const { items } = useItems();
-  // const deleteAllItems = useDeleteAll();
+  const { items } = useItems();
+  const deleteAllItems = useDeleteAll();
 
-  const getItems = async () => {
-    const response = await api.get('/');
-    return response.data
-  };
-
-  useEffect(() => {
-    const getAllItems = async () => {
-      const itemData = await getItems();
-      console.log('itemdata is', itemData);
-      if (itemData) setItems(itemData);
-    };
-    getAllItems()
-  }, [])
   return (
     <Flex flexDir='column'>
       <Box>
@@ -29,7 +14,7 @@ export const FoodItems = () => {
           m={4}
           size={'sm'}
           colorScheme={'red'}
-        // onClick={deleteAllItems}
+          onClick={deleteAllItems}
         >
           Clear all
         </Button>

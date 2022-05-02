@@ -35,25 +35,23 @@ export const ItemProvider = ({ children }) => {
 
   //fetch data
   // const getItems = async () => {
-  //   const response = await api.get('/home')
-  //     .catch(err => console.log('Error:', err));
-
-  //   if (response && response.data) {
-  //     setItems(response.data)
-  //   }
+  //   const res = await api.get('/');
+  //   return res.data
   // };
 
-  // //create data
-  // const createItem = async () => {
-  //   const data = await api.post('/home', { id: 67, itemName: 'Ham' })
-  //     .catch(err => console.log('Error', err))
-  //   console.log(data);
-
-  // }
-
   // useEffect(() => {
-  //   getItems()
+  //   const getAllItems = async () => {
+  //     try {
+  //       const itemData = await getItems();
+  //       console.log('itemdata is', itemData);
+  //       if (itemData) setItems(itemData);
+  //     } catch (err) {
+  //       console.log("Error", err.message);
+  //     }
+  //   }
+  //   getAllItems()
   // }, [])
+
 
 
   //Add new item

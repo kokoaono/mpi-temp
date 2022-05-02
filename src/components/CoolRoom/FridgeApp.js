@@ -2,18 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { Fridges } from './Fridges';
 import { AddFridge } from './AddFridge';
 import { FridgeHeader } from './FridgeHeader';
-import { useFridges } from './FridgeContext';
+import api from '../../api/api';
 import { Flex, Box } from '@chakra-ui/react';
 
 
 export const FridgeApp = () => {
-  const { fridges } = useFridges();
+  const [fridges, setFridges] = useState([]);
   const [showAddFridge, setShowAddFridge] = useState(false);
 
-  // SAVING DATA TO LS
+  const getFridges = async () => {
+    const response = await api.get('/fridges')
+    return response.data.fridges
+  };
+
+  // const deleteFridge = async (id) => {
+  //   try {
+  //     await api.delete(`/fridges/${id}`)
+  //     const filteredFridge = fridges.filter(fridge => fridge.id !== id)
+  //     setFridges(filteredFridge)
+  //   } catch (err) {
+  //     console.log('Error', err.message);
+  //   }
+  // }
+
   useEffect(() => {
-    localStorage.setItem('fridges', JSON.stringify(fridges))
-  }, [fridges]);
+    const getFridgeData = async () => {
+      try {
+        const fridgeData = await getFridges();
+        if (fridgeData) setFridges(fridgeData)
+      } catch (err) {
+        console.log('Error', err.message);
+      }
+    }
+    getFridgeData()
+  }, [])
 
   return (
     <Box mx={5}>
@@ -35,7 +57,7 @@ export const FridgeApp = () => {
           </Box>
           {showAddFridge && <AddFridge />}
 
-          {fridges.length > 0 ? <Fridges /> : 'No fridges to show'}
+          {fridges.length > 0 ? <Fridges fridges={fridges} /> : 'No fridges to show'}
         </Box>
       </Flex>
     </Box>

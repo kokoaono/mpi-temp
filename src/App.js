@@ -7,6 +7,7 @@ import { NotFound } from './components/NotFound';
 import LandingPage from './components/home/LandingPage';
 import ForgotPwd from './components/ForgotPwd';
 import { FoodApp } from './components/Food/FoodApp';
+import { FridgeApp } from './components/CoolRoom/FridgeApp';
 // import { RequireAuth } from './components/Accounts/RequireAuth';
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
         {/* <Route element={<RequireAuth />}> */}
         <Route path='/home' element={<Home />} />
         <Route path='/items' element={<FoodApp />} />
+        <Route path='/fridges' element={<FridgeApp />} />
         {/* </Route> */}
         {/*   catch all */}
         <Route path='*' element={<NotFound />} />

@@ -21,6 +21,7 @@ export const Fridge = ({ fridge }) => {
 
   const deleteFridge = useFridgeDelete();
 
+
   return (
     <Flex>
       <Box p={3}>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Fridge } from './Fridge';
-import { useDeleteAllFridges, useFridges } from './FridgeContext';
+import { useDeleteAllFridges } from './FridgeContext';
 import { Button, Box, Flex } from '@chakra-ui/react';
 
-export const Fridges = () => {
-  const { fridges } = useFridges();
+export const Fridges = ({ fridges }) => {
+  // const { fridges } = useFridges();
   const deleteAll = useDeleteAllFridges();
 
   return (

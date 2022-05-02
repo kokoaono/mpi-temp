@@ -2,27 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-// import { useItems } from './ItemContext';
+import api from '../../api/api';
 import { Flex, Box } from '@chakra-ui/react';
-import api from '../../api/items'
 
 
 export const FoodApp = () => {
-
-  const [items, setItems] = useState([]);
-  // const { items } = useItems();
+  const [items, setItems] = useState([])
   const [showAddItem, setShowAddItem] = useState(false);
 
   const getItems = async () => {
-    const response = await api.get('/');
-    return response.data
+    const response = await api.get('/items');
+    return response.data.items
   };
 
   useEffect(() => {
     const getAllItems = async () => {
       try {
         const itemData = await getItems();
-        console.log('itemdata is', itemData);
+        console.log(itemData);
         if (itemData) setItems(itemData);
       } catch (err) {
         console.log("Error", err.message);
@@ -30,7 +27,7 @@ export const FoodApp = () => {
     }
     getAllItems()
   }, [])
-  
+
   return (
     <Box mx={5}>
       <Flex m={10}>
@@ -50,7 +47,7 @@ export const FoodApp = () => {
           </Box>
           {showAddItem && <AddItem />}
 
-          {items.length > 0 ? <FoodItems /> : 'No items to show'}
+          {items.length > 0 ? <FoodItems items={items} /> : 'No items to show'}
         </Box>
       </Flex >
     </Box >
