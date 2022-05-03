@@ -18,9 +18,9 @@ export const FoodApp = () => {
   useEffect(() => {
     const getAllItems = async () => {
       try {
-        const itemData = await getItems();
-        console.log(itemData);
-        if (itemData) setItems(itemData);
+        const response = await getItems();
+        console.log(response);
+        if (response) setItems(response);
       } catch (err) {
         console.log("Error", err.message);
       }

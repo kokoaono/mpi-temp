@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 
 export const FoodItem = ({ item }) => {
-  
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteItem = useItemDelete();
 

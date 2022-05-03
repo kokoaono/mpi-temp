@@ -28,7 +28,7 @@ export const AddItem = () => {
     }
   };
 
-  const handleSutmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!itemName || !itemTemp || !time) {
       setErrors(ValidateFoodInfo(itemName, itemTemp, time))
@@ -36,8 +36,8 @@ export const AddItem = () => {
     }
     try {
       await addItem({ itemTemp, itemName, time })
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.log('Error', err.message);
     }
     setItemTemp('');
     setItemName('');
@@ -92,7 +92,7 @@ export const AddItem = () => {
           shadow={'lg'}
           variant='solid'
           colorScheme='green'
-          onClick={handleSutmit}
+          onClick={handleSubmit}
         >
           ADD
         </Button>

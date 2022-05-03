@@ -1,10 +1,10 @@
 import React from 'react';
 import { FoodItem } from "./FoodItem";
-import { useDeleteAll, useItems } from './ItemContext';
+import { useDeleteAll } from './ItemContext';
 import { Button, Box, Flex } from "@chakra-ui/react";
 
-export const FoodItems = () => {
-  const { items } = useItems();
+export const FoodItems = ({ items }) => {
+  // const { items } = useItems();
   const deleteAllItems = useDeleteAll();
 
   return (
