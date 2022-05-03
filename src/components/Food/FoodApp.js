@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+// import { useQuery } from 'react-query';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
 import api from '../../api/api';
 import { Flex, Box } from '@chakra-ui/react';
 
-
 export const FoodApp = () => {
   const [items, setItems] = useState([])
   const [showAddItem, setShowAddItem] = useState(false);
+
+  // const query = useQuery('items', () => { return api.get('/items').then(res => res.data) })
 
   const getItems = async () => {
     const response = await api.get('/items');
