@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { FoodItems } from './FoodItems';
 import { AddItem } from './AddItem';
 import { FoodHeader } from './FoodHeader';
-import api from '../../api/api';
+// import api from '../../api/api';
 import { Flex, Box } from '@chakra-ui/react';
+import useItems from '../QueryHooks/useItems';
 
 //create a queryClient object
 const queryClient = new QueryClient();
@@ -18,12 +19,15 @@ export const FoodApp = () => {
 };
 
 function Dummy() {
-  const [items, setItems] = useState([])
+  // const [items, setItems] = useState([])
   const [showAddItem, setShowAddItem] = useState(false);
+
+  const items = useItems();
+  console.log(items.data);
   //create a component that uses useQuery
-  const queryItems = useQuery('items', () => api.get('/items').then(res => res.data)
-  )
-  console.log('query log', queryItems)
+  // const queryItems = useQuery('items', () => api.get('/items').then(res => res.data)
+  // )
+  // console.log('query log', queryItems)
 
 
 
@@ -48,7 +52,7 @@ function Dummy() {
   // }, [])
 
   return (
-    <Box mx={5}>
+    < Box mx={5} >
       <Flex m={10}>
         <Box
           p={2}
