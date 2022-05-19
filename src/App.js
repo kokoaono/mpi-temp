@@ -1,33 +1,35 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { Form } from './components/Accounts/Form';
 import Home from './components/home/Home';
-import Header from './components/Header';
-import Login from './components/Login';
-import FridgeLists from './components/FridgeLists';
-import EditFridgeTempPage from './components/EditFridgeTempPage';
-import RecordFridgeTemp from './components/RecordFridgeTemp';
-import NavigationBar from './components/NavigationBar/NavigationBar';
-import FoodTempForm from './components/tempForms/FoodTempForm'
+import Login from './components/Accounts/Login';
+import { NotFound } from './components/NotFound';
+import LandingPage from './components/home/LandingPage';
+import ForgotPwd from './components/ForgotPwd';
+import { FoodApp } from './components/Food/FoodApp';
+import { FridgeApp } from './components/CoolRoom/FridgeApp';
+// import { RequireAuth } from './components/Accounts/RequireAuth';
 
-
-const App = () => {
-  return (
-    <Fragment>
-      <Router>
-        <Header />
-        <NavigationBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='login' element={<Login />} />
-          <Route path='fridgelists' element={<FridgeLists />} />
-          <Route path='edit/:id' element={<EditFridgeTempPage />} />
-          <Route path='temp' element={<RecordFridgeTemp />} />
-          <Route path='food' element={<FoodTempForm />} />
-        </Routes>
-      </Router>
-    </Fragment>
-  )
-};
+const App = () => (
+  <Fragment>
+    <Router>
+      <Routes>
+        {/* public routes */}
+        <Route path='/' element={<LandingPage />} />
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Form />} />
+        <Route path='requestpassword' element={<ForgotPwd />} />
+        {/* protected routes */}
+        {/* <Route element={<RequireAuth />}> */}
+        <Route path='/home' element={<Home />} />
+        <Route path='/items' element={<FoodApp />} />
+        <Route path='/fridges' element={<FridgeApp />} />
+        {/* </Route> */}
+        {/*   catch all */}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </Router>
+  </Fragment >
+);
 
 export default App;

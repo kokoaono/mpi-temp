@@ -1,22 +1,33 @@
 module.exports = {
   getData,
-  getItemData
+  getItemData,
+  getUserData
 };
 
-//get fridge data from localStorage
+//get fridge data
 function getData() {
-  const data = localStorage.getItem('fridges');
-  if (data) {
-    return JSON.parse(data);
+  const fridgeData = localStorage.getItem('fridges');
+  if (fridgeData) {
+    return JSON.parse(fridgeData);
   } else {
     return []
   }
 };
 
+//Get FoodItem data
 function getItemData() {
-  const data = localStorage.getItem('items');
-  if (data) {
-    return JSON.parse(data);
+  const itemData = localStorage.getItem('items');
+  if (itemData) {
+    return JSON.parse(itemData);
+  } else {
+    return []
+  }
+};
+
+function getUserData() {
+  const savedUser = localStorage.getItem('user');
+  if (savedUser) {
+    return JSON.parse(savedUser)
   } else {
     return []
   }
