@@ -13,9 +13,9 @@ export default function Home() {
       <Nav />
       <Box>
         <Flex width={'100%'} position={'relative'}>
-          <ItemProvider>
+          {/* <ItemProvider> */}
             <FoodApp />
-          </ItemProvider>
+          {/* </ItemProvider> */}
 
           <FridgeProvider>
             <FridgeApp />

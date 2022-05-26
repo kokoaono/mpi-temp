@@ -18,7 +18,8 @@ import {
   Stack,
   useColorMode,
   Center,
-  HStack
+  HStack,
+  Text
 } from '@chakra-ui/react';
 
 export const Nav = () => {
@@ -69,7 +70,7 @@ export const Nav = () => {
                   </Center>
                   <br />
                   <Center>
-                    <p>username</p>
+                    <Text>username</Text>
                   </Center>
                   <br />
                   <MenuDivider />
