@@ -1,24 +1,25 @@
-import { Button, Box, Heading, Flex } from '@chakra-ui/react';
+import { Button, Box, Heading, Flex } from "@chakra-ui/react";
 
 export const FridgeHeader = ({ title, onAdd, showAdd }) => {
   return (
-    <Flex align={'center'} justify={'center'}>
+    <Flex align={"center"} justify={"center"}>
       <Box>
-        <Heading as='h3' size='lg'>{title}</Heading>
+        <Heading as="h3" size="lg">
+          {title}
+        </Heading>
         <Button
           m={4}
-          size='sm'
-          colorScheme={showAdd ? 'red' : 'green'}
+          size="sm"
+          colorScheme={showAdd ? "red" : "green"}
           onClick={onAdd}
         >
-          {showAdd ? 'close' : 'create'}
+          {showAdd ? "close" : "create"}
         </Button>
-
       </Box>
-    </Flex >
-  )
+    </Flex>
+  );
 };
 
 FridgeHeader.defaultProps = {
-  title: 'Daily Fridge Temperature'
+  title: "Daily Fridge Temperature",
 };
