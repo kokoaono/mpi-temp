@@ -38,19 +38,12 @@ export const FridgeApp = () => {
           {showAddFridge && <AddFridge />}
           {status === "loading" && <div>loading...</div>}
           {status === "error" && <div>Error</div>}
-          {status === "success" && (
-            <div>
-              {data.map((fridge) => (
-                <QueryFridge key={fridge.id} fridge={fridge} />
-              ))}
-            </div>
-          )}
-          {/* {status === "success" && data.length > 0 ? (
+
+          {status === "success" && data.length > 0 ? (
             <Fridges fridges={data} />
           ) : (
             "No records to show"
-          )} */}
-          
+          )}
         </Box>
       </Flex>
     </Box>

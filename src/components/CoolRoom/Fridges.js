@@ -3,7 +3,8 @@ import { Fridge } from "./Fridge";
 import { useDeleteAllFridges } from "./FridgeContext";
 import { Button, Box, Flex } from "@chakra-ui/react";
 
-export const Fridges = ({ data }) => {
+export const Fridges = ({ fridges }) => {
+  console.log('fridges', fridges);
   const deleteAll = useDeleteAllFridges();
 
   return (
@@ -13,8 +14,8 @@ export const Fridges = ({ data }) => {
           Clear all
         </Button>
       </Box>
-      {data.map((data) => (
-        <Fridge key={data.id} fridge={data} />
+      {fridges.map((fridge) => (
+        <Fridge key={fridge.id} fridge={fridge} />
       ))}
     </Flex>
   );

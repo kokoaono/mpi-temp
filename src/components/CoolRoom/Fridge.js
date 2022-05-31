@@ -16,7 +16,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export const Fridge = ({ data }) => {
+export const Fridge = ({ fridge }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const deleteFridge = useFridgeDelete();
@@ -24,9 +24,9 @@ export const Fridge = ({ data }) => {
   return (
     <Flex>
       <Box p={3}>
-        <Text>Name: {data.fridgeName}</Text>
-        <Text>Temperature: {data.fridgeTemp} &#8451;</Text>
-        <Text>Created on: {data.date}</Text>
+        <Text>Name: {fridge.fridgeName}</Text>
+        <Text>Temperature: {fridge.fridgeTemp} &#8451;</Text>
+        <Text>Created on: {fridge.date}</Text>
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -34,7 +34,7 @@ export const Fridge = ({ data }) => {
           <ModalHeader textAlign="center">Edit Fridge</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditFridge fridge={data} onClose={onClose} />
+            <EditFridge fridge={fridge} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -57,7 +57,7 @@ export const Fridge = ({ data }) => {
         fontSize="20px"
         variant="solid"
         colorScheme="red"
-        onClick={() => deleteFridge(data.id)}
+        onClick={() => deleteFridge(fridge.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex>
