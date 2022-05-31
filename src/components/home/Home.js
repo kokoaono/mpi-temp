@@ -3,8 +3,9 @@ import { Nav } from "../NavigationBar/Nav";
 import { FoodApp } from "../Food/FoodApp";
 import { FridgeApp } from "../CoolRoom/FridgeApp";
 import { ItemProvider } from "../Food/ItemContext";
-import { QueryClientProvider, QueryClient } from "react-query";
 import { Box, Flex } from "@chakra-ui/react";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -17,9 +18,8 @@ export default function Home() {
           <ItemProvider>
             <FoodApp />
           </ItemProvider>
-
           <QueryClientProvider client={queryClient}>
-            <FridgeApp />
+            <FridgeApp /> <ReactQueryDevtools />
           </QueryClientProvider>
         </Flex>
       </Box>
