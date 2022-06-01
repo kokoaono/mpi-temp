@@ -1,8 +1,8 @@
-import React from 'react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { EditFood } from './EditFood';
-import { useItemDelete } from './ItemContext';
+import React from "react";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { EditFood } from "./EditFood";
+import { useItemDelete } from "./ItemContext";
 import {
   Box,
   Text,
@@ -14,11 +14,10 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalCloseButton
-} from '@chakra-ui/react';
+  ModalCloseButton,
+} from "@chakra-ui/react";
 
 export const FoodItem = ({ item }) => {
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteItem = useItemDelete();
 
@@ -33,7 +32,7 @@ export const FoodItem = ({ item }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader textAlign='center'>Edit Item</ModalHeader>
+          <ModalHeader textAlign="center">Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <EditFood item={item} onClose={onClose} />
@@ -42,24 +41,24 @@ export const FoodItem = ({ item }) => {
       </Modal>
       <IconButton
         mr={3}
-        boxShadow={'xl'}
-        aria-label='edit foodItem'
-        fontSize='20px'
-        variant='outline'
-        colorScheme='green'
+        boxShadow={"xl"}
+        aria-label="edit foodItem"
+        fontSize="20px"
+        variant="outline"
+        colorScheme="green"
         onClick={onOpen}
         icon={<AiOutlineEdit />}
       />
       <IconButton
         ml={5}
-        boxShadow={'xl'}
-        aria-label='delete foodItem'
-        fontSize='20px'
-        variant='solid'
-        colorScheme='red'
+        boxShadow={"xl"}
+        aria-label="delete foodItem"
+        fontSize="20px"
+        variant="solid"
+        colorScheme="red"
         onClick={() => deleteItem(item.id)}
         icon={<RiDeleteBin5Line />}
       />
-    </Flex >
-  )
+    </Flex>
+  );
 };

@@ -4,7 +4,6 @@ import { useDeleteAllFridges } from "./FridgeContext";
 import { Button, Box, Flex } from "@chakra-ui/react";
 
 export const Fridges = ({ fridges }) => {
-  console.log('fridges', fridges);
   const deleteAll = useDeleteAllFridges();
 
   return (

@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { AuthProvider } from './components/Context/AuthContext';
-import { ChakraProvider } from '@chakra-ui/react'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { AuthProvider } from "./components/Context/AuthContext";
+import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.render(
   <ChakraProvider>
@@ -10,4 +10,5 @@ ReactDOM.render(
       <App />
     </AuthProvider>
   </ChakraProvider>,
-  document.getElementById("root"));
+  document.getElementById("root")
+);

@@ -4,7 +4,6 @@ import { Fridges } from "./Fridges";
 import { AddFridge } from "./AddFridge";
 import { FridgeHeader } from "./FridgeHeader";
 import api from "../../api/api";
-import QueryFridge from "./QueryFridge";
 import { Flex, Box } from "@chakra-ui/react";
 
 export const FridgeApp = () => {
@@ -16,7 +15,6 @@ export const FridgeApp = () => {
   };
 
   const { data, status } = useQuery("fridges", getFridges);
-  console.log("test", data);
 
   return (
     <Box mx={5}>
