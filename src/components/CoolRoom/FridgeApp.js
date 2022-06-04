@@ -34,8 +34,8 @@ export const FridgeApp = () => {
             />
           </Box>
           {showAddFridge && <AddFridge />}
-          {status === "loading" && <div>loading...</div>}
-          {status === "error" && <div>Error</div>}
+          {status === "loading" && <div>Loading...</div>}
+          {status === "error" && <div>Ops..something went wrong!</div>}
 
           {status === "success" && data.length > 0 ? (
             <Fridges fridges={data} />

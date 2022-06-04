@@ -21,5 +21,5 @@ export const FridgeHeader = ({ title, onAdd, showAdd }) => {
 };
 
 FridgeHeader.defaultProps = {
-  title: "Daily Fridge Temperature",
+  title: "Fridge Temperature",
 };

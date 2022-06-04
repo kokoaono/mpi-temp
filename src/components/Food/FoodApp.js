@@ -19,6 +19,7 @@ export const FoodApp = () => {
   return (
     <Box mx={5}>
       <Flex m={10}>
+        <h1 style={{ word }}>hello</h1>
         <Box
           p={2}
           shadow="md"
@@ -35,7 +36,7 @@ export const FoodApp = () => {
           </Box>
           {showAddItem && <AddItem />}
           {status === "loading" && <div>Loading...</div>}
-          {status === "error" && <div>Something went wrong!!</div>}
+          {status === "error" && <div>Ops..something went wrong!!</div>}
           {status === "success" && data.length > 0 ? (
             <FoodItems items={data} />
           ) : (
