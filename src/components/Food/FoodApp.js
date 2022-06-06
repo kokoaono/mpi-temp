@@ -19,7 +19,6 @@ export const FoodApp = () => {
   return (
     <Box mx={5}>
       <Flex m={10}>
-        <h1 style={{ word }}>hello</h1>
         <Box
           p={2}
           shadow="md"
