@@ -1,6 +1,4 @@
-import React, { useState, useContext } from 'react';
-// import api from '../../api/items';
-
+import React, { useState, useContext } from "react";
 
 const ItemsContext = React.createContext();
 const ItemAddContext = React.createContext();
@@ -9,27 +7,26 @@ const ItemDeleteContext = React.createContext();
 const DeleteAllContext = React.createContext();
 
 export const useItems = () => {
-  return useContext(ItemsContext)
+  return useContext(ItemsContext);
 };
 
 export const useAddItem = () => {
-  return useContext(ItemAddContext)
+  return useContext(ItemAddContext);
 };
 
 export const useItemUpdate = () => {
-  return useContext(ItemUpdateContext)
+  return useContext(ItemUpdateContext);
 };
 
 export const useItemDelete = () => {
-  return useContext(ItemDeleteContext)
+  return useContext(ItemDeleteContext);
 };
 
 export const useDeleteAll = () => {
-  return useContext(DeleteAllContext)
+  return useContext(DeleteAllContext);
 };
 
 export const ItemProvider = ({ children }) => {
-
   //Create state variable
   const [items, setItems] = useState([]);
 
@@ -52,31 +49,27 @@ export const ItemProvider = ({ children }) => {
   //   getAllItems()
   // }, [])
 
-
-
   //Add new item
-  const addItem = item => {
-    const id = Math.floor(Math.random() * 100)
+  const addItem = (item) => {
+    const id = Math.floor(Math.random() * 100);
     const date = new Date().toDateString();
-    const newItem = { id, date, ...item }
-    setItems([...items, newItem])
+    const newItem = { id, date, ...item };
+    setItems([...items, newItem]);
   };
 
   //Update Item
   const updateFoodItem = (id, updatedItem) => {
-    setItems(items.map(item => item.id === id ? updatedItem : item))
+    setItems(items.map((item) => (item.id === id ? updatedItem : item)));
   };
 
   //Delete item by its ID
-  const deleteItem = async id => {
-    const filteredItems = items.filter(item => item.id !== id)
-    setItems(filteredItems)
+  const deleteItem = async (id) => {
+    const filteredItems = items.filter((item) => item.id !== id);
+    setItems(filteredItems);
   };
 
   //Delete all
-  const deleteAllItems = () => (
-    setItems([])
-  );
+  const deleteAllItems = () => setItems([]);
 
   return (
     <ItemsContext.Provider value={{ items, setItems }}>
@@ -90,5 +83,5 @@ export const ItemProvider = ({ children }) => {
         </ItemUpdateContext.Provider>
       </ItemAddContext.Provider>
     </ItemsContext.Provider>
-  )
+  );
 };

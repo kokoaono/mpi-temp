@@ -42,6 +42,7 @@ export const AddItem = () => {
     setItemTemp('');
     setItemName('');
     setTime('');
+    console.log(setItemName);
   };
 
   return (

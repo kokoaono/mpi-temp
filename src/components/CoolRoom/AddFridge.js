@@ -1,41 +1,44 @@
-import React, { useState } from 'react';
-import { ValidateInfo } from './ValidateInfo';
-import { useAddFridge } from './FridgeContext';
+import React, { useState } from "react";
+import { ValidateInfo } from "./ValidateInfo";
+import { useMutation } from "react-query";
+import api from "../../api/api";
 import {
   FormControl,
   FormHelperText,
   Flex,
   Input,
   Box,
-  Button
-} from '@chakra-ui/react';
+  Button,
+} from "@chakra-ui/react";
 
 export const AddFridge = () => {
-  const addFridge = useAddFridge();
-  const [fridgeName, setFridgeName] = useState('');
-  const [fridgeTemp, setFridgeTemp] = useState('');
+  const addFridge = useMutation((newFridge) => {
+    return api.post("/fridges", newFridge);
+  });
+  const [fridgeName, setFridgeName] = useState("");
+  const [fridgeTemp, setFridgeTemp] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const temp = e.target.value;
     if (temp.match(/^\d{0,}(\.\d{0,1})?$/)) {
-      setFridgeTemp(temp)
+      setFridgeTemp(temp);
     }
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!fridgeName || !fridgeTemp) {
-      setErrors(ValidateInfo(fridgeName, fridgeTemp))
+      setErrors(ValidateInfo(fridgeName, fridgeTemp));
       return;
     }
     try {
-      await addFridge({ fridgeName, fridgeTemp });
+      addFridge.mutate({ fridgeName, fridgeTemp });
     } catch {
-      setErrors('failed')
+      setErrors("failed");
     }
-    setFridgeName('');
-    setFridgeTemp('');
+    setFridgeName("");
+    setFridgeTemp("");
   };
 
   return (
@@ -43,42 +46,38 @@ export const AddFridge = () => {
       <FormControl>
         <Box>
           <Input
-            type='text'
-            placeholder='FridgeName/ No'
+            type="text"
+            placeholder="FridgeName/ No"
             value={fridgeName}
-            onChange={e => setFridgeName(e.target.value)}
+            onChange={(e) => setFridgeName(e.target.value)}
           />
           {errors.fridgeName && (
-            <FormHelperText color='red'>
-              {errors.fridgeName}
-            </FormHelperText>
+            <FormHelperText color="red">{errors.fridgeName}</FormHelperText>
           )}
         </Box>
         <Box my={3}>
           <Input
-            type='number'
-            placeholder='Temperature'
+            type="number"
+            placeholder="Temperature"
             value={fridgeTemp}
             onChange={handleChange}
           />
           {errors.fridgeTemp && (
-            <FormHelperText color='red'>
-              {errors.fridgeTemp}
-            </FormHelperText>
+            <FormHelperText color="red">{errors.fridgeTemp}</FormHelperText>
           )}
         </Box>
         <Button
-          w={'100%'}
+          w={"100%"}
           p={4}
-          size='sm'
-          shadow={'lg'}
-          variant={'solid'}
-          colorScheme='green'
+          size="sm"
+          shadow={"lg"}
+          variant={"solid"}
+          colorScheme="green"
           onClick={handleSubmit}
         >
           ADD
         </Button>
       </FormControl>
-    </Flex >
-  )
+    </Flex>
+  );
 };
