@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ValidateInfo } from "./ValidateInfo";
-import { useFridgeUpdate } from './FridgeContext';
+// import { useFridgeUpdate } from './FridgeContext';
 import {
   Flex,
   FormControl,
@@ -9,9 +9,11 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+import { useMutation } from "react-query";
 
 export const EditFridge = ({ fridge, onClose }) => {
-  const update = useFridgeUpdate()
+  // const update = useFridgeUpdate()
+  const updateFridge = useMutation()
 
   const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
