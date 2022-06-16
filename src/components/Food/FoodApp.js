@@ -5,6 +5,7 @@ import { AddItem } from "./AddItem";
 import { FoodHeader } from "./FoodHeader";
 import api from "../../api/api";
 import { Flex, Box } from "@chakra-ui/react";
+import { Nav } from "../NavigationBar/Nav";
 
 export const FoodApp = () => {
   const [showAddItem, setShowAddItem] = useState(false);
@@ -17,7 +18,9 @@ export const FoodApp = () => {
   const { data, status } = useQuery("items", fetchItems);
 
   return (
-    <Box mx={5}>
+    // <Box mx={5}>
+    <>
+      <Nav />
       <Flex m={10}>
         <Box
           p={2}
@@ -43,6 +46,7 @@ export const FoodApp = () => {
           )}
         </Box>
       </Flex>
-    </Box>
+    </>
+    // </Box>
   );
 };

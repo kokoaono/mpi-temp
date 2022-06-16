@@ -42,42 +42,42 @@ export const AddFridge = () => {
   };
 
   return (
-    <Flex m={5}>
-      <FormControl>
-        <Box>
-          <Input
-            type="text"
-            placeholder="FridgeName/ No"
-            value={fridgeName}
-            onChange={(e) => setFridgeName(e.target.value)}
-          />
-          {errors.fridgeName && (
-            <FormHelperText color="red">{errors.fridgeName}</FormHelperText>
-          )}
-        </Box>
-        <Box my={3}>
-          <Input
-            type="number"
-            placeholder="Temperature"
-            value={fridgeTemp}
-            onChange={handleChange}
-          />
-          {errors.fridgeTemp && (
-            <FormHelperText color="red">{errors.fridgeTemp}</FormHelperText>
-          )}
-        </Box>
-        <Button
-          w={"100%"}
-          p={4}
-          size="sm"
-          shadow={"lg"}
-          variant={"solid"}
-          colorScheme="green"
-          onClick={handleSubmit}
-        >
-          ADD
-        </Button>
-      </FormControl>
-    </Flex>
+    // <Flex m={5}>
+    <FormControl>
+      <Box>
+        <Input
+          type="text"
+          placeholder="FridgeName/ No"
+          value={fridgeName}
+          onChange={(e) => setFridgeName(e.target.value)}
+        />
+        {errors.fridgeName && (
+          <FormHelperText color="red">{errors.fridgeName}</FormHelperText>
+        )}
+      </Box>
+      <Box my={3}>
+        <Input
+          type="number"
+          placeholder="Temperature"
+          value={fridgeTemp}
+          onChange={handleChange}
+        />
+        {errors.fridgeTemp && (
+          <FormHelperText color="red">{errors.fridgeTemp}</FormHelperText>
+        )}
+      </Box>
+      <Button
+        w={"100%"}
+        p={4}
+        size="sm"
+        shadow={"lg"}
+        variant={"solid"}
+        colorScheme="green"
+        onClick={handleSubmit}
+      >
+        ADD
+      </Button>
+    </FormControl>
+    // </Flex>
   );
 };

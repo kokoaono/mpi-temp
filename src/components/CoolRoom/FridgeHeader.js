@@ -4,12 +4,11 @@ export const FridgeHeader = ({ title, onAdd, showAdd }) => {
   return (
     <Flex align={"center"} justify={"center"}>
       <Box>
-        <Heading as="h3" size="lg">
-          {title}
-        </Heading>
+        <Heading as="h1">{title}</Heading>
         <Button
           m={4}
-          size="sm"
+          py={0}
+          size="md"
           colorScheme={showAdd ? "red" : "green"}
           onClick={onAdd}
         >

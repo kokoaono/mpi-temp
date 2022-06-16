@@ -8,12 +8,12 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <Box>
+      {/* <Box>
         <Flex width={"100%"} position={"relative"}>
           <FoodApp />
           <FridgeApp />
         </Flex>
-      </Box>
+      </Box> */}
     </>
   );
 }
