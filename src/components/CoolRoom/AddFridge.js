@@ -12,9 +12,18 @@ import {
 } from "@chakra-ui/react";
 
 export const AddFridge = () => {
-  const addFridge = useMutation((newFridge) => {
+  // const addFridge = useMutation((newFridge) => {
+  //   return api.post("/fridges", newFridge);
+  // });
+  const useAddFridgeData = () => {
+    return useMutation(addFridge);
+  };
+
+  const addFridge = (newFridge) => {
     return api.post("/fridges", newFridge);
-  });
+  };
+  const { mutate } = useAddFridgeData();
+
   const [fridgeName, setFridgeName] = useState("");
   const [fridgeTemp, setFridgeTemp] = useState("");
   const [errors, setErrors] = useState({});
@@ -33,7 +42,9 @@ export const AddFridge = () => {
       return;
     }
     try {
-      addFridge.mutate({ fridgeName, fridgeTemp });
+      const data = { fridgeName, fridgeTemp };
+      mutate(data);
+      // addFridge.mutate({ fridgeName, fridgeTemp });
     } catch {
       setErrors("failed");
     }
