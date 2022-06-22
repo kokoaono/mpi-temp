@@ -12,13 +12,10 @@ import {
 } from "@chakra-ui/react";
 
 export const AddFridge = () => {
-  // const addFridge = useMutation((newFridge) => {
-  //   return api.post("/fridges", newFridge);
-  // });
   const useAddFridgeData = () => {
     return useMutation(addFridge);
   };
-
+  //add new fridge temp
   const addFridge = (newFridge) => {
     return api.post("/fridges", newFridge);
   };
@@ -44,7 +41,6 @@ export const AddFridge = () => {
     try {
       const data = { fridgeName, fridgeTemp };
       mutate(data);
-      // addFridge.mutate({ fridgeName, fridgeTemp });
     } catch {
       setErrors("failed");
     }

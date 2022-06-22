@@ -50,12 +50,12 @@ export const ItemProvider = ({ children }) => {
   // }, [])
 
   //Add new item
-  const addItem = (item) => {
-    const id = Math.floor(Math.random() * 100);
-    const date = new Date().toDateString();
-    const newItem = { id, date, ...item };
-    setItems([...items, newItem]);
-  };
+  // const addItem = (item) => {
+  //   const id = Math.floor(Math.random() * 100);
+  //   const date = new Date().toDateString();
+  //   const newItem = { id, date, ...item };
+  //   setItems([...items, newItem]);
+  // };
 
   //Update Item
   const updateFoodItem = (id, updatedItem) => {
@@ -73,15 +73,13 @@ export const ItemProvider = ({ children }) => {
 
   return (
     <ItemsContext.Provider value={{ items, setItems }}>
-      <ItemAddContext.Provider value={addItem}>
-        <ItemUpdateContext.Provider value={updateFoodItem}>
-          <ItemDeleteContext.Provider value={deleteItem}>
-            <DeleteAllContext.Provider value={deleteAllItems}>
-              {children}
-            </DeleteAllContext.Provider>
-          </ItemDeleteContext.Provider>
-        </ItemUpdateContext.Provider>
-      </ItemAddContext.Provider>
+      <ItemUpdateContext.Provider value={updateFoodItem}>
+        <ItemDeleteContext.Provider value={deleteItem}>
+          <DeleteAllContext.Provider value={deleteAllItems}>
+            {children}
+          </DeleteAllContext.Provider>
+        </ItemDeleteContext.Provider>
+      </ItemUpdateContext.Provider>
     </ItemsContext.Provider>
   );
 };

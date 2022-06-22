@@ -9,11 +9,23 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+import api from "../../api/api";
 import { useMutation } from "react-query";
 
 export const EditFridge = ({ fridge, onClose }) => {
   // const update = useFridgeUpdate()
-  const updateFridge = useMutation()
+  const update = async (id, fridgeName, fridgeTemp) => {
+    const res = await api
+      .put(`/fridges/${id}`, { fridgeName, fridgeTemp })
+      .then((res) => res.data);
+    console.log(res);
+  };
+  update();
+  const useUpdateFridge = () => {
+    return useMutation(update);
+  };
+
+  const { mutate } = useUpdateFridge();
 
   const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
@@ -21,7 +33,7 @@ export const EditFridge = ({ fridge, onClose }) => {
   const [errors, setErrors] = useState({});
 
   const date = Date();
-  const updatedFridge = { id, fridgeName, fridgeTemp, date };
+  // const updatedFridge = { id, fridgeName, fridgeTemp, date };
 
   const handleChange = (e) => {
     const temp = e.target.value;
@@ -32,6 +44,9 @@ export const EditFridge = ({ fridge, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = { id, fridgeName, fridgeTemp };
+    mutate(data);
+    console.log(data);
     setErrors(ValidateInfo(fridgeName, fridgeTemp));
     onClose();
   };
