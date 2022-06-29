@@ -10,12 +10,12 @@ import { Flex, Box, Text, Container } from "@chakra-ui/react";
 export const FridgeApp = () => {
   const [showAddFridge, setShowAddFridge] = useState(false);
 
-  const getFridges = async () => {
-    const response = await api.get("/fridges").then((res) => res.data.fridges);
+  const getFridges = () => {
+    const response = api.get("/fridges").then((res) => res.data.fridges);
     return response;
   };
 
-  const { data, status } = useQuery("fridges", getFridges);
+  const { data, status, error } = useQuery("fridges", getFridges);
 
   return (
     // <Box mx={5}>
@@ -38,7 +38,7 @@ export const FridgeApp = () => {
         </Box>
         {showAddFridge && <AddFridge />}
         {status === "loading" && <Text>Loading...</Text>}
-        {status === "error" && <Text>Ops..something went wrong!</Text>}
+        {status === "error" && <Text>{error.toString()}</Text>}
         {status === "success" && data.length > 0 ? (
           <Fridges fridges={data} />
         ) : (

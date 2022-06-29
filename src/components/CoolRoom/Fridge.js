@@ -1,7 +1,8 @@
+import { useMutation } from "react-query";
+import api from "../../api/api";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
 import { EditFridge } from "./EditFridge";
-import { useFridgeDelete } from "./FridgeContext";
 import {
   Box,
   Text,
@@ -19,7 +20,11 @@ import {
 export const Fridge = ({ fridge }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const deleteFridge = useFridgeDelete();
+  const deleteFridge = (id) => {
+    api.delete(`/fridges/${id}`);
+  };
+
+  const deleteMutation = useMutation(() => deleteFridge(fridge.id));
 
   return (
     <Flex>
@@ -57,7 +62,7 @@ export const Fridge = ({ fridge }) => {
         fontSize="20px"
         variant="solid"
         colorScheme="red"
-        onClick={() => deleteFridge(fridge.id)}
+        onClick={() => deleteMutation.mutate(fridge.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex>
