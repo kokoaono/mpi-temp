@@ -18,18 +18,9 @@ export const FridgeApp = () => {
   const { data, status, error } = useQuery("fridges", getFridges);
 
   return (
-    // <Box mx={5}>
     <>
       <Nav />
       <Container p={1} centerContent={true}>
-        {/* <Box
-          p={2}
-          shadow="md"
-          maxW="lg"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-        > */}
         <Box p={5}>
           <FridgeHeader
             onAdd={() => setShowAddFridge(!showAddFridge)}
@@ -44,7 +35,6 @@ export const FridgeApp = () => {
         ) : (
           "No records to show"
         )}
-        {/* </Box> */}
       </Container>
     </>
   );

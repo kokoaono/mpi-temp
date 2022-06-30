@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useMutation } from "react-query";
 import { ValidateInfo } from "./ValidateInfo";
+import api from "../../api/api";
 import {
   Flex,
   FormControl,
@@ -8,21 +10,18 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
-import api from "../../api/api";
-import { useMutation } from "react-query";
 
 export const EditFridge = ({ fridge, onClose }) => {
   const update = (id) => {
     api.patch(`/fridges/${id}`, { fridgeName, fridgeTemp });
   };
 
-  const updateMutation = useMutation(() => update(fridge.id));
+  const { mutate } = useMutation(() => update(fridge.id));
 
   const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
   const [fridgeTemp, setFridgeTemp] = useState(fridge.fridgeTemp);
   const [errors, setErrors] = useState({});
-
   const date = Date();
 
   const handleChange = (e) => {
@@ -32,9 +31,9 @@ export const EditFridge = ({ fridge, onClose }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    updateMutation.mutate(fridge.id);
+    mutate(fridge.id);
     setErrors(ValidateInfo(fridgeName, fridgeTemp));
     onClose();
   };
@@ -71,7 +70,7 @@ export const EditFridge = ({ fridge, onClose }) => {
             size="sm"
             variant="solid"
             colorScheme="green"
-            onClick={handleSubmit}
+            onClick={onSubmit}
           >
             Edit Fridge
           </Button>

@@ -24,7 +24,7 @@ export const Fridge = ({ fridge }) => {
     api.delete(`/fridges/${id}`);
   };
 
-  const deleteMutation = useMutation(() => deleteFridge(fridge.id));
+  const { mutate } = useMutation(() => deleteFridge(fridge.id));
 
   return (
     <Flex>
@@ -62,7 +62,7 @@ export const Fridge = ({ fridge }) => {
         fontSize="20px"
         variant="solid"
         colorScheme="red"
-        onClick={() => deleteMutation.mutate(fridge.id)}
+        onClick={() => mutate(fridge.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex>

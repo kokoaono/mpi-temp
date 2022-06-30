@@ -1,8 +1,9 @@
 import React from "react";
+import { useMutation } from "react-query";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
 import { EditFood } from "./EditFood";
-import { useItemDelete } from "./ItemContext";
+import api from "../../api/api";
 import {
   Box,
   Text,
@@ -19,7 +20,11 @@ import {
 
 export const FoodItem = ({ item }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const deleteItem = useItemDelete();
+
+  const deleteItem = (id) => {
+    api.delete(`/items/${id}`);
+  };
+  const { mutate } = useMutation(() => deleteItem(item.id));
 
   return (
     <Flex>
@@ -28,7 +33,6 @@ export const FoodItem = ({ item }) => {
         <Text>Cooked Temp: {item.item_temp} &#8451;</Text>
         <Text>Created on: {item.date}</Text>
       </Box>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -56,7 +60,7 @@ export const FoodItem = ({ item }) => {
         fontSize="20px"
         variant="solid"
         colorScheme="red"
-        onClick={() => deleteItem(item.id)}
+        onClick={() => mutate(item.id)}
         icon={<RiDeleteBin5Line />}
       />
     </Flex>

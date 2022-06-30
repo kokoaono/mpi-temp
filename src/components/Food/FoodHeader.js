@@ -1,24 +1,22 @@
-import React from 'react';
-import { Button, Box, Flex, Heading } from '@chakra-ui/react';
+import React from "react";
+import { Button, Box, Heading } from "@chakra-ui/react";
 
 export const FoodHeader = ({ foodTitle, onAdd, showAdd }) => {
   return (
-    <Flex align={'center'} justify={'center'}>
-      <Box>
-        <Heading as='h3' size='lg'>{foodTitle}</Heading>
-        <Button
-          m={4}
-          size='sm'
-          colorScheme={showAdd ? 'red' : 'green'}
-          onClick={onAdd}
-        >
-          {showAdd ? 'close' : 'create'}
-        </Button>
-      </Box>
-    </Flex >
-  )
+    <Box>
+      <Heading as="h1">{foodTitle}</Heading>
+      <Button
+        m={4}
+        size="md"
+        colorScheme={showAdd ? "red" : "green"}
+        onClick={onAdd}
+      >
+        {showAdd ? "close" : "create"}
+      </Button>
+    </Box>
+  );
 };
 
 FoodHeader.defaultProps = {
-  foodTitle: 'Poultry and Meat Temperature'
+  foodTitle: "Poultry and Meat Temperature",
 };
