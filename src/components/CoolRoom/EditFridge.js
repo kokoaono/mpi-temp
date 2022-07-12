@@ -18,7 +18,7 @@ export const EditFridge = ({ fridge, onClose }) => {
 
   const { mutate } = useMutation(() => update(fridge.id));
 
-  const id = fridge.id;
+  // const id = fridge.id;
   const [fridgeName, setFridgeName] = useState(fridge.fridgeName);
   const [fridgeTemp, setFridgeTemp] = useState(fridge.fridgeTemp);
   const [errors, setErrors] = useState({});
